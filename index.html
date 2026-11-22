@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veridian Academy &amp; Consultants</title>
+<style>
+/* VOICE: a university-style group site — confident, warm, colourful, easy to use on a phone.
+   IDEA: two companies under one roof, like a university with its schools; the switch at the top changes the house colours.
+   PICTURE: full-bleed photo heroes (cross-fading), the multicolour logo, real project drawings and office photos.
+   COLOUR and TYPE: Academy navy #153462 + amber #FDBA1E; Consultancy rust #9F2C0F + charcoal #20272F; logo bubbles for accents. Cinzel, Source Serif 4, Times New Roman.
+   LAYOUT: company switch, sticky header, hero, banded sections, card grids, filter chips, tabs, lightbox, link-group footer. */
+:root{color-scheme:light dark;--navy:#153462;--navy2:#0e2547;--amber:#FDBA1E;--amberd:#d98a0e;--rust:#9F2C0F;--char:#20272F;
+--g:#22a45d;--p:#e8327c;--b:#1aa3d9;--v:#8e44ad;
+--bg:light-dark(#ffffff,#0b1a33);--alt:light-dark(#f4f6fa,#10234a);--ink:light-dark(#14213a,#e9eef7);--soft:light-dark(#4a5670,#aab6cc);--line:light-dark(#dde3ec,#24395f);--card:light-dark(#fff,#132a52);
+--c1:var(--navy);--c1d:var(--navy2);--c2:var(--amber);--c2ink:var(--navy)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+body.co-cons{--c1:var(--rust);--c1d:var(--char);--c2:#ffffff;--c2ink:var(--rust);--amberd:light-dark(#9F2C0F,#ff8a65)}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:110px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Times New Roman",Times,serif;overflow-x:clip}
+a{color:inherit}img{max-width:100%}
+h1,h2,h3{font-family:"Times New Roman",Times,serif;font-weight:600;line-height:1.1;text-wrap:balance;margin:0 0 .5em}
+h1{font-size:clamp(34px,5vw,56px)}h2{font-size:clamp(28px,3.4vw,42px)}h3{font-size:21px;line-height:1.25}
+p{margin:0 0 1em;max-width:68ch}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding:clamp(40px,5vw,84px) max(5vw,16px)}
+.alt{background:var(--alt)}
+.dark{background:var(--c1);color:#fff}.dark p{color:#e3e9f4}.dark h2,.dark h3{color:#fff}
+.lede{font-size:18px;color:var(--soft)}
+.label{font-size:14px;font-weight:700;color:var(--amberd);margin-bottom:8px}
+.dark .label{color:var(--amber)}body.co-cons .dark .label{color:#ffc7b3}
+/* company switch */
+/* left sidebar navigation */
+.side{position:fixed;left:0;top:0;bottom:0;width:272px;z-index:40;background:var(--c1d);color:#fff;display:flex;flex-direction:column;overflow-y:auto;border-right:4px solid var(--c2);transition:transform .3s ease,background .3s}
+.side .brand{display:flex;align-items:center;gap:12px;text-decoration:none;padding:22px 20px 18px;border-bottom:1px solid rgba(255,255,255,.14)}
+.side .brand img{height:48px;width:auto}
+.side .brand b{display:block;font:600 19px/1.1 "Times New Roman",Times,serif;letter-spacing:.05em}
+.side .brand small{display:block;font-size:10.5px;letter-spacing:.12em;color:#cfd8ea;margin-top:4px}
+.menu{list-style:none;margin:0;padding:10px 0;flex:1}
+.menu>li{border-bottom:1px solid rgba(255,255,255,.08)}
+.menu a,.menu button.grp{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:48px;padding:0 20px;text-decoration:none;color:#e7ecf5;font:600 15px "Times New Roman",Times,serif;background:none;border:0;cursor:pointer;text-align:left;box-sizing:border-box}
+.menu a:hover,.menu button.grp:hover{background:rgba(255,255,255,.07);color:#fff}
+.menu button.grp::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .25s;margin-left:10px;flex:none}
+.menu li.open>button.grp::after{transform:rotate(-135deg)}
+.menu li.open>button.grp{color:var(--c2)}
+body.co-cons .menu li.open>button.grp{color:#ffd2c2}
+.sub{list-style:none;margin:0;padding:0 0 8px;display:none;background:rgba(0,0,0,.14)}
+.menu li.open>.sub{display:block}
+.sub a{min-height:42px;padding-left:36px;font-weight:500;font-size:14px;color:#cfd8ea}
+.menu a.on{color:var(--c2);background:rgba(255,255,255,.08);box-shadow:inset 4px 0 0 var(--c2)}
+body.co-cons .menu a.on{color:#fff;box-shadow:inset 4px 0 0 #ffd2c2}
+.side .contactmini{padding:16px 20px 22px;font-size:12.5px;line-height:1.7;color:#cfd8ea;border-top:1px solid rgba(255,255,255,.14)}
+.topbar{display:none}
+.shade{display:none}
+body{padding-left:272px}
+@media(max-width:999px){
+ body{padding-left:0}
+ .side{transform:translateX(-105%);width:min(86vw,320px)}
+ body.navopen .side{transform:none;box-shadow:8px 0 30px rgba(0,0,0,.35)}
+ .shade{position:fixed;inset:0;z-index:35;background:rgba(5,12,25,.5);border:0;padding:0}
+ body.navopen .shade{display:block}
+ .topbar{display:flex;position:sticky;top:0;z-index:30;align-items:center;justify-content:space-between;gap:12px;background:var(--c1);color:#fff;padding:8px max(4vw,14px);border-bottom:4px solid var(--c2)}
+ .topbar .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+ .topbar .brand img{height:40px;width:auto}
+ .topbar .brand b{font:600 17px/1.1 "Times New Roman",Times,serif;letter-spacing:.04em}
+ .menubtn{display:flex;align-items:center;gap:8px;background:none;border:1px solid rgba(255,255,255,.55);color:#fff;font:600 15px "Times New Roman",Times,serif;padding:0 14px;border-radius:4px;min-height:44px;cursor:pointer;flex:none}
+ .menubtn span{display:block;width:18px;height:2px;background:#fff;box-shadow:0 6px 0 #fff,0 -6px 0 #fff}
+}
+@media(min-width:1000px){html{scroll-padding-top:20px}}
+@media(prefers-reduced-motion:reduce){.side{transition:none}}
+/* photo hero */
+.hero{position:relative;color:#fff;min-height:clamp(480px,78vh,720px);display:flex;align-items:flex-end;overflow:hidden;background:var(--c1)}
+.slides,.slides img{position:absolute;inset:0;width:100%;height:100%}
+.slides img{object-fit:cover;opacity:0;transition:opacity 1.4s ease;transform:scale(1.04)}
+.slides img.on{opacity:1;animation:kb 9s ease-out forwards}
+@keyframes kb{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,color-mix(in srgb,var(--c1) 94%,transparent) 0%,color-mix(in srgb,var(--c1) 78%,transparent) 45%,color-mix(in srgb,var(--c1) 10%,transparent) 100%)}
+.hero .wrap{position:relative;z-index:2;width:100%;padding:clamp(48px,7vw,96px) max(5vw,16px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:30px;align-items:end}
+.hero h1{color:#fff;max-width:16ch}.hero p{color:#eef2f9;font-size:18px;max-width:52ch}
+.hero .kicker{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:14px;color:var(--c2);margin-bottom:14px}
+body.co-cons .hero .kicker{color:#ffd2c2}
+.hero .kicker img{height:34px}
+.dots{display:flex;gap:8px;justify-self:end;align-self:end}
+.dots button{width:44px;height:44px;border:0;background:none;cursor:pointer;display:grid;place-items:center;padding:0}
+.dots button::after{content:"";width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.5);transition:.3s}
+.dots button.on::after{background:var(--c2);width:28px;border-radius:6px}
+@media(max-width:760px){.hero::before{background:linear-gradient(0deg,color-mix(in srgb,var(--c1) 96%,transparent) 30%,color-mix(in srgb,var(--c1) 45%,transparent) 100%)}.hero .wrap{grid-template-columns:1fr}.dots{justify-self:start}}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.btn{display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:4px;font-weight:700;font-size:15px;text-decoration:none;border:2px solid var(--c2);background:var(--c2);color:var(--c2ink);cursor:pointer;font-family:inherit;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+.btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.85)}
+.btn.solid{background:var(--c1);border-color:var(--c1);color:#fff}
+/* fact strip */
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--card);border-bottom:1px solid var(--line)}
+.facts div{padding:22px max(2vw,16px);border-right:1px solid var(--line)}
+.facts div:last-child{border:0}
+.facts b{display:block;font:600 26px "Times New Roman",Times,serif;color:var(--c1)}
+:root[data-theme=dark] .facts b{color:var(--amber)}
+.facts span{font-size:14px;color:var(--soft)}
+@media(max-width:760px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.facts div:nth-child(2){border-right:0}.facts div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+/* page hero */
+.phero{background:var(--c1);color:#fff;padding:clamp(44px,6vw,90px) max(5vw,16px) clamp(36px,4vw,60px);position:relative;overflow:hidden}
+.phero h1{color:#fff;max-width:20ch}.phero p{color:#e3e9f4;font-size:18px}
+.phero .wrap{position:relative;z-index:1}
+.phero .b1,.phero .b2,.phero .b3{position:absolute;border-radius:50%}
+.phero .b1{right:-80px;bottom:-130px;width:340px;height:340px;background:var(--c2);opacity:.95}
+.phero .b2{right:220px;top:24px;width:46px;height:46px;background:var(--g)}
+.phero .b3{right:150px;top:90px;width:26px;height:26px;background:var(--p)}
+@media(max-width:600px){.phero .b2,.phero .b3{display:none}.phero .b1{width:200px;height:200px;right:-70px;bottom:-90px}}
+.crumb{font-size:14px;font-weight:700;color:var(--c2);margin-bottom:10px}
+/* cards */
+.grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(min(100%,265px),1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(21,52,98,.14)}
+.card .body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.card p{color:var(--soft);font-size:15px}
+.more{margin-top:auto;font-weight:700;font-size:14px;color:var(--amberd);text-decoration:none;background:none;border:0;padding:8px 0;cursor:pointer;font-family:inherit;text-align:left;min-height:44px}
+.thumb{aspect-ratio:16/10;position:relative;overflow:hidden;display:grid;place-items:center}
+.thumb svg{width:100%;height:100%;transition:transform .35s}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+.card:hover .thumb svg,.card:hover .thumb img{transform:scale(1.06)}
+.tag{display:inline-block;font-size:12px;font-weight:700;background:light-dark(#fff3dc,#3a3115);color:light-dark(#8a5a00,#ffd58a);border-radius:3px;padding:3px 8px;margin-bottom:10px;align-self:flex-start}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 24px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:0 18px;min-height:44px;font:600 14px "Times New Roman",Times,serif;cursor:pointer}
+.chip.on{background:var(--c1);border-color:var(--c1);color:#fff}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;margin:0 6px 8px 0}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,60px);align-items:center}
+@media(max-width:820px){.split{grid-template-columns:1fr}}
+.photo{border-radius:10px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.18);position:relative}
+.photo img{display:block;width:100%;height:100%;object-fit:cover}
+.photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:#fff;font-size:14px;font-weight:600}
+/* tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:2px solid var(--line);margin-bottom:24px}
+.tabs button{background:none;border:0;border-bottom:3px solid transparent;margin-bottom:-2px;padding:0 18px;min-height:48px;font:700 15px "Times New Roman",Times,serif;color:var(--soft);cursor:pointer}
+.tabs button.on{color:var(--ink);border-color:var(--c2)}
+body.co-cons .tabs button.on{border-color:var(--rust)}
+.dark .tabs{border-color:rgba(255,255,255,.2)}.dark .tabs button{color:#c9d3e6}.dark .tabs button.on{color:#fff}
+.panel{display:none}.panel.on{display:block;animation:fade .35s ease}
+.vm{font:500 clamp(20px,2.4vw,27px)/1.45 "Times New Roman",Times,serif;max-width:46ch}
+/* mantras */
+.mantras{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:28px}
+.mantra{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font:600 clamp(17px,2vw,24px) "Times New Roman",Times,serif;color:#fff;transition:transform .25s;cursor:default;text-align:center;padding:8px}
+.mantra:hover{transform:scale(1.07) rotate(-3deg)}
+@media(max-width:760px){.mantras{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* accordion */
+details{background:var(--card);border:1px solid var(--line);border-radius:8px;margin-bottom:10px}
+summary{cursor:pointer;list-style:none;padding:18px 20px;font-weight:700;font-size:17px;display:flex;justify-content:space-between;gap:12px;min-height:44px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:24px;line-height:1;color:var(--amberd)}
+details[open] summary::after{content:"−"}
+details p{padding:0 20px 18px;margin:0;color:var(--soft)}
+.steps{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px;color:var(--ink)}
+.step h3::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--c2);color:var(--c2ink);font:700 17px "Times New Roman",Times,serif;margin-bottom:12px}
+body.co-cons .step h3::before{background:var(--rust);color:#fff}
+.step.plain h3::before{display:none}
+.step p{color:var(--soft);font-size:15px;margin:0}
+.list{list-style:none;padding:0;margin:0}
+.list li{padding:14px 0;border-bottom:1px solid var(--line)}
+.list li b{display:block}.list li span{color:var(--soft);font-size:14px}
+.tl li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px}
+.tl .yr{font-weight:700;color:var(--amberd);font-size:14px;white-space:nowrap}
+@media(max-width:560px){.tl li{grid-template-columns:1fr;gap:2px}}
+blockquote{margin:0;font:500 clamp(22px,2.6vw,30px)/1.35 "Times New Roman",Times,serif;border-left:5px solid var(--c2);padding-left:22px;max-width:42ch}
+blockquote cite{display:block;font:600 14px "Times New Roman",Times,serif;margin-top:14px;font-style:normal;color:var(--c2)}
+.portrait{background:none;border-radius:0;aspect-ratio:4/5;position:relative;overflow:hidden;max-width:420px;width:100%;justify-self:center}
+.portrait img{position:absolute;bottom:0;left:50%;transform:translateX(-50%);height:94%;width:auto;max-width:none}
+.portrait .bub{position:absolute;border-radius:50%}
+.empty{border:2px dashed var(--line);border-radius:8px;padding:24px;text-align:center;color:var(--soft)}
+.empty .thumb{border-radius:6px;margin-bottom:16px}
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:16px}
+.gal button{border:0;padding:0;background:var(--char);border-radius:8px;overflow:hidden;cursor:zoom-in;aspect-ratio:4/3;position:relative;display:block}
+.gal img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+.gal button:hover img{transform:scale(1.06)}
+.gal span{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.78));color:#fff;font-size:13px;font-weight:700;text-align:left}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(10,12,16,.92);display:none;align-items:center;justify-content:center;padding:60px 16px}
+.lb.on{display:flex}
+.lb img{max-width:min(100%,1100px);max-height:80vh;border-radius:6px;background:#fff}
+.lb p{position:absolute;bottom:14px;left:0;right:0;text-align:center;color:#fff;margin:0 auto;font-weight:600}
+.lb button{position:absolute;background:rgba(255,255,255,.12);border:0;color:#fff;width:48px;height:48px;border-radius:50%;font-size:24px;cursor:pointer}
+.lb .x{top:14px;right:14px}.lb .pv{left:12px;top:50%}.lb .nx{right:12px;top:50%}
+/* form & contact */
+form .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+@media(max-width:600px){form .row{grid-template-columns:1fr}}
+label{display:block;font-weight:600;font-size:14px;margin:14px 0 6px}
+input,select,textarea{width:100%;font:16px "Times New Roman",Times,serif;padding:12px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);min-height:46px}
+.done{display:none;background:light-dark(#eaf6ee,#143524);border:1px solid #3d9a5f;border-radius:6px;padding:16px;margin-top:16px}
+.contactgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:20px}
+.ci{padding:22px;border-radius:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18)}
+.ci b{display:block;font-size:14px;color:var(--c2);margin-bottom:6px}
+body.co-cons .ci b{color:#ffd2c2}
+.ci span{display:block;font-size:18px}
+/* footer */
+footer{background:var(--c1d);color:#cfd8ea;padding:44px max(5vw,16px) 26px;font-size:15px}
+footer .ftop{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px 40px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.15)}
+.fbrand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.fbrand img{height:58px;width:auto}
+.fbrand b{display:block;color:#fff;font-size:20px;line-height:1.2}
+.fbrand small{display:block;font-size:15px;color:#cfd8ea;margin-top:2px}
+.fcontact{font-style:normal;line-height:1.7;text-align:right}
+@media(max-width:700px){.fcontact{text-align:left}}
+footer .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 32px;padding-top:28px}
+@media(max-width:640px){footer .cols{grid-template-columns:1fr}}
+footer h4{color:#fff;font:700 16px "Times New Roman",Times,serif;margin:0 0 8px}
+footer .cols a{display:block;text-decoration:none;padding:4px 0}footer a:hover{color:var(--amber)}
+footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:28px;font-size:14px;padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+.view{display:none}.view.on{display:block;animation:fade .4s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.view.on,.panel.on,.slides img.on{animation:none}.rv{opacity:1;transform:none;transition:none}.card,.btn,.mantra,.gal img,.thumb svg{transition:none}}
+</style>
+</head>
+<body class="co-acad">
+<aside class="side" id="side" aria-label="Site menu">
+  <a class="brand" href="#home"><img src="img/mark.png" alt="Veridian logo"><span><b>VERIDIAN</b><small>ACADEMY · CONSULTANTS</small></span></a>
+  <nav><ul class="menu" id="menu">
+    <li data-g="acad"><button class="grp" aria-expanded="false">Veridian Academy</button><ul class="sub">
+      <li><a href="#home">Home</a></li><li><a href="#about">About us</a></li><li><a href="#courses">Courses &amp; workshops</a></li><li><a href="#services">Online services</a></li><li><a href="#contact">Academy contact</a></li></ul></li>
+    <li data-g="cons"><button class="grp" aria-expanded="false">Veridian Consultants</button><ul class="sub">
+      <li><a href="#consultancy">Overview</a></li><li><a href="#c-about">About the company</a></li><li><a href="#c-projects">Projects</a></li><li><a href="#c-contact">Consultants contact</a></li></ul></li>
+    <li><a href="#founder">Founder</a></li>
+    <li><a href="#community">Community projects</a></li>
+    <li data-g="elearn"><button class="grp" aria-expanded="false">E-Learning</button><ul class="sub">
+      <li><a href="#courses">Online courses</a></li><li><a href="#adult-learning">Computer &amp; English for adults</a></li><li><a href="#ebooks">E-books</a></li></ul></li>
+    <li><a href="#contact">Contact us</a></li>
+  </ul></nav>
+  <div class="contactmini">+94 76 171 8171<br>+94 11 228 5097<br>veridian@sltnet.lk</div>
+</aside>
+<button class="shade" id="shade" aria-label="Close menu" tabindex="-1"></button>
+<div class="topbar"><a class="brand" href="#home"><img src="img/mark.png" alt="Veridian logo"><b>VERIDIAN</b></a><button class="menubtn" id="menubtn" aria-expanded="false" aria-controls="side"><span></span>Menu</button></div>
+
+<main>
+<!-- ================= ACADEMY HOME ================= -->
+<section class="view" id="v-home">
+  <div class="hero">
+    <div class="slides" id="slidesA"><img src="img/towers-up.webp" alt=""><img src="img/interior-light.webp" alt=""><img src="img/lobby.webp" alt=""></div>
+    <div class="wrap">
+      <div>
+        <div class="kicker"><img src="img/mark.png" alt="">Veridian Academy for Skill Enhancement</div>
+        <h1>Empowering individuals through education and personal development</h1>
+        <p>Courses, workshops and consultation services designed to meet the diverse needs of students and professionals — and to support them in achieving their goals.</p>
+        <div class="btns"><a class="btn" href="#courses">Explore courses</a><a class="btn ghost" href="#services">Book a consultation</a></div>
+      </div>
+      <div class="dots" id="dotsA" aria-label="Choose photo"></div>
+    </div>
+  </div>
+  <div class="facts"><div><b>2023</b><span>Year established</span></div><div><b>8</b><span>Courses</span></div><div><b>6</b><span>Workshops &amp; corporate programmes</span></div><div><b>Colombo 02</b><span>Malay Street</span></div></div>
+
+  <section class="band"><div class="wrap">
+    <div class="label rv">What we offer</div>
+    <h2 class="rv">Learning for every stage of growth</h2>
+    <div class="chips" id="homeChips"></div>
+    <div class="grid" id="homeGrid"></div>
+  </div></section>
+
+  <section class="band dark"><div class="wrap">
+    <div class="rv">
+      <div class="label">Vision &amp; mission</div>
+      <div class="tabs" role="tablist" data-tabs="vmA"><button class="on" data-p="vA">Vision</button><button data-p="mA">Mission</button><button data-p="gA">Goals</button></div>
+      <div class="panel on" id="vA"><p class="vm">To be a leading institution in skill enhancement, providing individuals with transformative education and personal development opportunities — empowering them to unlock their full potential, pursue their passions, and contribute positively to society.</p></div>
+      <div class="panel" id="mA"><p class="vm">To provide high-quality education, innovative training and holistic personal development, in a nurturing environment that fosters growth, self-discovery and lifelong learning — for individuals and for the corporate sector.</p></div>
+      <div class="panel" id="gA"><p class="vm">To empower individuals with the knowledge, skills and resources they need for personal and professional success, and to support their growth, self-discovery and lifelong learning so they can make a positive impact in their fields and communities.</p></div>
+    </div>
+  </div></section>
+
+  <section class="band"><div class="wrap">
+    <div class="label rv">Our five mantras</div>
+    <h2 class="rv">Let the mind find its actualisation through proper education</h2>
+    <div class="mantras" id="mantras"></div>
+  </div></section>
+
+  <section class="band alt"><div class="wrap split">
+    <div class="portrait rv" style="background:var(--navy);max-width:360px"><img src="img/mark-lg.png" alt="Veridian Academy logo" style="height:auto;width:62%;bottom:auto;top:50%;transform:translate(-50%,-50%)"></div>
+    <div class="rv">
+      <div class="label">Our name</div>
+      <h2>Why “Veridian”?</h2>
+      <p class="lede">Veridian comes from the Latin <i>viridis</i> — “green” or “verdant” — a word associated with growth, vitality and renewal.</p>
+      <p>It reflects the academy’s focus on continuous personal and professional development, a connection to harmony and balance, and an optimistic start to every learner’s journey. The logo represents the five mantras the academy follows.</p>
+      <a class="btn solid" href="#about">More about us</a>
+    </div>
+  </div></section>
+
+  <section class="band" style="background:#e8327c;color:#fff"><div class="wrap split">
+    <div class="rv"><div class="label" style="color:#ffe2a8">New programme</div><h2 style="color:#fff">Computer &amp; English Skills for Adults</h2><p style="color:#fde8f0">Practical computer and English skills for adults — with a special focus on women. It is never too late to learn.</p></div>
+    <div class="rv"><a class="btn" style="background:#fff;border-color:#fff;color:#153462" href="#adult-learning">Find out more</a></div>
+  </div></section>
+
+  <section class="band dark"><div class="wrap split">
+    <div class="rv"><h2>Community projects</h2><p>Our work beyond the classroom — training, awareness and support in communities across Sri Lanka.</p></div>
+    <div class="rv"><a class="btn" href="#community">See community projects</a></div>
+  </div></section>
+</section>
+
+<!-- ================= ACADEMY ABOUT ================= -->
+<section class="view" id="v-about">
+  <div class="phero"><div class="wrap"><div class="crumb">Veridian Academy · About us</div><h1>Growth, vitality and renewal</h1><p>Veridian Academy for Skill Enhancement is dedicated to empowering individuals through education and personal development.</p></div></div>
+  <section class="band"><div class="wrap split">
+    <div class="rv">
+      <div class="label">Who we are</div><h2>About the academy</h2>
+      <p>The academy offers a wide range of courses, workshops and consultation services to empower individuals in their personal and professional growth. Programmes include Skills and Personality Development, English and Sinhala/Tamil Language Proficiency, First Aid and CPR Training, Art Therapy, and a range of workshops.</p>
+      <p>Consultation services cover psychology, education, career and lifestyle management.</p>
+    </div>
+    <figure class="photo rv" style="margin:0;aspect-ratio:4/3"><img src="img/interior-light.webp" alt=""></figure>
+  </div></section>
+  <section class="band alt"><div class="wrap">
+    <div class="label rv">Company history</div>
+    <h2 class="rv">Established in 2023</h2>
+    <p class="lede rv">Veridian is a young academy, established in 2023. We are just beginning — and we have a long way to go.</p>
+  </div></section>
+  <section class="band"><div class="wrap">
+    <div class="label rv">How we work</div><h2 class="rv">From enquiry to real-world application</h2>
+    <div id="howAcc" class="rv" style="margin-top:22px;max-width:860px"></div>
+  </div></section>
+  <section class="band dark"><div class="wrap">
+    <div class="label">Our logo</div><h2>Five mantras, one mind</h2>
+    <p>The logo represents the five mantras the academy follows. Let the mind find its actualisation through proper education.</p>
+    <div class="mantras" id="mantras2"></div>
+  </div></section>
+</section>
+
+<!-- ================= COURSES ================= -->
+<section class="view" id="v-courses">
+  <div class="phero"><div class="wrap"><div class="crumb">Veridian Academy · Online Courses</div><h1>Courses &amp; workshops</h1><p>Practical programmes taught through lectures, discussion, group activities, case studies and hands-on exercises.</p></div></div>
+  <section class="band" style="background:#e8327c;color:#fff" id="adult-learning"><div class="wrap split" style="align-items:start">
+    <div>
+      <div class="label" style="color:#ffe2a8">New programme · Adult learning</div>
+      <h2 style="color:#fff">Computer &amp; English Skills for Adults</h2>
+      <p style="font-size:19px;color:#fff">With a special focus on women — it is never too late to learn.</p>
+      <p style="color:#fde8f0">Many adults — and especially women who have spent years caring for families, returning to work, or running a small business from home — never had the chance to build computer skills or confident English. This programme gives them both, in a patient, supportive and respectful classroom where no question is too basic.</p>
+      <div style="margin:14px 0 6px;font-weight:700">Who it is for</div>
+      <div><span class="pill" style="border-color:rgba(255,255,255,.6)">Women returning to work</span><span class="pill" style="border-color:rgba(255,255,255,.6)">Homemakers &amp; mothers</span><span class="pill" style="border-color:rgba(255,255,255,.6)">Small-business owners</span><span class="pill" style="border-color:rgba(255,255,255,.6)">Job seekers</span><span class="pill" style="border-color:rgba(255,255,255,.6)">Any adult starting from the beginning</span></div>
+      <div class="btns"><button class="btn" style="background:#fff;border-color:#fff;color:#153462" data-enq="Computer &amp; English Skills for Adults">Enquire about this programme</button></div>
+    </div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))">
+      <div class="card"><div class="body"><h3 style="color:var(--ink)">Computer skills</h3><ul style="margin:0;padding-left:18px;color:var(--soft);font-size:15px;line-height:1.8"><li>Using a computer and smartphone with confidence</li><li>Typing, files and folders</li><li>Email, internet and video calls</li><li>Documents and simple spreadsheets</li><li>Online forms, banking and services</li><li>Staying safe online</li></ul></div></div>
+      <div class="card"><div class="body"><h3 style="color:var(--ink)">English skills</h3><ul style="margin:0;padding-left:18px;color:var(--soft);font-size:15px;line-height:1.8"><li>Everyday spoken English</li><li>Reading and filling in forms</li><li>Writing emails and messages</li><li>English for the workplace</li><li>Interview and phone confidence</li><li>Helping children with schoolwork</li></ul></div></div>
+    </div>
+  </div></section>
+  <section class="band"><div class="wrap">
+    <div class="chips" id="courseChips" style="margin-top:0"></div>
+    <div class="grid" id="courseGrid"></div>
+  </div></section>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="view" id="v-services">
+  <div class="phero"><div class="wrap"><div class="crumb">Veridian Academy · Online Services</div><h1>Consultation services</h1><p>One-to-one guidance in psychology, education, career and lifestyle — and tailored programmes for organisations.</p></div></div>
+  <section class="band"><div class="wrap"><div class="grid" id="svcGrid"></div></div></section>
+  <section class="band alt" id="enquire"><div class="wrap split" style="align-items:start">
+    <div><div class="label">Enquiries</div><h2>Request a consultation or course</h2><p class="lede">Tell us what you are looking for and the team will help you choose the right programme.</p>
+      <ul class="list"><li><b>Phone</b><span>+94 76 171 8171 · +94 11 228 5097</span></li><li><b>Email</b><span>veridian@sltnet.lk</span></li><li><b>Address</b><span>40/2/7 Metro Home Residency, Malay Street, Colombo 02</span></li></ul></div>
+    <form id="form" novalidate>
+      <div class="row"><div><label for="f-name">Full name</label><input id="f-name" autocomplete="name"></div><div><label for="f-phone">Phone</label><input id="f-phone" type="tel" autocomplete="tel"></div></div>
+      <label for="f-email">Email</label><input id="f-email" type="email" autocomplete="email">
+      <label for="f-topic">I am interested in</label><select id="f-topic"></select>
+      <label for="f-msg">Message</label><textarea id="f-msg" rows="4"></textarea>
+      <div class="btns"><button class="btn solid" type="submit">Prepare enquiry</button></div>
+      <div class="done" id="done" role="status"></div>
+    </form>
+  </div></section>
+</section>
+
+<!-- ================= EBOOKS ================= -->
+<section class="view" id="v-ebooks">
+  <div class="phero"><div class="wrap"><div class="crumb">Veridian Academy · E-books</div><h1>E-books &amp; publications</h1><p>Reading for learners, parents, teachers and professionals.</p></div></div>
+  <section class="band"><div class="wrap"><div class="grid" id="bookGrid"></div></div></section>
+</section>
+
+<!-- ================= COMMUNITY ================= -->
+<section class="view" id="v-community">
+  <div class="phero"><div class="wrap"><div class="crumb">Community Projects</div><h1>Our work in the community</h1><p>Free programmes and relief work that take Veridian’s training and psychology expertise beyond the classroom.</p></div></div>
+  <section class="band" style="padding-bottom:0"><div class="wrap"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+    <a class="card" href="#expressions" style="text-decoration:none"><div class="thumb"><img src="img/ex-room.webp" alt=""></div><div class="body"><span class="tag">Project 1 · Parenting &amp; child psychology</span><h3>Expressions — where art speaks for your soul</h3><p>A free art session for parents and children at the Light House Galley, Colombo.</p><span class="more">Read more →</span></div></a>
+    <a class="card" href="#ditwah" style="text-decoration:none"><div class="thumb"><img src="img/dw-medical.webp" alt="" style="object-position:center 35%"></div><div class="body"><span class="tag">Project 2 · Disaster relief</span><h3>Cyclone Ditwah relief</h3><p>Medical assistance in Wellampitiya relief camps, relief materials and two clothes drives — in collaboration with the Free Palestine Movement Sri Lanka.</p><span class="more">Read more →</span></div></a>
+  </div></div></section>
+
+  <section class="band" id="expressions" style="padding-bottom:0"><div class="wrap">
+    <div class="label">Project 1</div>
+    <h2 style="font-size:clamp(30px,4vw,46px)">Expressions — where art speaks for your soul</h2>
+    <p class="lede">A free art session for parents and children at the Light House Galley, Colombo, helping parents get to know their children through art.</p>
+  </div></section>
+
+  <section class="band"><div class="wrap split">
+    <figure class="photo rv" style="margin:0;aspect-ratio:4/3.6"><img src="img/ex-present1.webp" alt="Sameera Mahboobdeen speaking to parents at Expressions"><figcaption>Sameera Mahboobdeen leading the session at the Light House Galley</figcaption></figure>
+    <div class="rv">
+      <div class="label">About the project</div>
+      <h2>Getting to know your child, one drawing at a time</h2>
+      <p class="lede">Children often show in colour and shape what they cannot yet put into words. <i>Expressions</i> brought parents and children together around the same table, with paper, pastels and time — and invited parents to look closely at what their children were telling them.</p>
+      <p>Held free of charge at the Light House Galley in Colombo, the session combined a hands-on art activity with a practical talk on child psychology and parenting, led by Veridian Academy’s founder, Sameera Mahboobdeen.</p>
+    </div>
+  </div></section>
+
+  <section class="band alt"><div class="wrap">
+    <div class="label rv">Why it matters</div>
+    <h2 class="rv">Seeing, hearing and understanding our children</h2>
+    <div class="grid" style="margin-top:26px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))">
+      <div class="card rv"><div class="body"><h3>Recognising the child in front of you</h3><p>Every child has their own temperament, pace and way of seeing the world. When parents take time to notice who their child actually is — their interests, worries and strengths — rather than who they expect them to be, children feel seen. Feeling seen is the foundation of self-worth and of the trust that lets a child come to a parent when something is wrong.</p></div></div>
+      <div class="card rv"><div class="body"><h3>Building better communication</h3><p>Good communication is less about talking more and more about listening well. Children open up when they are listened to without being rushed, judged or corrected straight away. Naming feelings, asking open questions, and staying calm when a child brings bad news teach children that difficult conversations are safe — a lesson that matters even more in the teenage years.</p></div></div>
+      <div class="card rv"><div class="body"><h3>The psychology of good parenting</h3><p>Decades of research point in the same direction. Children with a secure attachment to a caregiver handle stress better and form healthier relationships. Parenting that combines warmth with clear, consistent boundaries — often called authoritative parenting — is linked to better emotional, social and academic outcomes than parenting that is either harsh or permissive. Helping children understand and manage their emotions, rather than dismissing them, builds resilience.</p></div></div>
+    </div>
+  </div></section>
+
+  <section class="band"><div class="wrap">
+    <div class="label rv">What we discussed</div>
+    <h2 class="rv">Practical child psychology for everyday family life</h2>
+    <div class="steps" style="margin-top:26px;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))">
+      <div class="step plain rv"><h3>Issues coming from school</h3><p>How to recognise when a child is struggling with schoolwork, friendships, bullying or pressure — and how to respond in ways that support the child rather than add to the stress.</p></div>
+      <div class="step plain rv"><h3>Maladaptive behaviour</h3><p>Understanding behaviours such as tantrums, withdrawal, aggression or avoidance as signals of an unmet need, and responding to the cause rather than only the behaviour.</p></div>
+      <div class="step plain rv"><h3>Communication methods</h3><p>Active listening, naming emotions, age-appropriate explanations and calm, consistent boundaries that children can understand and trust.</p></div>
+      <div class="step plain rv"><h3>Child psychology in practice</h3><p>Simple tools parents can use at home — including art and play — to notice changes in a child’s mood and to open conversations that are hard to start with words alone.</p></div>
+    </div>
+  </div></section>
+
+  <section class="band dark"><div class="wrap split">
+    <div class="rv">
+      <div class="label">Through art</div>
+      <h2>Why art?</h2>
+      <p>Art gives children a language before they have the words. A drawing can show fear, joy, confusion or pride — and gives a parent a gentle way into a conversation: <i>“Tell me about this picture.”</i> At <i>Expressions</i>, children drew while parents learned what to look for, so the activity and the lesson worked together.</p>
+    </div>
+    <figure class="photo rv" style="margin:0;aspect-ratio:1"><img src="img/ex-crayon.webp" alt="A child drawing with pastels"></figure>
+  </div></section>
+
+  <section class="band"><div class="wrap">
+    <div class="label rv">Gallery</div>
+    <h2 class="rv">Moments from Expressions</h2>
+    <div class="gal" id="exGal" style="margin-top:22px"></div>
+  </div></section>
+
+  <section class="band alt"><div class="wrap split">
+    <div class="rv">
+      <div class="label">The response</div>
+      <h2>Brilliant feedback from parents</h2>
+      <p class="lede">The session received excellent feedback from the parents who took part.</p>
+      <p>To hear about future community sessions, contact us on <b>+94 76 171 8171</b> or <b>veridian@sltnet.lk</b>.</p>
+    </div>
+    <figure class="photo rv" style="margin:0;aspect-ratio:4/3.8"><img src="img/ex-present2.webp" alt="Sameera Mahboobdeen speaking at Expressions"></figure>
+  </div></section>
+
+  <section class="band dark" id="ditwah"><div class="wrap">
+    <div class="label">Project 2 · Disaster relief</div>
+    <h2 style="font-size:clamp(30px,4vw,46px)">Cyclone Ditwah relief — standing with affected families</h2>
+    <p class="lede" style="color:#e3e9f4">From the first days after the cyclone until the end of January 2026, Veridian supported people affected by Cyclone Ditwah with medical aid, relief materials and clothing.</p>
+    <p style="margin-top:14px;font-size:19px;color:#fff"><b>This project was carried out in collaboration with the Free Palestine Movement Sri Lanka.</b></p>
+  </div></section>
+
+  <section class="band"><div class="wrap split">
+    <div class="rv">
+      <div class="label">The disaster</div>
+      <h2>One of Sri Lanka’s worst floods in decades</h2>
+      <p>Cyclone Ditwah made landfall on 28 November 2025 and triggered the worst flooding Sri Lanka had seen in more than 20 years. United Nations reporting in early December recorded more than 600 deaths, over 200 people missing and more than two million people affected, with Gampaha, Colombo and Puttalam among the hardest-hit districts. Hundreds of thousands of people were forced into government-run safety centres.</p>
+      <p>Families arrived in those centres with little more than the clothes they were wearing — many needing medical attention, and all needing basic supplies.</p>
+      <p class="note">Figures: UN Resident Coordinator, Sri Lanka; UN OCHA / ReliefWeb (December 2025).</p>
+    </div>
+    <figure class="photo rv" style="margin:0;aspect-ratio:4/3"><img src="img/dw-ambulance.webp" alt="Ambulances at a relief point during Cyclone Ditwah"><figcaption>Emergency services at work during the cyclone response</figcaption></figure>
+  </div></section>
+
+  <section class="band alt"><div class="wrap">
+    <div class="label rv">What we did</div>
+    <h2 class="rv">Three strands of support, delivered together with the Free Palestine Movement Sri Lanka</h2>
+    <div class="grid" style="margin-top:26px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))">
+      <div class="card rv"><div class="body"><h3>Medical assistance in relief camps</h3><p>Drawing on our founder’s training as a Medical First Responder, the team provided medical assistance in the relief camps in Wellampitiya — first aid, wound care and basic health checks for displaced families.</p></div></div>
+      <div class="card rv"><div class="body"><h3>Medical aid and materials</h3><p>Medical supplies and essential relief materials were gathered and delivered to people affected by the floods, helping families meet urgent needs in the weeks after the cyclone.</p></div></div>
+      <div class="card rv"><div class="body"><h3>Clothes drives with Free Palestine Movement Sri Lanka</h3><p>Together with Free Palestine Movement Sri Lanka, we ran two free clothes distributions for cyclone victims — collecting, sorting and labelling quality second-hand clothing for babies, children, teens, women and men.</p></div></div>
+    </div>
+  </div></section>
+
+  <section class="band"><div class="wrap split" style="align-items:start">
+    <div class="rv">
+      <div class="label">Clothes distributions</div>
+      <h2>Two drives at the Public Library, Colombo</h2>
+      <ul class="list" style="margin:14px 0 18px">
+        <li><b>18 December 2025 · 3 pm – 6 pm</b><span>Public Library, Colombo</span></li>
+        <li><b>31 December 2025 · 3 pm – 5 pm</b><span>Public Library, Colombo</span></li>
+      </ul>
+      <p>Donated clothing was sorted by size and type — men’s trousers, women’s blouses and tops, boys’ clothing by age — so that families could quickly find what they needed. Both distributions were free of charge.</p>
+      <p>Our Ditwah support concluded at the end of January 2026.</p>
+    </div>
+    <div class="grid rv" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:14px">
+      <button class="pbtn" data-dw="6" style="border:0;padding:0;background:none;cursor:zoom-in"><img src="img/dw-poster1.webp" alt="Poster: free clothes distribution, 18 December, Public Library Colombo" style="width:100%;border-radius:6px;display:block"></button>
+      <button class="pbtn" data-dw="7" style="border:0;padding:0;background:none;cursor:zoom-in"><img src="img/dw-poster2.webp" alt="Poster: free clothes distribution, 31 December, Public Library Colombo" style="width:100%;border-radius:6px;display:block"></button>
+    </div>
+  </div></section>
+
+  <section class="band alt"><div class="wrap">
+    <div class="label rv">Gallery</div>
+    <h2 class="rv">From the Ditwah response</h2>
+    <div class="gal" id="dwGal" style="margin-top:22px"></div>
+    <p class="note">The Cyclone Ditwah relief project was carried out in collaboration with the Free Palestine Movement Sri Lanka.</p>
+  </div></section>
+</section>
+
+<!-- ================= ACADEMY CONTACT ================= -->
+<section class="view" id="v-contact">
+  <div class="phero"><div class="wrap"><div class="crumb">Veridian Academy · Contact</div><h1>Get in touch</h1><p>Questions, concerns or suggestions — the team is here to help.</p></div></div>
+  <section class="band dark"><div class="wrap">
+    <div class="contactgrid"><div class="ci"><b>Phone</b><span>+94 76 171 8171</span><span>+94 11 228 5097</span></div><div class="ci"><b>Email</b><span>veridian@sltnet.lk</span></div><div class="ci"><b>Address</b><span>40/2/7 Metro Home Residency</span><span>Malay Street, Colombo 02</span></div></div>
+    <div class="btns" style="margin-top:26px"><a class="btn" href="#enquire">Send an enquiry</a></div>
+  </div></section>
+</section>
+
+<!-- ================= CONSULTANCY ================= -->
+<section class="view" id="v-consultancy">
+  <div class="hero">
+    <div class="slides" id="slidesC"><img src="img/city-night.webp" alt=""><img src="img/towers-up.webp" alt=""><img src="img/p4-photo.webp" alt=""></div>
+    <div class="wrap">
+      <div>
+        <div class="kicker"><img src="img/mark.png" alt="">Veridian Consultants</div>
+        <h1>Bringing your ideas into function</h1>
+        <p>Veridian Consultants is more than just a business; we are a catalyst for innovation. Our core belief lies in the power of ideas and our relentless pursuit of turning them into tangible realities.</p>
+        <div class="btns"><a class="btn" href="#c-projects">See our projects</a><a class="btn ghost" href="#c-contact">Contact us</a></div>
+      </div>
+      <div class="dots" id="dotsC" aria-label="Choose photo"></div>
+    </div>
+  </div>
+  <div class="facts"><div><b>2024</b><span>Company profile</span></div><div><b>4</b><span>Featured projects</span></div><div><b>Global</b><span>International trade focus</span></div><div><b>Colombo 02</b><span>Malay Street</span></div></div>
+
+  <section class="band" id="c-about"><div class="wrap split">
+    <div class="rv">
+      <div class="label">About the company</div>
+      <h2>Your strategic partner in international trade</h2>
+      <p>With a deep-rooted understanding of market dynamics, regulatory landscapes and supply-chain intricacies, Veridian Consultants empowers businesses to thrive in a globalised economy.</p>
+      <p>A comprehensive suite of services — from in-depth market research to seamless logistics — is built for optimal efficiency, cost-effectiveness and risk mitigation, with a commitment to sustainable and ethical trade practices that help clients build resilient, competitive businesses.</p>
+    </div>
+    <div class="grid rv" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:14px" id="cPillars"></div>
+  </div></section>
+
+  <section class="band dark"><div class="wrap">
+    <div class="label">Vision &amp; mission</div>
+    <div class="tabs" data-tabs="vmC"><button class="on" data-p="vC">Vision</button><button data-p="mC">Mission</button></div>
+    <div class="panel on" id="vC"><p class="vm">To be the foremost authority in the field — simplifying global trade for clients while prioritising sustainability and financial success.</p></div>
+    <div class="panel" id="mC"><p class="vm">To empower businesses to achieve their full potential through expert guidance, innovative solutions, and an unwavering commitment to ethical and sustainable practices in international trade.</p></div>
+  </div></section>
+
+  <section class="band alt"><div class="wrap split">
+    <div class="rv">
+      <div class="label">CEO message</div>
+      <blockquote style="border-color:var(--rust)">“We are committed to building long-term partnerships based on trust, transparency, and results. By understanding your unique needs, we develop tailored strategies that deliver tangible outcomes.”<cite style="color:var(--amberd)">CEO, Veridian Consultants</cite></blockquote>
+    </div>
+    <div class="rv"><p>A warm welcome to Veridian Consultants, with sincere thanks for choosing us as a partner in your development journey. We invite you to experience the difference our consultancy can make for your business.</p><a class="btn solid" href="#founder">Meet the founder</a></div>
+  </div></section>
+
+  <section class="band" id="c-projects"><div class="wrap">
+    <div class="label rv">Our projects</div><h2 class="rv">Selected work</h2>
+    <div class="chips" id="projChips"></div>
+    <div class="gal" id="gal"></div>
+  </div></section>
+
+  <section class="band dark" id="c-contact"><div class="wrap">
+    <div class="label">Get in touch</div><h2>Let’s talk about your project</h2>
+    <p>Whether you have a question about our services, need support, or simply want to share your experience, our team is here to help.</p>
+    <div class="contactgrid" style="margin-top:22px"><div class="ci"><b>Phone</b><span>+94 76 171 8171</span><span>+94 11 228 5097</span></div><div class="ci"><b>Email</b><span>veridian@sltnet.lk</span></div><div class="ci"><b>Address</b><span>40/2/7 Metro Home Residency</span><span>Malay Street, Colombo 02</span></div></div>
+  </div></section>
+</section>
+
+<!-- ================= FOUNDER ================= -->
+<section class="view" id="v-founder">
+  <div class="phero"><div class="wrap"><div class="crumb">Founder &amp; CEO</div><h1>Sameera Mahboobdeen</h1><p>Corporate Trainer &amp; Coach · Educational Consultant · Psychology-Informed Facilitator</p></div></div>
+  <section class="band"><div class="wrap split">
+    <div class="portrait rv"><img src="img/sameera.webp" alt="Portrait of Sameera Mahboobdeen"></div>
+    <div class="rv">
+      <div class="label">Meet our founder</div>
+      <h2>Where psychology meets practice</h2>
+      <p class="lede">Sameera is a consultant in psychology, forensics and criminology, and one of the female Master Trainers in Asia for Medical First Responder – Disaster Response for the Asian Disaster Preparedness Centre (ADPC).</p>
+      <p>Across corporate, higher-education and emergency-response settings, every programme starts with the same question: what does this specific group of people need in order to think more clearly, work more safely, and grow with confidence, while loving what they do?</p>
+      <div><span class="pill">Evidence-based design</span><span class="pill">Inclusive facilitation</span><span class="pill">Measurable outcomes</span><span class="pill">Applied research</span></div>
+    </div>
+  </div></section>
+  <section class="band dark"><div class="wrap">
+    <blockquote>“A training programme should be judged the same way a clinical intervention is — by whether it actually changes behaviour, not by whether it was well received.”<cite>Sameera Mahboobdeen</cite></blockquote>
+  </div></section>
+  <section class="band"><div class="wrap">
+    <div class="tabs" data-tabs="fd"><button class="on" data-p="fApp">Approach</button><button data-p="fWork">Work areas</button><button data-p="fExp">Experience</button><button data-p="fCred">Credentials</button></div>
+    <div class="panel on" id="fApp">
+      <p class="lede">A background spanning clinical and developmental psychology, criminology and the criminal justice system, together with forensic medicine, shapes how each curriculum is built — grounded in evidence, tested against real learning outcomes, and designed to include people who have not always felt welcome in a classroom or a boardroom. Alongside the training work runs a continuing commitment to normalising conversations about mental health inside institutions that have historically avoided them.</p>
+      <h3 style="margin-top:26px">How a programme is built</h3><div class="steps" id="method"></div>
+      <h3 style="margin-top:34px">Who I work with</h3><div class="grid" id="aud"></div>
+    </div>
+    <div class="panel" id="fWork"><div class="grid" id="areas"></div></div>
+    <div class="panel" id="fExp"><div style="max-width:760px">
+<p class="lede" style="color:var(--ink)">Sameera currently serves as Director – Training &amp; Curriculum Development and Academic Management at Veridian Academy for Skill Enhancement in Colombo, a role she has held since 2023 alongside her practice as a Clinical and Forensic Psychologist.</p>
+<p>Since 2022 she has been Course Monitor for CADRE Training at the Asian Disaster Preparedness Center, where she is also a Master Instructor in Disaster &amp; Emergency Response. Since 2020 she has lectured in forensic, business and developmental psychology and criminology, and has coordinated the Diploma in Correction &amp; Rehabilitation for Prison Officers at the University of Kelaniya.</p>
+<p>From February 2022 to August 2023 she was Head of Academics &amp; Educational Consultant at WinSYS Networks (Pvt) Ltd. Since 2017 she has served St John Ambulance Sri Lanka as a National Trainer and as Assistant District Commissioner for the Kalutara District.</p>
+<p>Her independent research, ongoing since 2015, focuses on gender equality and equity, psychology, criminology and the criminal justice system. Her work in education began in 2008, teaching primary and secondary subjects.</p>
+</div></div>
+    <div class="panel" id="fCred"><div class="split" style="align-items:start"><div><h3>Education</h3><ul class="list" id="edu"></ul></div><div><h3>Certifications &amp; training</h3><ul class="list" id="certs"></ul><h3 style="margin-top:28px">Core skills</h3><div id="skills"></div></div></div></div>
+  </div></section>
+  <section class="band dark"><div class="wrap">
+    <h2>Continuing the work</h2>
+    <p>Open to training, consulting and academic leadership roles, including governance and involvement in organisations building out their education, well-being or training strategy. If a programme needs to be built from the ground up, get in touch.</p>
+    <div class="contactgrid" style="margin-top:22px"><div class="ci"><b>Email</b><span>veridian@sltnet.lk</span></div><div class="ci"><b>Phone</b><span>+94 76 171 8171</span><span>+94 11 228 5097</span></div><div class="ci"><b>Location</b><span>Colombo, Sri Lanka</span></div></div>
+  </div></section>
+</section>
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Project image"><button class="x" id="lbx" aria-label="Close">×</button><button class="pv" id="lbp" aria-label="Previous">‹</button><img id="lbi" alt=""><button class="nx" id="lbn" aria-label="Next">›</button><p id="lbc"></p></div>
+
+<footer><div class="wrap">
+  <div class="ftop">
+    <a class="fbrand" href="#home"><img src="img/mark.png" alt="Veridian logo"><span><b>Veridian Academy Pvt Limited</b><small>for Skill Enhancement</small></span></a>
+    <address class="fcontact">40/2/7 Metro Home Residency, Malay Street, Colombo 02<br>+94 76 171 8171 · +94 11 228 5097<br>veridian@sltnet.lk</address>
+  </div>
+  <div class="cols">
+    <nav aria-label="Veridian Academy"><h4>Veridian Academy</h4><a href="#about">About us</a><a href="#courses">Courses &amp; workshops</a><a href="#services">Online services</a><a href="#contact">Academy contact</a></nav>
+    <nav aria-label="Veridian Consultants"><h4>Veridian Consultants</h4><a href="#consultancy">Overview</a><a href="#c-about">About the company</a><a href="#c-projects">Projects</a><a href="#c-contact">Contact</a></nav>
+    <nav aria-label="Explore"><h4>Explore</h4><a href="#founder">Founder</a><a href="#community">Community projects</a><a href="#ebooks">E-books</a><a href="#adult-learning">Computer &amp; English for adults</a></nav>
+  </div>
+  <div class="base"><span>© <span id="yr"></span> Veridian Academy Pvt Limited · Veridian Consultants</span><span>Ignite · Innovate · Improvise · Inspire · Implement</span></div>
+</div></footer>
+
+<script>
+{
+const $=id=>document.getElementById(id);
+const PAL=["#153462","#22a45d","#e8327c","#1aa3d9","#8e44ad","#d98a0e"];
+const icon=(k)=>{const c={a:"#FDBA1E",b:"#22a45d",c:"#1aa3d9",d:"#e8327c",e:"#8e44ad"};const p={
+ grow:`<path d="M200 230v-80" stroke="#fff" stroke-width="8" stroke-linecap="round"/><path d="M200 160c-40 0-60-30-60-60 40 0 60 25 60 60zM200 150c0-45 30-70 70-70 0 45-30 70-70 70z" fill="${c.b}"/>`,
+ lang:`<rect x="110" y="80" width="120" height="80" rx="14" fill="${c.c}"/><rect x="170" y="130" width="120" height="80" rx="14" fill="${c.a}"/><text x="170" y="132" fill="#fff" font-size="40" font-family="Times New Roman,serif" text-anchor="middle">Aa</text><text x="230" y="183" fill="#153462" font-size="34" font-family="Times New Roman,serif" text-anchor="middle" font-weight="700">அ අ</text>`,
+ aid:`<circle cx="200" cy="150" r="74" fill="#fff"/><path d="M180 100h40v30h30v40h-30v30h-40v-30h-30v-40h30z" fill="#e23b3b"/>`,
+ heart:`<path d="M200 225c-60-40-95-70-95-110a45 45 0 0 1 95-20 45 45 0 0 1 95 20c0 40-35 70-95 110z" fill="${c.d}"/><path d="M120 150h45l15-25 20 50 15-25h65" stroke="#fff" stroke-width="7" fill="none" stroke-linejoin="round"/>`,
+ kids:`<circle cx="160" cy="120" r="26" fill="${c.a}"/><circle cx="245" cy="135" r="20" fill="${c.c}"/><path d="M120 220c0-40 20-65 40-65s40 25 40 65zM215 220c0-32 14-52 30-52s30 20 30 52z" fill="#fff"/><path d="M262 92l6 12 13 2-9 9 2 13-12-6-12 6 2-13-9-9 13-2z" fill="${c.a}"/>`,
+ art:`<path d="M200 80c-65 0-105 40-105 85 0 35 30 50 55 45 20-4 25 15 30 25 10 15 40 10 70-5 35-18 55-45 55-75 0-45-45-75-105-75z" fill="#fff"/><circle cx="150" cy="140" r="13" fill="${c.d}"/><circle cx="190" cy="112" r="13" fill="${c.a}"/><circle cx="238" cy="118" r="13" fill="${c.b}"/><circle cx="262" cy="160" r="13" fill="${c.c}"/>`,
+ career:`<rect x="130" y="120" width="140" height="95" rx="10" fill="${c.a}"/><path d="M175 120v-18a10 10 0 0 1 10-10h30a10 10 0 0 1 10 10v18" stroke="#fff" stroke-width="8" fill="none"/><path d="M130 160h140" stroke="#153462" stroke-width="6"/>`,
+ lead:`<path d="M140 220V140M200 220V100M260 220V160" stroke="${c.a}" stroke-width="26" stroke-linecap="round"/><path d="M118 120l50-30 40 22 70-42" stroke="#fff" stroke-width="7" fill="none"/>`,
+ team:`<circle cx="150" cy="125" r="22" fill="${c.c}"/><circle cx="200" cy="110" r="24" fill="${c.a}"/><circle cx="250" cy="125" r="22" fill="${c.b}"/><path d="M115 215c0-35 15-55 35-55s35 20 35 55zM160 215c0-45 18-70 40-70s40 25 40 70zM215 215c0-35 15-55 35-55s35 20 35 55z" fill="#fff"/>`,
+ mind:`<path d="M235 225h-60v-25c-30-10-50-35-50-70 0-45 35-75 80-75s75 30 75 70c0 15-5 25-10 35l15 25h-20v20c0 10-10 20-30 20z" fill="#fff"/><circle cx="195" cy="110" r="18" fill="${c.d}"/><circle cx="225" cy="135" r="14" fill="${c.a}"/><circle cx="180" cy="148" r="11" fill="${c.c}"/>`,
+ book:`<path d="M200 105c-30-18-60-20-85-12v120c25-8 55-6 85 12 30-18 60-20 85-12V93c-25-8-55-6-85 12z" fill="#fff"/><path d="M200 105v120" stroke="${c.a}" stroke-width="6"/>`,
+ comp:`<rect x="120" y="90" width="160" height="105" rx="10" fill="#fff"/><rect x="134" y="104" width="132" height="77" rx="4" fill="#e8327c"/><path d="M100 205h200l-14 18H114z" fill="#fff"/><text x="200" y="152" fill="#fff" font-size="30" font-family="Times New Roman,serif" font-weight="700" text-anchor="middle">Aa</text>`,
+ place:`<path d="M200 225s-60-60-60-105a60 60 0 0 1 120 0c0 45-60 105-60 105z" fill="${c.a}"/><circle cx="200" cy="120" r="22" fill="#153462"/>`};
+ return `<svg viewBox="0 0 400 300" aria-hidden="true"><circle cx="340" cy="40" r="60" fill="#FDBA1E" opacity=".18"/><circle cx="50" cy="270" r="45" fill="#1aa3d9" opacity=".2"/>${p[k]}</svg>`};
+
+const card=(o,k)=>`<article class="card rv" data-cat="${o.t||""}"><div class="thumb" style="background:${PAL[k%PAL.length]}">${o.img?`<img src="img/${o.img}.webp" alt="" loading="lazy">`:icon(o.i)}</div><div class="body">${o.t?`<span class="tag">${o.t}</span>`:""}<h3>${o.h}</h3><p>${o.p}</p>${o.l?`<button class="more" data-topic="${o.h}">${o.lt||"Enquire"} →</button>`:""}</div></article>`;
+const courses=[{i:"grow",h:"Skills & Personality Development",img:"c-skills",p:"Build self-confidence, communication and the personal skills needed to excel."},{i:"lang",h:"English Language Proficiency",img:"c-english",p:"Develop fluency and confidence in spoken and written English."},{i:"lang",h:"Sinhala / Tamil Language Proficiency",img:"c-language",p:"Build practical proficiency in Sinhala or Tamil."},{i:"aid",h:"First Aid Training Certificate",img:"c-firstaid",p:"Certificate training in first aid for everyday and emergency situations."},{i:"heart",h:"CPR Training",img:"c-cpr",p:"Learn cardiopulmonary resuscitation skills that can save a life."},{i:"kids",h:"First Aid for Kids",img:"c-kidsaid",p:"Age-appropriate first aid training designed for children."},{i:"art",h:"Art Therapy",img:"c-art",p:"Explore the therapeutic benefits of art for expression and well-being."},{i:"comp",h:"Computer & English Skills for Adults",p:"New — practical computer and English skills for adults, with a special focus on women. It is never too late to learn."}].map(c=>({...c,t:"Course",l:1}));
+const works=[{i:"career",h:"Career Enhancement",p:"Workshops to plan, grow and strengthen your career path."},{i:"lead",h:"Leadership Training",p:"Develop the skills to lead people and teams with confidence."},{i:"team",h:"Team Building & Strategic Management",p:"Strengthen collaboration and strategic thinking across your team."},{i:"kids",h:"Self-Development Coaching for Kids",p:"Coaching that helps children grow in confidence and character."},{i:"aid",h:"One-Day First Aid Training",img:"c-firstaid",p:"An intensive single-day first aid workshop."},{i:"mind",h:"Customised Corporate Training",p:"Programmes designed around your organisation’s needs and goals."}].map(c=>({...c,t:"Workshop",l:1}));
+const svcs=[{i:"mind",h:"Psychological Consultation",p:"Professional psychological consultation for individuals and families."},{i:"book",h:"Educational & Career Consultation",p:"Guidance on study choices, academic performance and career direction."},{i:"heart",h:"Drug & Addiction Consultation",p:"Professional consultation for individuals and families affected by drug use and addiction."},{i:"team",h:"Counselling",p:"Confidential counselling support."},{i:"grow",h:"Lifestyle Management Consultation",p:"Support in building balanced, healthy routines and habits."}].map(c=>({...c,t:"Consultation",l:1,lt:"Request"}));
+const all=[...courses,...works,...svcs];
+function filterGrid(chipsId,gridId,items,cats,def="All"){
+  const ch=$(chipsId),gr=$(gridId);
+  ch.innerHTML=["All",...cats].map((c,i)=>`<button class="chip${c===def?" on":""}" data-c="${c}">${c==="All"?"All":c+"s"}</button>`).join("");
+  const draw=c=>{gr.innerHTML=items.filter(o=>c==="All"||o.t===c).map(card).join("");reveal(gr)};
+  ch.addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;ch.querySelectorAll(".chip").forEach(x=>x.classList.toggle("on",x===b));draw(b.dataset.c)});
+  draw(def);
+}
+$("svcGrid").innerHTML=svcs.map(card).join("");
+$("f-topic").innerHTML=["General enquiry",...all.map(c=>c.h)].map(t=>`<option>${t}</option>`).join("");
+document.addEventListener("click",e=>{const b=e.target.closest(".more[data-topic],[data-enq]");if(!b)return;$("f-topic").value=b.dataset.topic||b.dataset.enq;location.hash="enquire"});
+const mantras=["Ignite","Innovate","Improvise","Inspire","Implement"],mc=["#22a45d","#e8327c","#1aa3d9","#8e44ad","#d98a0e"];
+const mh=mantras.map((m,i)=>`<div class="mantra rv" style="background:${mc[i]}">${m}</div>`).join("");$("mantras").innerHTML=mh;$("mantras2").innerHTML=mh;
+const how=[["Course offerings","A diverse range of courses, workshops and consultation services tailored to the needs of each learner — covering skills and personality development, language proficiency, first aid training, art therapy and more."],["Registration & enrolment","Browse the catalogue and choose the programme that aligns with your interests and goals. Registration is straightforward, and the team is available to help with any enquiry."],["Experienced instructors & consultants","Instructors, trainers and consultants who are experts in their fields and bring a wealth of knowledge and practical experience."],["Interactive learning","Lectures, discussions, group activities, case studies and practical exercises that encourage active participation, critical thinking and real-world application."]];
+$("howAcc").innerHTML=how.map((h,i)=>`<details${i?"":" open"}><summary>${h[0]}</summary><p>${h[1]}</p></details>`).join("");
+const empty=(i,h,p,k)=>`<div class="empty rv"><div class="thumb" style="background:${PAL[k%PAL.length]}">${icon(i)}</div><h3>${h}</h3><p style="margin:0 auto">${p}</p></div>`;
+$("bookGrid").innerHTML=[0,1,2].map(n=>empty("book","E-book "+(n+1),"Cover, title, description and purchase link to be added.",n+1)).join("");
+$("cPillars").innerHTML=[["career","Market research"],["lead","Regulatory insight"],["team","Supply-chain & logistics"],["grow","Sustainable, ethical trade"]].map((p,k)=>`<div class="card"><div class="thumb" style="background:${["#9F2C0F","#20272F","#1aa3d9","#22a45d"][k]};aspect-ratio:16/9">${icon(p[0])}</div><div class="body" style="padding:14px 16px"><h3 style="font-size:17px;margin:0">${p[1]}</h3></div></div>`).join("");
+/* projects + lightbox */
+const proj=[["p1-front","Project 1","Front elevation"],["p1-side","Project 1","Side elevation"],["p2-front","Project 2","Front elevation"],["p2-side","Project 2","Side elevation"],["p2-section","Project 2","Section X–X"],["p3-plan","Project 3","Interior design — living room plan"],["p3-photo2","Project 3","Interior"],["p3-photo1","Project 3","Interior"],["p4-plan","Project 4","Floor plan"],["p4-photo","Project 4","Completed office interior"]];
+let shown=proj,projShown=proj,cur=0;
+const pc=$("projChips");pc.innerHTML=["All projects","Project 1","Project 2","Project 3","Project 4"].map((c,i)=>`<button class="chip${i?"":" on"}" data-c="${c}">${c}</button>`).join("");
+const drawGal=c=>{shown=projShown=proj.filter(p=>c==="All projects"||p[1]===c);$("gal").innerHTML=shown.map((p,i)=>`<button data-i="${i}" aria-label="Open ${p[1]}: ${p[2]}"><img src="img/${p[0]}.webp" alt="${p[1]}: ${p[2]}" loading="lazy"><span>${p[1]} · ${p[2]}</span></button>`).join("")};
+pc.addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;pc.querySelectorAll(".chip").forEach(x=>x.classList.toggle("on",x===b));drawGal(b.dataset.c)});
+drawGal("All projects");
+const lb=$("lb");const openLb=i=>{cur=(i+shown.length)%shown.length;const p=shown[cur];$("lbi").src=`img/${p[0]}.webp`;$("lbi").alt=p[1]+": "+p[2];$("lbc").textContent=`${p[1]} · ${p[2]}`;lb.classList.add("on");$("lbx").focus()};
+$("gal").addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(b){shown=projShown;openLb(+b.dataset.i)}});
+$("lbx").onclick=()=>lb.classList.remove("on");$("lbp").onclick=()=>openLb(cur-1);$("lbn").onclick=()=>openLb(cur+1);
+lb.addEventListener("click",e=>{if(e.target===lb)lb.classList.remove("on")});
+document.addEventListener("keydown",e=>{if(!lb.classList.contains("on"))return;if(e.key==="Escape")lb.classList.remove("on");if(e.key==="ArrowLeft")openLb(cur-1);if(e.key==="ArrowRight")openLb(cur+1)});
+const exPics=[["ex-room","Expressions","The session at the Light House Galley"],["ex-present1","Expressions","Sameera Mahboobdeen speaking to parents"],["ex-crayon","Expressions","Drawing with pastels"],["ex-sketch","Expressions","Sketching during the session"],["ex-paint1","Expressions","Artwork on display"],["ex-paint2","Expressions","Artwork on display"]];
+$("exGal").innerHTML=exPics.map((p,i)=>`<button data-i="${i}" aria-label="Open photo: ${p[2]}"><img src="img/${p[0]}.webp" alt="${p[2]}" loading="lazy"><span>${p[2]}</span></button>`).join("");
+$("exGal").addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(b){shown=exPics;openLb(+b.dataset.i)}});
+const dwPics=[["dw-medical","Cyclone Ditwah relief","Medical assistance in a Wellampitiya relief camp"],["dw-fire","Cyclone Ditwah relief","Sameera Mahboobdeen with Colombo Fire Brigade personnel"],["dw-ambulance","Cyclone Ditwah relief","Emergency services during the response"],["dw-bags1","Cyclone Ditwah relief","Donated clothing collected for families"],["dw-bags2","Cyclone Ditwah relief","Clothing sorted and labelled by type"],["dw-bags3","Cyclone Ditwah relief","Clothing sorted by size and age"],["dw-poster1","Clothes distribution","18 December 2025, Public Library, Colombo"],["dw-poster2","Clothes distribution","31 December 2025, Public Library, Colombo"]];
+$("dwGal").innerHTML=dwPics.slice(0,6).map((p,i)=>`<button data-i="${i}" aria-label="Open photo: ${p[2]}"><img src="img/${p[0]}.webp" alt="${p[2]}" loading="lazy"><span>${p[2]}</span></button>`).join("");
+$("dwGal").addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(b){shown=dwPics;openLb(+b.dataset.i)}});
+document.querySelectorAll(".pbtn").forEach(b=>b.addEventListener("click",()=>{shown=dwPics;openLb(+b.dataset.dw)}));
+/* founder */
+const st=a=>a.map(s=>`<div class="step"><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join("");
+$("method").innerHTML=st([["Assess","Understand the organisation, school or group before a single slide is written — skill gaps, culture, constraints and the outcome that actually matters."],["Design","Build curriculum and materials around adult and child learning principles, drawing on current psychological and pedagogical research rather than generic templates."],["Deliver","Facilitate through a mix of instruction, case work and applied practice, adjusted in real time to how the room is responding."],["Evaluate","Measure learning outcomes against the original goal, and feed the findings into the next iteration of the programme."]]);
+$("aud").innerHTML=[["Corporates & organisations","Training and academic-management leadership for organisations that need a curriculum built, a team trained and outcomes measured — not a one-off workshop."],["Schools & teachers","Developmental psychology, grounded teacher training and guest lecturing, drawing on classroom and university-level teaching experience."],["Parents & families","Psychological consultation focused on student well-being and communication — learning environments where children feel safe to take intellectual risks."],["Boards & institutional leadership","Curriculum and academic-management oversight for institutions setting training, education or well-being strategy at governance level."]].map(a=>`<div class="step plain"><h3 style="font-size:19px">${a[0]}</h3><p>${a[1]}</p></div>`).join("");
+$("areas").innerHTML=[["mind","Corporate training & coaching","Curriculum design, leadership development, academic and skills-team management — including leading the full training department at Veridian Academy."],["book","Schools, teachers & higher education","Teacher-training lectures in developmental psychology and teaching practice; guest lecturing at General Sir John Kotelawala Defence University and the University of Kelaniya; undergraduate teaching at private universities."],["kids","Parent, family & student well-being","Educational-psychology consultation on student academic performance and learning environments, developed as Head of Academics & Educational Consultant at WinSYS Networks."],["aid","Emergency & disaster-response training","Master Instructor and National Trainer credentials with the Asian Disaster Preparedness Center and St John Ambulance Sri Lanka, training individuals to international standards."],["career","Applied & correctional psychology research","Programme coordination for the Diploma in Correction & Rehabilitation for Prison Officers, with research affiliations across the University of Kelaniya and institutions in India."]].map((a,k)=>card({i:a[0],h:a[1],p:a[2]},k)).join("");
+const li=a=>a.map(e=>`<li><b>${e[0]}</b><span>${e[1]}</span></li>`).join("");
+$("edu").innerHTML=li([["PhD, Psychology","Girne American University — candidate, in progress"],["MSc, Clinical & Health Psychology","University of West London"],["Bachelor of Psychology","Lincoln University College, Malaysia"],["HND, Applied Criminology & Criminal Justice System","Sri Lanka Foundation Institute"],["Diploma, Forensic Medicine & Toxicology","University of Sri Jayewardenepura"],["Diploma, Psychology & Counselling","Institute of Human Resource Advancement, University of Colombo"],["Diploma, Counselling (English medium)","Institute for Psychological Studies, Colombo · 2009–2012"]]);
+$("certs").innerHTML=li([["Master Instructor, Disaster & Emergency Response","Asian Disaster Preparedness Center"],["Medical First Responder / Instructor","Disaster & Emergency Response"],["National Level Trainer","St John Ambulance Sri Lanka"]]);
+$("skills").innerHTML=["Training development & management","Planning & execution","Evaluation & supervision","Instructional strategy","Professionalism & leadership","Project design & coordination"].map(s=>`<span class="pill">${s}</span>`).join("");
+/* tabs */
+document.querySelectorAll("[data-tabs]").forEach(t=>t.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;t.querySelectorAll("button").forEach(x=>{x.classList.toggle("on",x===b);document.getElementById(x.dataset.p).classList.toggle("on",x===b)})}));
+/* form */
+$("form").addEventListener("submit",e=>{e.preventDefault();const n=$("f-name").value.trim(),d=$("done");d.style.display="block";
+ if(!n){$("f-name").focus();d.textContent="Please enter your name.";return}
+ const body=`Name: ${n}\nPhone: ${$("f-phone").value}\nEmail: ${$("f-email").value}\nInterested in: ${$("f-topic").value}\n\n${$("f-msg").value}`;
+ const href="mailto:veridian@sltnet.lk?subject="+encodeURIComponent("Enquiry: "+$("f-topic").value)+"&body="+encodeURIComponent(body);
+ d.innerHTML=`Your enquiry is ready. <a href="${href}"><b>Open it in your email app</b></a>, or send it to <b>veridian@sltnet.lk</b> / call <b>+94 76 171 8171</b>.`});
+/* slideshows */
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function slides(sid,did){const imgs=[...$(sid).querySelectorAll("img")],dots=$(did);let i=0,tm;
+ dots.innerHTML=imgs.map((_,k)=>`<button aria-label="Photo ${k+1}"></button>`).join("");const bs=[...dots.children];
+ const go=k=>{i=(k+imgs.length)%imgs.length;imgs.forEach((m,j)=>m.classList.toggle("on",j===i));bs.forEach((b,j)=>b.classList.toggle("on",j===i))};
+ const run=()=>{clearInterval(tm);if(!reduce)tm=setInterval(()=>go(i+1),6000)};
+ bs.forEach((b,k)=>b.onclick=()=>{go(k);run()});go(0);run()}
+slides("slidesA","dotsA");slides("slidesC","dotsC");
+/* reveal */
+const io="IntersectionObserver" in window?new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.12}):null;
+function reveal(root){root.querySelectorAll(".rv:not(.in)").forEach(el=>io&&!reduce?io.observe(el):el.classList.add("in"))}
+filterGrid("homeChips","homeGrid",all,["Course","Workshop","Consultation"],"Course");
+filterGrid("courseChips","courseGrid",[...courses,...works],["Course","Workshop"]);
+/* routing */
+const views=["home","about","courses","services","ebooks","community","contact","consultancy","founder"];
+const menu=$("menu"),mb=$("menubtn");
+const setNav=o=>{document.body.classList.toggle("navopen",o);mb.setAttribute("aria-expanded",o)};
+mb.addEventListener("click",()=>setNav(!document.body.classList.contains("navopen")));
+$("shade").addEventListener("click",()=>setNav(false));
+document.addEventListener("keydown",e=>{if(e.key==="Escape")setNav(false)});
+menu.querySelectorAll("button.grp").forEach(b=>b.addEventListener("click",()=>{const li=b.parentElement,o=li.classList.toggle("open");b.setAttribute("aria-expanded",o)}));
+function route(){let h=location.hash.slice(1)||"home",target=null;
+ if(!views.includes(h)){const el=document.getElementById(h),v=el&&el.closest(".view");if(v){target=el;h=v.id.slice(2)}else h="home"}
+ const cl=document.body.classList;cl.toggle("co-cons",h==="consultancy");cl.toggle("co-acad",h!=="consultancy");
+ document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id==="v-"+h));
+ const key=location.hash.slice(1)||"home";let hit=null;
+ menu.querySelectorAll("a").forEach(a=>{const on=a.getAttribute("href")==="#"+key&&!hit;a.classList.toggle("on",on);if(on)hit=a});
+ if(hit){const g=hit.closest("li[data-g]");if(g){g.classList.add("open");g.querySelector("button").setAttribute("aria-expanded","true")}}
+ setNav(false);
+ reveal($("v-"+h));
+ if(target)requestAnimationFrame(()=>target.scrollIntoView());else window.scrollTo(0,0)}
+window.addEventListener("hashchange",route);route();
+$("yr").textContent=new Date().getFullYear();
+}
+</script>
+</body>
+</html>
