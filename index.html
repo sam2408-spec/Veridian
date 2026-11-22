@@ -139,20 +139,29 @@ body.co-cons .tabs button.on{border-color:var(--rust)}
 .panel{display:none}.panel.on{display:block;animation:fade .35s ease}
 .vm{max-width:72ch!important;font:500 clamp(19px,2.1vw,24px)/1.45 "Times New Roman",Times,serif;max-width:46ch}
 /* mantras */
-.mantras{position:relative;margin-top:20px;padding:34px clamp(18px,3vw,36px) 30px;border-radius:14px;color:#fff;overflow:hidden;
- background:radial-gradient(600px 220px at 8% 0%,rgba(34,164,93,.28),transparent 60%),radial-gradient(520px 240px at 50% 120%,rgba(232,50,124,.22),transparent 60%),radial-gradient(520px 240px at 100% 0%,rgba(26,163,217,.28),transparent 60%),linear-gradient(135deg,#0e2547,#153462 60%,#1b3f75);
+.mantras{--fire:#FF6A13;--fire2:#FDBA1E;position:relative;margin-top:20px;padding:34px clamp(18px,3vw,36px) 30px;border-radius:14px;color:#fff;
+ background:radial-gradient(640px 240px at 10% -10%,rgba(255,106,19,.34),transparent 62%),radial-gradient(560px 260px at 92% 120%,rgba(253,186,30,.22),transparent 60%),linear-gradient(135deg,#0e2547,#153462 60%,#1b3f75);
  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;box-shadow:0 18px 40px rgba(14,37,71,.25)}
-.mantras::before{content:"";position:absolute;left:10%;right:10%;top:62px;height:2px;background:linear-gradient(90deg,#22a45d,#e8327c,#1aa3d9,#8e44ad,#d98a0e);opacity:.7}
-.mantra{position:relative;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 6px;transition:transform .3s}
-.mantra .ic{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#0e2547;border:2px solid var(--mc);box-shadow:0 0 0 6px rgba(255,255,255,.04),0 0 24px color-mix(in srgb,var(--mc) 45%,transparent);transition:transform .3s,background .3s}
-.mantra .ic svg{width:26px;height:26px;stroke:var(--mc);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
-.mantra:hover{transform:translateY(-4px)}
-.mantra:hover .ic{background:var(--mc);transform:scale(1.08)}
-.mantra:hover .ic svg{stroke:#fff}
-.mantra span{font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--mc);margin-top:6px}
+.mantras::before{content:"";position:absolute;left:10%;right:10%;top:62px;height:2px;background:linear-gradient(90deg,#E8470C,var(--fire),var(--fire2),var(--fire),#E8470C);opacity:.85}
+.mantra{position:relative;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 6px;cursor:pointer;outline:none;--mc:var(--fire)}
+.mantra .ic{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#0e2547;border:2px solid var(--fire);box-shadow:0 0 0 6px rgba(255,255,255,.04),0 0 26px rgba(255,106,19,.45);transition:transform .3s,background .3s,box-shadow .3s}
+.mantra .ic svg{width:26px;height:26px;stroke:var(--fire2);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.mantra:hover .ic,.mantra:focus-visible .ic,.mantra.open .ic{background:linear-gradient(135deg,#E8470C,var(--fire) 55%,var(--fire2));transform:scale(1.1);box-shadow:0 0 0 6px rgba(255,106,19,.18),0 0 34px rgba(255,140,30,.7)}
+.mantra:hover .ic svg,.mantra:focus-visible .ic svg,.mantra.open .ic svg{stroke:#fff}
+.mantra span{font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--fire2);margin-top:6px}
 .mantra b{font:700 clamp(19px,1.9vw,25px)/1.1 "Times New Roman",Times,serif;color:#fff}
+.mantra .pop{position:absolute;top:calc(100% + 12px);left:50%;width:250px;transform:translate(-50%,8px);background:#fff;color:#14213a;border-radius:10px;padding:14px 16px 15px;text-align:left;box-shadow:0 18px 40px rgba(0,0,0,.35);border-top:4px solid var(--fire);opacity:0;visibility:hidden;transition:opacity .2s,transform .2s,visibility .2s;z-index:5;pointer-events:none}
+.mantra .pop::before{content:"";position:absolute;top:-11px;left:50%;margin-left:-7px;border:7px solid transparent;border-bottom-color:var(--fire)}
+.mantra .pop h4{margin:0 0 6px;font:700 18px "Times New Roman",Times,serif;color:#C2410C}
+.mantra .pop p{margin:0;font-size:15px;line-height:1.5;color:#2b3650}
+.mantra:first-of-type .pop{left:0;transform:translate(0,8px)}.mantra:first-of-type .pop::before{left:28px}
+.mantra:nth-of-type(5) .pop{left:auto;right:0;transform:translate(0,8px)}.mantra:nth-of-type(5) .pop::before{left:auto;right:22px}
+.mantra:hover .pop,.mantra:focus-visible .pop,.mantra.open .pop{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.mantra:first-of-type:hover .pop,.mantra:first-of-type:focus-visible .pop,.mantra:first-of-type.open .pop,.mantra:nth-of-type(5):hover .pop,.mantra:nth-of-type(5):focus-visible .pop,.mantra:nth-of-type(5).open .pop{transform:translate(0,0)}
 .mantras .mq{grid-column:1/-1;text-align:center;margin:18px auto 0;font:italic 17px/1.5 "Times New Roman",Times,serif;color:#cfd8ea;max-width:60ch;position:relative}
-@media(max-width:760px){.mantras{grid-template-columns:1fr;gap:16px;padding:26px 22px}.mantras::before{left:50px;right:auto;top:40px;bottom:70px;width:2px;height:auto;background:linear-gradient(180deg,#22a45d,#e8327c,#1aa3d9,#8e44ad,#d98a0e)}.mantra{flex-direction:row;text-align:left;gap:16px}.mantra span{margin:0;order:3;margin-left:auto}.mantras .mq{text-align:left}}
+.mantras .hint{grid-column:1/-1;text-align:center;font-size:12px;color:#9fb0cc;margin-top:-6px}
+@media(max-width:760px){.mantras{grid-template-columns:1fr;gap:16px;padding:26px 22px}.mantras::before{left:50px;right:auto;top:40px;bottom:120px;width:2px;height:auto;background:linear-gradient(180deg,#E8470C,var(--fire),var(--fire2))}.mantra{flex-wrap:wrap;flex-direction:row;text-align:left;gap:16px}.mantra span{margin:0;order:3;margin-left:auto}.mantra .pop,.mantra:first-of-type .pop,.mantra:nth-of-type(5) .pop{position:static;width:100%;transform:none!important;display:none;order:4;margin-left:74px;width:calc(100% - 74px)}.mantra .pop::before{display:none}.mantra.open .pop{display:block}.mantras .mq{text-align:left}}
+@media(prefers-reduced-motion:reduce){.mantra .pop,.mantra .ic{transition:none}}
 /* accordion */
 details{background:var(--card);border:1px solid var(--line);border-radius:8px;margin-bottom:10px}
 summary{cursor:pointer;list-style:none;padding:18px 20px;font-weight:700;font-size:17px;display:flex;justify-content:space-between;gap:12px;min-height:44px}
@@ -653,7 +662,8 @@ $("f-topic").innerHTML=["General enquiry",...all.map(c=>c.h)].map(t=>`<option>${
 document.addEventListener("click",e=>{const b=e.target.closest(".more[data-topic],[data-enq]");if(!b)return;$("f-topic").value=b.dataset.topic||b.dataset.enq;location.hash="enquire"});
 const mantras=["Ignite","Innovate","Improvise","Inspire","Implement"],mc=["#22a45d","#e8327c","#1aa3d9","#8e44ad","#d98a0e"];
 const mIcons=[`<path d="M12 3c1 3 4 4.5 4 8.5A4 4 0 0 1 12 16a4 4 0 0 1-4-4.5c0-2 1-3 2-4 0 2 1 3 2 3 0-2-1-4 0-7.5z"/><path d="M7 21h10"/>`, `<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>`, `<path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>`, `<path d="m12 3 2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/>`, `<path d="M4 12.5 9.5 18 20 6.5"/><path d="M20 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h8"/>`];
-const mh=mantras.map((m,i)=>`<div class="mantra rv" style="--mc:${mc[i]}"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">${mIcons[i]}</svg></div><span>${["I","II","III","IV","V"][i]}</span><b>${m}</b></div>`).join("")+`<p class="mq">Let the mind find its actualisation through proper education.</p>`;$("mantras").innerHTML=mh;$("mantras2").innerHTML=mh;
+const mText=["Spark curiosity and the desire to learn. Every journey at Veridian begins by lighting the motivation that makes learning meaningful.","Think in new ways. We encourage fresh ideas and creative problem-solving, and keep our own programmes evolving with current research and practice.","Adapt with confidence. Real life rarely follows a script, so we build the flexibility to respond calmly and creatively when situations change.","Lift others with you. Learners leave not only with new skills, but with the confidence and example to motivate the people around them.","Turn learning into action. Knowledge matters most when it is used, at work, at home and in the community."];
+const mh=mantras.map((m,i)=>`<div class="mantra rv" tabindex="0" role="button" aria-expanded="false" aria-label="${m}: show meaning"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">${mIcons[i]}</svg></div><span>${["I","II","III","IV","V"][i]}</span><b>${m}</b><div class="pop" role="tooltip"><h4>${m}</h4><p>${mText[i]}</p></div></div>`).join("")+`<p class="mq">Let the mind find its actualisation through proper education.</p><p class="hint">Hover over or tap a mantra to read its meaning</p>`;$("mantras").innerHTML=mh;$("mantras2").innerHTML=mh;
 const how=[["Course offerings","A diverse range of courses, workshops and consultation services tailored to the needs of each learner — covering skills and personality development, language proficiency, first aid training, art therapy and more."],["Registration & enrolment","Browse the catalogue and choose the programme that aligns with your interests and goals. Registration is straightforward, and the team is available to help with any enquiry."],["Experienced instructors & consultants","Instructors, trainers and consultants who are experts in their fields and bring a wealth of knowledge and practical experience."],["Interactive learning","Lectures, discussions, group activities, case studies and practical exercises that encourage active participation, critical thinking and real-world application."]];
 $("howAcc").innerHTML=how.map((h,i)=>`<details${i?"":" open"}><summary>${h[0]}</summary><p>${h[1]}</p></details>`).join("");
 const empty=(i,h,p,k)=>`<div class="empty rv"><div class="thumb" style="background:${PAL[k%PAL.length]}">${icon(i)}</div><h3>${h}</h3><p style="margin:0 auto">${p}</p></div>`;
@@ -678,6 +688,8 @@ const dwPics=[["dw-medical","Cyclone Ditwah relief","Medical assistance in a Wel
 $("dwGal").innerHTML=dwPics.slice(0,6).map((p,i)=>`<button data-i="${i}" aria-label="Open photo: ${p[2]}"><img src="img/${p[0]}.webp" alt="${p[2]}" loading="lazy"><span>${p[2]}</span></button>`).join("");
 $("dwGal").addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(b){shown=dwPics;openLb(+b.dataset.i)}});
 document.querySelectorAll(".pbtn").forEach(b=>b.addEventListener("click",()=>{shown=dwPics;openLb(+b.dataset.dw)}));
+document.addEventListener("click",e=>{const m=e.target.closest(".mantra");document.querySelectorAll(".mantra.open").forEach(x=>{if(x!==m){x.classList.remove("open");x.setAttribute("aria-expanded","false")}});if(m){const o=m.classList.toggle("open");m.setAttribute("aria-expanded",o)}});
+document.addEventListener("keydown",e=>{const m=e.target.closest&&e.target.closest(".mantra");if(m&&(e.key==="Enter"||e.key===" ")){e.preventDefault();m.click()}if(e.key==="Escape")document.querySelectorAll(".mantra.open").forEach(x=>x.classList.remove("open"))});
 /* founder */
 const st=a=>a.map(s=>`<div class="step"><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join("");
 $("method").innerHTML=st([["Assess","Understand the organisation, school or group before a single slide is written — skill gaps, culture, constraints and the outcome that actually matters."],["Design","Build curriculum and materials around adult and child learning principles, drawing on current psychological and pedagogical research rather than generic templates."],["Deliver","Facilitate through a mix of instruction, case work and applied practice, adjusted in real time to how the room is responding."],["Evaluate","Measure learning outcomes against the original goal, and feed the findings into the next iteration of the programme."]]);
