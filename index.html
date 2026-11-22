@@ -190,7 +190,7 @@ blockquote cite{display:block;font:600 14px "Times New Roman",Times,serif;margin
 .empty .thumb{border-radius:6px;margin-bottom:16px}
 /* gallery */
 .gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:16px}
-.gal button{border:0;padding:0;background:var(--char);border-radius:8px;overflow:hidden;cursor:zoom-in;aspect-ratio:4/3;position:relative;display:block}
+.gal button{font-family:inherit;border:0;padding:0;background:var(--char);border-radius:8px;overflow:hidden;cursor:zoom-in;aspect-ratio:4/3;position:relative;display:block}
 .gal img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
 .gal button:hover img{transform:scale(1.06)}
 .gal span{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.78));color:#fff;font-size:13px;font-weight:700;text-align:left}
@@ -390,7 +390,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:20px;font-siz
   <section class="band" style="padding-bottom:0"><div class="wrap"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))">
     <a class="card" href="#expressions" style="text-decoration:none"><div class="thumb"><img src="img/ex-room.webp" alt=""></div><div class="body"><span class="tag">Project 1 · Parenting &amp; child psychology</span><h3>Expressions — where art speaks for your soul</h3><p>A free art session for parents and children at the Light House Galley, Colombo.</p><span class="more">Read more →</span></div></a>
     <a class="card" href="#ditwah" style="text-decoration:none"><div class="thumb"><img src="img/dw-medical.webp" alt="" style="object-position:center 35%"></div><div class="body"><span class="tag">Project 2 · Disaster relief</span><h3>Cyclone Ditwah relief</h3><p>Medical assistance in Wellampitiya relief camps, relief materials and two clothes drives — in collaboration with the Free Palestine Movement Sri Lanka.</p><span class="more">Read more →</span></div></a>
-    <a class="card" href="#eduragala" style="text-decoration:none"><div class="thumb" style="background:linear-gradient(135deg,#0e2547,#153462)"><svg viewBox="0 0 400 250" aria-hidden="true"><circle cx="330" cy="40" r="70" fill="#FF6A13" opacity=".18"/><g fill="none" stroke="#FDBA1E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M110 150c-30-10-40-45-20-75 30 10 40 45 20 75zM110 150v40"/><path d="M180 70v45a30 30 0 0 0 60 0V70M210 145v20a25 25 0 0 0 50 0v-10"/><circle cx="260" cy="148" r="10"/></g><g fill="none" stroke="#fff" stroke-width="7"><circle cx="300" cy="190" r="18"/><circle cx="350" cy="190" r="18"/><path d="M318 190h14"/></g></svg></div><div class="body"><span class="tag">Project 3 · Community health</span><h3>Eduragala Estate medical camp</h3><p>A free Ayurveda, Western medicine and eye clinic for the people of Eduragala Estate, Ingiriya, with glasses for those who needed them.</p><span class="more">Read more →</span></div></a>
+    <a class="card" href="#eduragala" style="text-decoration:none"><div class="thumb"><img src="img/ed-hall.webp" alt="The Eduragala Estate medical camp in progress" loading="lazy"></div><div class="body"><span class="tag">Project 3 · Community health</span><h3>Eduragala Estate medical camp</h3><p>A free Ayurveda, Western medicine and eye clinic for the people of Eduragala Estate, Ingiriya, with glasses for those who needed them.</p><span class="more">Read more →</span></div></a>
   </div></div></section>
 
   <section class="band" id="expressions" style="padding-bottom:0"><div class="wrap">
@@ -507,7 +507,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:20px;font-siz
     <p class="note">The Cyclone Ditwah relief project was carried out in collaboration with the Free Palestine Movement Sri Lanka.</p>
   </div></section>
 
-  <section class="band dark" id="eduragala"><div class="wrap">
+  <section class="band dark" id="eduragala" style="background:linear-gradient(90deg,rgba(10,25,50,.92),rgba(10,25,50,.65)),url(img/ed-hall.webp) center/cover"><div class="wrap">
     <div class="label">Project 3 · Community health</div>
     <h2 style="font-size:clamp(30px,4vw,46px)">Eduragala Estate medical camp</h2>
     <p class="lede" style="color:#e3e9f4">On Sunday, 2 August 2026, Veridian had the privilege of supporting the people of Eduragala Estate, Ingiriya, through a free medical camp.</p>
@@ -525,6 +525,12 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:20px;font-siz
       <div class="card"><div class="body" style="align-items:center;text-align:center"><svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="#C2410C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8v12a8 8 0 0 0 16 0V8M22 28v4a8 8 0 0 0 16 0v-4"/><circle cx="38" cy="25" r="3"/></svg><h3 style="font-size:17px;margin:10px 0 0">Western medicine clinic</h3></div></div>
       <div class="card"><div class="body" style="align-items:center;text-align:center"><svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="#C2410C" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="15" cy="28" r="8"/><circle cx="33" cy="28" r="8"/><path d="M23 28h2M7 28 5 18M41 28l2-10"/></svg><h3 style="font-size:17px;margin:10px 0 0">Eye clinic &amp; free glasses</h3></div></div>
     </div>
+  </div></section>
+
+  <section class="band"><div class="wrap">
+    <div class="label rv">On the day</div>
+    <h2 class="rv">Scenes from the camp</h2>
+    <div class="gal" id="edGal" style="margin-top:16px"></div>
   </div></section>
 
   <section class="band alt"><div class="wrap">
@@ -725,6 +731,9 @@ $("exGal").addEventListener("click",e=>{const b=e.target.closest("button[data-i]
 const dwPics=[["dw-medical","Cyclone Ditwah relief","Medical assistance in a Wellampitiya relief camp"],["dw-fire","Cyclone Ditwah relief","Sameera Mahboobdeen with Colombo Fire Brigade personnel"],["dw-ambulance","Cyclone Ditwah relief","Emergency services during the response"],["dw-bags1","Cyclone Ditwah relief","Donated clothing collected for families"],["dw-bags2","Cyclone Ditwah relief","Clothing sorted and labelled by type"],["dw-bags3","Cyclone Ditwah relief","Clothing sorted by size and age"],["dw-poster1","Clothes distribution","18 December 2025, Public Library, Colombo"],["dw-poster2","Clothes distribution","31 December 2025, Public Library, Colombo"]];
 $("dwGal").innerHTML=dwPics.slice(0,6).map((p,i)=>`<button data-i="${i}" aria-label="Open photo: ${p[2]}"><img src="img/${p[0]}.webp" alt="${p[2]}" loading="lazy"><span>${p[2]}</span></button>`).join("");
 $("dwGal").addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(b){shown=dwPics;openLb(+b.dataset.i)}});
+const edPics=[["ed-hall","Eduragala Estate medical camp","The camp in full swing"],["ed-opening","Eduragala Estate medical camp","Opening the camp"],["ed-doctor","Western medicine clinic","Consultations at the Western medicine clinic"],["ed-bp","Western medicine clinic","Blood pressure checks for those waiting"],["ed-eye","Eye clinic","Eye tests under way"],["ed-eye2","Eye clinic","The eye clinic"],["ed-dispense","Eye clinic &amp; pharmacy","Glasses and medicines handed out"],["ed-queue","Eduragala Estate medical camp","Residents waiting to be seen"]];
+$("edGal").innerHTML=edPics.map((p,i)=>`<button data-i="${i}" aria-label="Open photo: ${p[2]}"><img src="img/${p[0]}.webp" alt="${p[2]}" loading="lazy"><span>${p[2]}</span></button>`).join("");
+$("edGal").addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(b){shown=edPics;openLb(+b.dataset.i)}});
 document.querySelectorAll(".pbtn").forEach(b=>b.addEventListener("click",()=>{shown=dwPics;openLb(+b.dataset.dw)}));
 document.addEventListener("click",e=>{const m=e.target.closest(".mantra");document.querySelectorAll(".mantra.open").forEach(x=>{if(x!==m){x.classList.remove("open");x.setAttribute("aria-expanded","false")}});if(m){const o=m.classList.toggle("open");m.setAttribute("aria-expanded",o)}});
 document.addEventListener("keydown",e=>{const m=e.target.closest&&e.target.closest(".mantra");if(m&&(e.key==="Enter"||e.key===" ")){e.preventDefault();m.click()}if(e.key==="Escape")document.querySelectorAll(".mantra.open").forEach(x=>x.classList.remove("open"))});
