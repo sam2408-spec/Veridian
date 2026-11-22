@@ -126,6 +126,12 @@ body.co-cons .facts{border-top-color:var(--rust)}
 #courseGrid .thumb,#svcGrid .thumb,#homeGrid .thumb{aspect-ratio:1/1}
 .thumb.poster{aspect-ratio:1/1;width:100%;border:0;padding:0;cursor:zoom-in;background:#0e2547;display:block}
 .thumb.poster img{object-fit:contain}
+.offer{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;margin-top:18px}
+.offer a{display:flex;flex-direction:column;gap:8px;padding:22px;border:1px solid var(--line);border-top:4px solid var(--c2);border-radius:8px;background:var(--card);text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s}
+.offer a:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(21,52,98,.12)}
+.offer b{font-size:22px;color:var(--c1)}
+.offer span{color:var(--soft);font-size:15.5px}
+.offer em{margin-top:auto;font-style:normal;font-weight:700;color:var(--amberd)}
 .marq{overflow:hidden;background:#0e2547;padding:18px 0;-webkit-mask:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
 .marq-track{display:flex;gap:16px;width:max-content;animation:marq 90s linear infinite}
 .marq:hover .marq-track,.marq:focus-within .marq-track{animation-play-state:paused}
@@ -286,8 +292,11 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:20px;font-siz
 
   <section class="band"><div class="wrap">
     <h2 class="rv"><span style="display:block;color:var(--amberd)">What we offer</span>Learning for every stage of growth</h2>
-    <div class="chips" id="homeChips"></div>
-    <div class="grid" id="homeGrid"></div>
+    <div class="offer">
+      <a class="rv" href="#courses"><b>Courses</b><span>Certificate courses in languages, first aid, art therapy, English &amp; IT and personal development.</span><em>View courses →</em></a>
+      <a class="rv" href="#courses"><b>Workshops</b><span>Leadership, team building, career enhancement and one-day first aid for individuals and organisations.</span><em>View workshops →</em></a>
+      <a class="rv" href="#services"><b>Consultation services</b><span>Psychological, career, family, child, ADHD and marriage counselling, in person and online.</span><em>View services →</em></a>
+    </div>
   </div></section>
 
   <section class="band dark"><div class="wrap">
@@ -300,13 +309,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:20px;font-siz
     </div>
   </div></section>
 
-  <section class="band"><div class="wrap">
-    <div class="label rv">Our five mantras</div>
-    <h2 class="rv">The five mantras behind our logo</h2>
-    <div class="mantras" id="mantras"></div>
-  </div></section>
-
-  <section class="band alt"><div class="wrap split">
+    <section class="band alt"><div class="wrap split">
     <div class="portrait rv" style="background:var(--navy);max-width:300px;aspect-ratio:1"><img src="img/mark-lg.png" alt="Veridian Academy logo" style="height:auto;width:62%;bottom:auto;top:50%;transform:translate(-50%,-50%)"></div>
     <div class="rv">
       <div class="label">Our name</div>
@@ -739,7 +742,7 @@ const icon=(k)=>{const c={a:"#FDBA1E",b:"#22a45d",c:"#1aa3d9",d:"#e8327c",e:"#8e
 
 const card=(o,k)=>`<article class="card rv" data-cat="${o.t||""}">${o.po?`<button class="thumb poster" data-po="${o.po}" data-cap="${o.h}" aria-label="View poster: ${o.h}"><img src="img/${o.po}.webp" alt="" loading="lazy"></button>`:`<div class="thumb" style="background:${PAL[k%PAL.length]}">${o.img?`<img src="img/${o.img}.webp" alt="" loading="lazy">`:icon(o.i)}</div>`}<div class="body">${o.t?`<span class="tag">${o.t}</span>`:""}<h3>${o.h}</h3><p>${o.p}</p>${o.l?`<button class="more" data-topic="${o.h}">${o.lt||"Enquire"} →</button>`:""}</div></article>`;
 const courses=[{i:"grow",h:"Skills & Personality Development",img:"c-skills",p:"Build self-confidence, communication and the personal skills needed to excel."},{i:"lang",h:"English Language Proficiency",img:"c-english",p:"Develop fluency and confidence in spoken and written English."},{i:"lang",h:"Trilingual Basic Training for Non-Native Speakers",po:"po-trilingual",p:"Basic Sinhala, Tamil and English for non-native speakers — 14 classes per language."},{i:"aid",h:"First Aid Training Certificate",po:"po-casualty",p:"Emergency casualty management with first aid — certificate training for everyday and emergency situations."},{i:"heart",h:"CPR Training",img:"c-cpr",p:"Learn cardiopulmonary resuscitation skills that can save a life."},{i:"kids",h:"First Aid for Kids",img:"c-kidsaid",p:"Age-appropriate first aid training designed for children."},{i:"art",h:"Certificate in Art Therapy",po:"po-art-cert",p:"A 12-week certificate course for learners above age 16. Discover the healing power of art."},{i:"comp",h:"Basic English & IT for Job Seekers",po:"po-english-it",p:"Boost your career with practical English and IT skills — 16 classes."},{i:"comp",h:"Computer & English Skills for Adults",p:"New — practical computer and English skills for adults, with a special focus on women. It is never too late to learn."}].map(c=>({...c,t:"Course",l:1}));
-const works=[{i:"career",h:"Career Enhancement",po:"po-career",p:"Workshops to plan, grow and strengthen your career path."},{i:"lead",h:"Leadership Training",po:"po-leadership",p:"Decision-making, problem-solving, effective delegation and how to foster a positive work culture."},{i:"team",h:"Team Building & Strategic Management",po:"po-team",p:"Build cohesive units, master effective communication and align goals for outstanding performance."},{i:"kids",h:"Self-Development Coaching for Kids",p:"Coaching that helps children grow in confidence and character."},{i:"aid",h:"One-Day First Aid Training",po:"po-firstaid-day",p:"Basic life-saving techniques, CPR and using an AED, managing wounds, burns and fractures, and handling emergencies such as choking or allergic reactions."},{i:"art",h:"Art Therapy for Ladies",po:"po-art-ladies",p:"A special edition art therapy session for women, exploring geometric and watercolour painting."},{i:"mind",h:"Customised Corporate Training",p:"Programmes designed around your organisation’s needs and goals."}].map(c=>({...c,t:"Workshop",l:1}));
+const works=[{i:"career",h:"Career Enhancement",p:"Workshops to plan, grow and strengthen your career path."},{i:"lead",h:"Leadership Training",po:"po-leadership",p:"Decision-making, problem-solving, effective delegation and how to foster a positive work culture."},{i:"team",h:"Team Building & Strategic Management",po:"po-team",p:"Build cohesive units, master effective communication and align goals for outstanding performance."},{i:"kids",h:"Self-Development Coaching for Kids",p:"Coaching that helps children grow in confidence and character."},{i:"aid",h:"One-Day First Aid Training",po:"po-firstaid-day",p:"Basic life-saving techniques, CPR and using an AED, managing wounds, burns and fractures, and handling emergencies such as choking or allergic reactions."},{i:"art",h:"Art Therapy for Ladies",po:"po-art-ladies",p:"A special edition art therapy session for women, exploring geometric and watercolour painting."},{i:"mind",h:"Customised Corporate Training",p:"Programmes designed around your organisation’s needs and goals."}].map(c=>({...c,t:"Workshop",l:1}));
 const svcs=[{i:"mind",h:"Psychological Consultation",po:"po-low",p:"Feeling low or need someone to talk to? Professional psychological consultation for individuals and families."},{i:"book",h:"Educational & Career Consultation",po:"po-career",p:"Guidance on study choices, academic performance and career direction."},{i:"heart",h:"Drug & Addiction Consultation",p:"Professional consultation for individuals and families affected by drug use and addiction."},{i:"team",h:"Counselling",po:"po-work",p:"Confidential counselling support, including help with what you are going through at work."},{i:"kids",h:"Child Counselling",po:"po-child",p:"A safe space for children to talk to a professional about what is troubling them."},{i:"mind",h:"ADHD Counselling",po:"po-adhd",p:"Individual ADHD counselling, parent coaching and family support, and behaviour management strategies."},{i:"heart",h:"Marriage Counselling & Support",po:"po-marriage",p:"Online sessions: couples therapy, conflict resolution and communication skills, emotional and intimacy coaching, affair recovery support and individual relationship coaching."},{i:"kids",h:"Positive Parenting Coaching",po:"po-parenting",p:"Personalised guidance to build stronger connections and raise confident, happy children."},{i:"team",h:"Family Communication",po:"po-communication",p:"Break the communication gap with your loved ones and learn to express your emotions the right way."},{i:"grow",h:"Lifestyle Management Consultation",po:"po-stress",p:"Stressed at work? Support in building balanced, healthy routines and habits."}].map(c=>({...c,t:"Consultation",l:1,lt:"Request"}));
 const all=[...courses,...works,...svcs];
 function filterGrid(chipsId,gridId,items,cats,def="All"){
@@ -755,7 +758,7 @@ document.addEventListener("click",e=>{const b=e.target.closest(".more[data-topic
 const mantras=["Ignite","Innovate","Improvise","Inspire","Implement"],mc=["#22a45d","#e8327c","#1aa3d9","#8e44ad","#d98a0e"];
 const mIcons=[`<path d="M12 3c1 3 4 4.5 4 8.5A4 4 0 0 1 12 16a4 4 0 0 1-4-4.5c0-2 1-3 2-4 0 2 1 3 2 3 0-2-1-4 0-7.5z"/><path d="M7 21h10"/>`, `<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>`, `<path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>`, `<path d="m12 3 2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/>`, `<path d="M4 12.5 9.5 18 20 6.5"/><path d="M20 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h8"/>`];
 const mText=["Spark curiosity and the desire to learn. Every journey at Veridian begins by lighting the motivation that makes learning meaningful.","Think in new ways. We encourage fresh ideas and creative problem-solving, and keep our own programmes evolving with current research and practice.","Adapt with confidence. Real life rarely follows a script, so we build the flexibility to respond calmly and creatively when situations change.","Lift others with you. Learners leave not only with new skills, but with the confidence and example to motivate the people around them.","Turn learning into action. Knowledge matters most when it is used, at work, at home and in the community."];
-const mh=mantras.map((m,i)=>`<div class="mantra rv" tabindex="0" role="button" aria-expanded="false" aria-label="${m}: show meaning"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">${mIcons[i]}</svg></div><span>${["I","II","III","IV","V"][i]}</span><b>${m}</b><div class="pop" role="tooltip"><h4>${m}</h4><p>${mText[i]}</p></div></div>`).join("")+`<p class="mq">Let the mind find its actualisation through proper education.</p><p class="hint">Hover over or tap a mantra to read its meaning</p>`;$("mantras").innerHTML=mh;$("mantras2").innerHTML=mh;
+const mh=mantras.map((m,i)=>`<div class="mantra rv" tabindex="0" role="button" aria-expanded="false" aria-label="${m}: show meaning"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">${mIcons[i]}</svg></div><span>${["I","II","III","IV","V"][i]}</span><b>${m}</b><div class="pop" role="tooltip"><h4>${m}</h4><p>${mText[i]}</p></div></div>`).join("")+`<p class="mq">Let the mind find its actualisation through proper education.</p><p class="hint">Hover over or tap a mantra to read its meaning</p>`;$("mantras2").innerHTML=mh;
 const how=[["Course offerings","A diverse range of courses, workshops and consultation services tailored to the needs of each learner — covering skills and personality development, language proficiency, first aid training, art therapy and more."],["Registration & enrolment","Browse the catalogue and choose the programme that aligns with your interests and goals. Registration is straightforward, and the team is available to help with any enquiry."],["Experienced instructors & consultants","Instructors, trainers and consultants who are experts in their fields and bring a wealth of knowledge and practical experience."],["Interactive learning","Lectures, discussions, group activities, case studies and practical exercises that encourage active participation, critical thinking and real-world application."]];
 $("howAcc").innerHTML=how.map((h,i)=>`<details${i?"":" open"}><summary>${h[0]}</summary><p>${h[1]}</p></details>`).join("");
 const empty=(i,h,p,k)=>`<div class="empty rv"><div class="thumb" style="background:${PAL[k%PAL.length]}">${icon(i)}</div><h3>${h}</h3><p style="margin:0 auto">${p}</p></div>`;
@@ -816,8 +819,7 @@ slides("slidesA","dotsA");slides("slidesC","dotsC");
 /* reveal */
 const io="IntersectionObserver" in window?new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.12}):null;
 function reveal(root){root.querySelectorAll(".rv:not(.in)").forEach(el=>io&&!reduce?io.observe(el):el.classList.add("in"))}
-filterGrid("homeChips","homeGrid",all,["Course","Workshop","Consultation"],"Course");
-filterGrid("courseChips","courseGrid",[...courses,...works],["Course","Workshop"]);
+filterGrid("courseChips","courseGrid",[...courses,...works].filter(c=>c.h!=="Computer & English Skills for Adults"),["Course","Workshop"]);
 /* routing */
 const views=["home","about","courses","services","ebooks","community","contact","consultancy","founder"];
 const menu=$("menu"),mb=$("menubtn");
