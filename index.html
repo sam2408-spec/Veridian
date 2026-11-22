@@ -43,6 +43,9 @@ p{margin:0 0 .85em;max-width:80ch}
 .menu a:hover,.menu button.grp:hover{background:rgba(255,255,255,.07);color:#fff}
 .menu button.grp::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .25s;margin-left:10px;flex:none}
 .menu li.open>button.grp::after{transform:rotate(-135deg)}
+.gname{display:flex;flex-direction:column;line-height:1.25;padding:6px 0}
+.gname b{font-weight:700}
+.gname small{font-weight:700;font-size:.82em;opacity:.85}
 .menu li.open>button.grp{color:var(--c2)}
 body.co-cons .menu li.open>button.grp{color:#ffd2c2}
 .sub{list-style:none;margin:0;padding:0 0 8px;display:none;background:rgba(0,0,0,.14)}
@@ -246,9 +249,9 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:20px;font-siz
 <aside class="side" id="side" aria-label="Site menu">
   <a class="brand" href="#home"><img src="img/mark.png" alt="Veridian logo"><span><b>VERIDIAN</b><small>ACADEMY · CONSULTANTS</small></span></a>
   <nav><ul class="menu" id="menu">
-    <li data-g="acad"><button class="grp" aria-expanded="false">Veridian Academy</button><ul class="sub">
+    <li data-g="acad"><button class="grp" aria-expanded="false"><span class="gname"><b>Veridian Academy</b><small>for Skill Enhancement</small></span></button><ul class="sub">
       <li><a href="#home">Home</a></li><li><a href="#about">About us</a></li><li><a href="#courses">Courses &amp; workshops</a></li><li><a href="#services">Online services</a></li><li><a href="#contact">Academy contact</a></li></ul></li>
-    <li data-g="cons"><button class="grp" aria-expanded="false">Veridian Consultants</button><ul class="sub">
+    <li data-g="cons"><button class="grp" aria-expanded="false"><span class="gname"><b>Veridian Consultants</b></span></button><ul class="sub">
       <li><a href="#consultancy">Overview</a></li><li><a href="#c-about">About the company</a></li><li><a href="#c-projects">Projects</a></li><li><a href="#c-contact">Consultants contact</a></li></ul></li>
     <li><a href="#founder">Founder</a></li>
     <li><a href="#community">Community projects</a></li>
@@ -268,7 +271,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:20px;font-siz
     <div class="slides" id="slidesA"><img src="img/towers-up.webp" alt=""><img src="img/interior-light.webp" alt=""><img src="img/lobby.webp" alt=""></div>
     <div class="wrap">
       <div>
-        <div class="kicker"><img src="img/mark.png" alt="">Veridian Academy for Skill Enhancement</div>
+        <div class="kicker"><img src="img/mark.png" alt=""><span class="gname"><b>Veridian Academy</b><small>for Skill Enhancement</small></span></div>
         <h1>Empowering individuals through education and personal development</h1>
         <p>Courses, workshops and consultation services designed to meet the diverse needs of students and professionals — and to support them in achieving their goals.</p>
         <div class="btns"><a class="btn" href="#courses">Explore courses</a><a class="btn ghost" href="#services">Book a consultation</a></div>
