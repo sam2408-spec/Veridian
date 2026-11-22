@@ -20,11 +20,11 @@ body.co-cons{--c1:var(--rust);--c1d:var(--char);--c2:#ffffff;--c2ink:var(--rust)
 html{scroll-padding-top:110px}
 body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Times New Roman",Times,serif;overflow-x:clip}
 a{color:inherit}img{max-width:100%}
-h1,h2,h3{font-family:"Times New Roman",Times,serif;font-weight:600;line-height:1.1;text-wrap:balance;margin:0 0 .5em}
+h1,h2,h3{font-family:"Times New Roman",Times,serif;font-weight:700;line-height:1.12;text-wrap:balance;margin:0 0 .4em}
 h1{font-size:clamp(34px,5vw,56px)}h2{font-size:clamp(28px,3.4vw,42px)}h3{font-size:21px;line-height:1.25}
-p{margin:0 0 1em;max-width:68ch}
+p{margin:0 0 .85em;max-width:80ch}
 .wrap{max-width:1240px;margin:0 auto}
-.band{padding:clamp(40px,5vw,84px) max(5vw,16px)}
+.band{padding:clamp(28px,3.4vw,52px) max(4vw,16px)}
 .alt{background:var(--alt)}
 .dark{background:var(--c1);color:#fff}.dark p{color:#e3e9f4}.dark h2,.dark h3{color:#fff}
 .lede{font-size:18px;color:var(--soft)}
@@ -70,13 +70,13 @@ body{padding-left:272px}
 @media(min-width:1000px){html{scroll-padding-top:20px}}
 @media(prefers-reduced-motion:reduce){.side{transition:none}}
 /* photo hero */
-.hero{position:relative;color:#fff;min-height:clamp(480px,78vh,720px);display:flex;align-items:flex-end;overflow:hidden;background:var(--c1)}
+.hero{position:relative;color:#fff;min-height:clamp(380px,60vh,560px);display:flex;align-items:flex-end;overflow:hidden;background:var(--c1)}
 .slides,.slides img{position:absolute;inset:0;width:100%;height:100%}
 .slides img{object-fit:cover;opacity:0;transition:opacity 1.4s ease;transform:scale(1.04)}
 .slides img.on{opacity:1;animation:kb 9s ease-out forwards}
 @keyframes kb{from{transform:scale(1.08)}to{transform:scale(1)}}
 .hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,color-mix(in srgb,var(--c1) 94%,transparent) 0%,color-mix(in srgb,var(--c1) 78%,transparent) 45%,color-mix(in srgb,var(--c1) 10%,transparent) 100%)}
-.hero .wrap{position:relative;z-index:2;width:100%;padding:clamp(48px,7vw,96px) max(5vw,16px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:30px;align-items:end}
+.hero .wrap{position:relative;z-index:2;width:100%;padding:clamp(32px,4.5vw,64px) max(4vw,16px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:30px;align-items:end}
 .hero h1{color:#fff;max-width:16ch}.hero p{color:#eef2f9;font-size:18px;max-width:52ch}
 .hero .kicker{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:14px;color:var(--c2);margin-bottom:14px}
 body.co-cons .hero .kicker{color:#ffd2c2}
@@ -93,14 +93,14 @@ body.co-cons .hero .kicker{color:#ffd2c2}
 .btn.solid{background:var(--c1);border-color:var(--c1);color:#fff}
 /* fact strip */
 .facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--card);border-bottom:1px solid var(--line)}
-.facts div{padding:22px max(2vw,16px);border-right:1px solid var(--line)}
+.facts div{padding:14px max(2vw,16px);border-right:1px solid var(--line)}
 .facts div:last-child{border:0}
 .facts b{display:block;font:600 26px "Times New Roman",Times,serif;color:var(--c1)}
 :root[data-theme=dark] .facts b{color:var(--amber)}
 .facts span{font-size:14px;color:var(--soft)}
 @media(max-width:760px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.facts div:nth-child(2){border-right:0}.facts div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
 /* page hero */
-.phero{background:var(--c1);color:#fff;padding:clamp(44px,6vw,90px) max(5vw,16px) clamp(36px,4vw,60px);position:relative;overflow:hidden}
+.phero{background:var(--c1);color:#fff;padding:clamp(28px,3.6vw,52px) max(4vw,16px) clamp(24px,3vw,40px);position:relative;overflow:hidden}
 .phero h1{color:#fff;max-width:20ch}.phero p{color:#e3e9f4;font-size:18px}
 .phero .wrap{position:relative;z-index:1}
 .phero .b1,.phero .b2,.phero .b3{position:absolute;border-radius:50%}
@@ -110,10 +110,10 @@ body.co-cons .hero .kicker{color:#ffd2c2}
 @media(max-width:600px){.phero .b2,.phero .b3{display:none}.phero .b1{width:200px;height:200px;right:-70px;bottom:-90px}}
 .crumb{font-size:14px;font-weight:700;color:var(--c2);margin-bottom:10px}
 /* cards */
-.grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(min(100%,265px),1fr))}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr))}
 .card{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
 .card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(21,52,98,.14)}
-.card .body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.card .body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
 .card p{color:var(--soft);font-size:15px}
 .more{margin-top:auto;font-weight:700;font-size:14px;color:var(--amberd);text-decoration:none;background:none;border:0;padding:8px 0;cursor:pointer;font-family:inherit;text-align:left;min-height:44px}
 .thumb{aspect-ratio:16/10;position:relative;overflow:hidden;display:grid;place-items:center}
@@ -121,25 +121,25 @@ body.co-cons .hero .kicker{color:#ffd2c2}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
 .card:hover .thumb svg,.card:hover .thumb img{transform:scale(1.06)}
 .tag{display:inline-block;font-size:12px;font-weight:700;background:light-dark(#fff3dc,#3a3115);color:light-dark(#8a5a00,#ffd58a);border-radius:3px;padding:3px 8px;margin-bottom:10px;align-self:flex-start}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 24px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}
 .chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:0 18px;min-height:44px;font:600 14px "Times New Roman",Times,serif;cursor:pointer}
 .chip.on{background:var(--c1);border-color:var(--c1);color:#fff}
 .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;margin:0 6px 8px 0}
-.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,60px);align-items:center}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:center}
 @media(max-width:820px){.split{grid-template-columns:1fr}}
 .photo{border-radius:10px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.18);position:relative}
 .photo img{display:block;width:100%;height:100%;object-fit:cover}
 .photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:#fff;font-size:14px;font-weight:600}
 /* tabs */
-.tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:2px solid var(--line);margin-bottom:24px}
+.tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:2px solid var(--line);margin-bottom:16px}
 .tabs button{background:none;border:0;border-bottom:3px solid transparent;margin-bottom:-2px;padding:0 18px;min-height:48px;font:700 15px "Times New Roman",Times,serif;color:var(--soft);cursor:pointer}
 .tabs button.on{color:var(--ink);border-color:var(--c2)}
 body.co-cons .tabs button.on{border-color:var(--rust)}
 .dark .tabs{border-color:rgba(255,255,255,.2)}.dark .tabs button{color:#c9d3e6}.dark .tabs button.on{color:#fff}
 .panel{display:none}.panel.on{display:block;animation:fade .35s ease}
-.vm{font:500 clamp(20px,2.4vw,27px)/1.45 "Times New Roman",Times,serif;max-width:46ch}
+.vm{max-width:72ch!important;font:500 clamp(19px,2.1vw,24px)/1.45 "Times New Roman",Times,serif;max-width:46ch}
 /* mantras */
-.mantras{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:28px}
+.mantras{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:18px;max-width:760px}
 .mantra{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font:600 clamp(17px,2vw,24px) "Times New Roman",Times,serif;color:#fff;transition:transform .25s;cursor:default;text-align:center;padding:8px}
 .mantra:hover{transform:scale(1.07) rotate(-3deg)}
 @media(max-width:760px){.mantras{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -150,8 +150,8 @@ summary::-webkit-details-marker{display:none}
 summary::after{content:"+";font-size:24px;line-height:1;color:var(--amberd)}
 details[open] summary::after{content:"−"}
 details p{padding:0 20px 18px;margin:0;color:var(--soft)}
-.steps{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));counter-reset:s}
-.step{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px;color:var(--ink)}
+.steps{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px;color:var(--ink)}
 .step h3::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--c2);color:var(--c2ink);font:700 17px "Times New Roman",Times,serif;margin-bottom:12px}
 body.co-cons .step h3::before{background:var(--rust);color:#fff}
 .step.plain h3::before{display:none}
@@ -193,19 +193,19 @@ input,select,textarea{width:100%;font:16px "Times New Roman",Times,serif;padding
 body.co-cons .ci b{color:#ffd2c2}
 .ci span{display:block;font-size:18px}
 /* footer */
-footer{background:var(--c1d);color:#cfd8ea;padding:44px max(5vw,16px) 26px;font-size:15px}
-footer .ftop{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px 40px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.15)}
+footer{background:var(--c1d);color:#cfd8ea;padding:32px max(4vw,16px) 22px;font-size:15px}
+footer .ftop{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 40px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.15)}
 .fbrand{display:flex;align-items:center;gap:14px;text-decoration:none}
 .fbrand img{height:58px;width:auto}
 .fbrand b{display:block;color:#fff;font-size:20px;line-height:1.2}
 .fbrand small{display:block;font-size:15px;color:#cfd8ea;margin-top:2px}
 .fcontact{font-style:normal;line-height:1.7;text-align:right}
 @media(max-width:700px){.fcontact{text-align:left}}
-footer .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 32px;padding-top:28px}
+footer .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 32px;padding-top:20px}
 @media(max-width:640px){footer .cols{grid-template-columns:1fr}}
 footer h4{color:#fff;font:700 16px "Times New Roman",Times,serif;margin:0 0 8px}
 footer .cols a{display:block;text-decoration:none;padding:4px 0}footer a:hover{color:var(--amber)}
-footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:28px;font-size:14px;padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:20px;font-size:14px;padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 .view{display:none}.view.on{display:block;animation:fade .4s ease}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
 .rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}.rv.in{opacity:1;transform:none}
@@ -272,7 +272,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:28px;font-siz
   </div></section>
 
   <section class="band alt"><div class="wrap split">
-    <div class="portrait rv" style="background:var(--navy);max-width:360px"><img src="img/mark-lg.png" alt="Veridian Academy logo" style="height:auto;width:62%;bottom:auto;top:50%;transform:translate(-50%,-50%)"></div>
+    <div class="portrait rv" style="background:var(--navy);max-width:300px;aspect-ratio:1"><img src="img/mark-lg.png" alt="Veridian Academy logo" style="height:auto;width:62%;bottom:auto;top:50%;transform:translate(-50%,-50%)"></div>
     <div class="rv">
       <div class="label">Our name</div>
       <h2>Why “Veridian”?</h2>
@@ -301,14 +301,11 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:28px;font-siz
       <div class="label">Who we are</div><h2>About the academy</h2>
       <p>The academy offers a wide range of courses, workshops and consultation services to empower individuals in their personal and professional growth. Programmes include Skills and Personality Development, English and Sinhala/Tamil Language Proficiency, First Aid and CPR Training, Art Therapy, and a range of workshops.</p>
       <p>Consultation services cover psychology, education, career and lifestyle management.</p>
+      <p><b>Established in 2023.</b> Veridian is a young academy — we are just beginning, and we have a long way to go.</p>
     </div>
     <figure class="photo rv" style="margin:0;aspect-ratio:4/3"><img src="img/interior-light.webp" alt=""></figure>
   </div></section>
-  <section class="band alt"><div class="wrap">
-    <div class="label rv">Company history</div>
-    <h2 class="rv">Established in 2023</h2>
-    <p class="lede rv">Veridian is a young academy, established in 2023. We are just beginning — and we have a long way to go.</p>
-  </div></section>
+
   <section class="band"><div class="wrap">
     <div class="label rv">How we work</div><h2 class="rv">From enquiry to real-world application</h2>
     <div id="howAcc" class="rv" style="margin-top:22px;max-width:860px"></div>
@@ -395,7 +392,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:28px;font-siz
   <section class="band alt"><div class="wrap">
     <div class="label rv">Why it matters</div>
     <h2 class="rv">Seeing, hearing and understanding our children</h2>
-    <div class="grid" style="margin-top:26px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))">
+    <div class="grid" style="margin-top:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))">
       <div class="card rv"><div class="body"><h3>Recognising the child in front of you</h3><p>Every child has their own temperament, pace and way of seeing the world. When parents take time to notice who their child actually is — their interests, worries and strengths — rather than who they expect them to be, children feel seen. Feeling seen is the foundation of self-worth and of the trust that lets a child come to a parent when something is wrong.</p></div></div>
       <div class="card rv"><div class="body"><h3>Building better communication</h3><p>Good communication is less about talking more and more about listening well. Children open up when they are listened to without being rushed, judged or corrected straight away. Naming feelings, asking open questions, and staying calm when a child brings bad news teach children that difficult conversations are safe — a lesson that matters even more in the teenage years.</p></div></div>
       <div class="card rv"><div class="body"><h3>The psychology of good parenting</h3><p>Decades of research point in the same direction. Children with a secure attachment to a caregiver handle stress better and form healthier relationships. Parenting that combines warmth with clear, consistent boundaries — often called authoritative parenting — is linked to better emotional, social and academic outcomes than parenting that is either harsh or permissive. Helping children understand and manage their emotions, rather than dismissing them, builds resilience.</p></div></div>
@@ -405,7 +402,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:28px;font-siz
   <section class="band"><div class="wrap">
     <div class="label rv">What we discussed</div>
     <h2 class="rv">Practical child psychology for everyday family life</h2>
-    <div class="steps" style="margin-top:26px;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))">
+    <div class="steps" style="margin-top:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))">
       <div class="step plain rv"><h3>Issues coming from school</h3><p>How to recognise when a child is struggling with schoolwork, friendships, bullying or pressure — and how to respond in ways that support the child rather than add to the stress.</p></div>
       <div class="step plain rv"><h3>Maladaptive behaviour</h3><p>Understanding behaviours such as tantrums, withdrawal, aggression or avoidance as signals of an unmet need, and responding to the cause rather than only the behaviour.</p></div>
       <div class="step plain rv"><h3>Communication methods</h3><p>Active listening, naming emotions, age-appropriate explanations and calm, consistent boundaries that children can understand and trust.</p></div>
@@ -425,7 +422,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:28px;font-siz
   <section class="band"><div class="wrap">
     <div class="label rv">Gallery</div>
     <h2 class="rv">Moments from Expressions</h2>
-    <div class="gal" id="exGal" style="margin-top:22px"></div>
+    <div class="gal" id="exGal" style="margin-top:16px"></div>
   </div></section>
 
   <section class="band alt"><div class="wrap split">
@@ -459,7 +456,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:28px;font-siz
   <section class="band alt"><div class="wrap">
     <div class="label rv">What we did</div>
     <h2 class="rv">Three strands of support, delivered together with the Free Palestine Movement Sri Lanka</h2>
-    <div class="grid" style="margin-top:26px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))">
+    <div class="grid" style="margin-top:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))">
       <div class="card rv"><div class="body"><h3>Medical assistance in relief camps</h3><p>Drawing on our founder’s training as a Medical First Responder, the team provided medical assistance in the relief camps in Wellampitiya — first aid, wound care and basic health checks for displaced families.</p></div></div>
       <div class="card rv"><div class="body"><h3>Medical aid and materials</h3><p>Medical supplies and essential relief materials were gathered and delivered to people affected by the floods, helping families meet urgent needs in the weeks after the cyclone.</p></div></div>
       <div class="card rv"><div class="body"><h3>Clothes drives with Free Palestine Movement Sri Lanka</h3><p>Together with Free Palestine Movement Sri Lanka, we ran two free clothes distributions for cyclone victims — collecting, sorting and labelling quality second-hand clothing for babies, children, teens, women and men.</p></div></div>
@@ -486,7 +483,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:28px;font-siz
   <section class="band alt"><div class="wrap">
     <div class="label rv">Gallery</div>
     <h2 class="rv">From the Ditwah response</h2>
-    <div class="gal" id="dwGal" style="margin-top:22px"></div>
+    <div class="gal" id="dwGal" style="margin-top:16px"></div>
     <p class="note">The Cyclone Ditwah relief project was carried out in collaboration with the Free Palestine Movement Sri Lanka.</p>
   </div></section>
 </section>
@@ -496,7 +493,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:28px;font-siz
   <div class="phero"><div class="wrap"><div class="crumb">Veridian Academy · Contact</div><h1>Get in touch</h1><p>Questions, concerns or suggestions — the team is here to help.</p></div></div>
   <section class="band dark"><div class="wrap">
     <div class="contactgrid"><div class="ci"><b>Phone</b><span>+94 76 171 8171</span><span>+94 11 228 5097</span></div><div class="ci"><b>Email</b><span>veridian@sltnet.lk</span></div><div class="ci"><b>Address</b><span>40/2/7 Metro Home Residency</span><span>Malay Street, Colombo 02</span></div></div>
-    <div class="btns" style="margin-top:26px"><a class="btn" href="#enquire">Send an enquiry</a></div>
+    <div class="btns" style="margin-top:16px"><a class="btn" href="#enquire">Send an enquiry</a></div>
   </div></section>
 </section>
 
@@ -550,7 +547,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:28px;font-siz
   <section class="band dark" id="c-contact"><div class="wrap">
     <div class="label">Get in touch</div><h2>Let’s talk about your project</h2>
     <p>Whether you have a question about our services, need support, or simply want to share your experience, our team is here to help.</p>
-    <div class="contactgrid" style="margin-top:22px"><div class="ci"><b>Phone</b><span>+94 76 171 8171</span><span>+94 11 228 5097</span></div><div class="ci"><b>Email</b><span>veridian@sltnet.lk</span></div><div class="ci"><b>Address</b><span>40/2/7 Metro Home Residency</span><span>Malay Street, Colombo 02</span></div></div>
+    <div class="contactgrid" style="margin-top:16px"><div class="ci"><b>Phone</b><span>+94 76 171 8171</span><span>+94 11 228 5097</span></div><div class="ci"><b>Email</b><span>veridian@sltnet.lk</span></div><div class="ci"><b>Address</b><span>40/2/7 Metro Home Residency</span><span>Malay Street, Colombo 02</span></div></div>
   </div></section>
 </section>
 
@@ -574,7 +571,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:28px;font-siz
     <div class="tabs" data-tabs="fd"><button class="on" data-p="fApp">Approach</button><button data-p="fWork">Work areas</button><button data-p="fExp">Experience</button><button data-p="fCred">Credentials</button></div>
     <div class="panel on" id="fApp">
       <p class="lede">A background spanning clinical and developmental psychology, criminology and the criminal justice system, together with forensic medicine, shapes how each curriculum is built — grounded in evidence, tested against real learning outcomes, and designed to include people who have not always felt welcome in a classroom or a boardroom. Alongside the training work runs a continuing commitment to normalising conversations about mental health inside institutions that have historically avoided them.</p>
-      <h3 style="margin-top:26px">How a programme is built</h3><div class="steps" id="method"></div>
+      <h3 style="margin-top:16px">How a programme is built</h3><div class="steps" id="method"></div>
       <h3 style="margin-top:34px">Who I work with</h3><div class="grid" id="aud"></div>
     </div>
     <div class="panel" id="fWork"><div class="grid" id="areas"></div></div>
@@ -589,7 +586,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:28px;font-siz
   <section class="band dark"><div class="wrap">
     <h2>Continuing the work</h2>
     <p>Open to training, consulting and academic leadership roles, including governance and involvement in organisations building out their education, well-being or training strategy. If a programme needs to be built from the ground up, get in touch.</p>
-    <div class="contactgrid" style="margin-top:22px"><div class="ci"><b>Email</b><span>veridian@sltnet.lk</span></div><div class="ci"><b>Phone</b><span>+94 76 171 8171</span><span>+94 11 228 5097</span></div><div class="ci"><b>Location</b><span>Colombo, Sri Lanka</span></div></div>
+    <div class="contactgrid" style="margin-top:16px"><div class="ci"><b>Email</b><span>veridian@sltnet.lk</span></div><div class="ci"><b>Phone</b><span>+94 76 171 8171</span><span>+94 11 228 5097</span></div><div class="ci"><b>Location</b><span>Colombo, Sri Lanka</span></div></div>
   </div></section>
 </section>
 </main>
