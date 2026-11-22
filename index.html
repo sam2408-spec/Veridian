@@ -139,10 +139,14 @@ body.co-cons .tabs button.on{border-color:var(--rust)}
 .panel{display:none}.panel.on{display:block;animation:fade .35s ease}
 .vm{max-width:72ch!important;font:500 clamp(19px,2.1vw,24px)/1.45 "Times New Roman",Times,serif;max-width:46ch}
 /* mantras */
-.mantras{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:18px;max-width:760px}
-.mantra{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font:600 clamp(17px,2vw,24px) "Times New Roman",Times,serif;color:#fff;transition:transform .25s;cursor:default;text-align:center;padding:8px}
-.mantra:hover{transform:scale(1.07) rotate(-3deg)}
-@media(max-width:760px){.mantras{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.mantras{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin-top:18px;border-top:1px solid color-mix(in srgb,currentColor 22%,transparent);border-bottom:1px solid color-mix(in srgb,currentColor 22%,transparent)}
+.mantra{padding:18px 18px 16px;border-left:1px solid color-mix(in srgb,currentColor 22%,transparent);display:flex;flex-direction:column;gap:10px;transition:background .25s}
+.mantra:first-child{border-left:0;padding-left:0}
+.mantra i{display:block;width:28px;height:3px;border-radius:2px}
+.mantra b{font:700 clamp(19px,1.9vw,24px)/1.1 "Times New Roman",Times,serif;letter-spacing:.01em}
+.mantra span{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.6}
+.mantra:hover{background:color-mix(in srgb,currentColor 5%,transparent)}
+@media(max-width:760px){.mantras{grid-template-columns:repeat(2,minmax(0,1fr))}.mantra{border-left:0;padding-left:0;border-top:1px solid color-mix(in srgb,currentColor 22%,transparent)}.mantra:nth-child(-n+2){border-top:0}.mantra:nth-child(even){padding-left:16px;border-left:1px solid color-mix(in srgb,currentColor 22%,transparent)}}
 /* accordion */
 details{background:var(--card);border:1px solid var(--line);border-radius:8px;margin-bottom:10px}
 summary{cursor:pointer;list-style:none;padding:18px 20px;font-weight:700;font-size:17px;display:flex;justify-content:space-between;gap:12px;min-height:44px}
@@ -642,7 +646,7 @@ $("svcGrid").innerHTML=svcs.map(card).join("");
 $("f-topic").innerHTML=["General enquiry",...all.map(c=>c.h)].map(t=>`<option>${t}</option>`).join("");
 document.addEventListener("click",e=>{const b=e.target.closest(".more[data-topic],[data-enq]");if(!b)return;$("f-topic").value=b.dataset.topic||b.dataset.enq;location.hash="enquire"});
 const mantras=["Ignite","Innovate","Improvise","Inspire","Implement"],mc=["#22a45d","#e8327c","#1aa3d9","#8e44ad","#d98a0e"];
-const mh=mantras.map((m,i)=>`<div class="mantra rv" style="background:${mc[i]}">${m}</div>`).join("");$("mantras").innerHTML=mh;$("mantras2").innerHTML=mh;
+const mh=mantras.map((m,i)=>`<div class="mantra rv"><i style="background:${mc[i]}"></i><span>Mantra ${["I","II","III","IV","V"][i]}</span><b>${m}</b></div>`).join("");$("mantras").innerHTML=mh;$("mantras2").innerHTML=mh;
 const how=[["Course offerings","A diverse range of courses, workshops and consultation services tailored to the needs of each learner — covering skills and personality development, language proficiency, first aid training, art therapy and more."],["Registration & enrolment","Browse the catalogue and choose the programme that aligns with your interests and goals. Registration is straightforward, and the team is available to help with any enquiry."],["Experienced instructors & consultants","Instructors, trainers and consultants who are experts in their fields and bring a wealth of knowledge and practical experience."],["Interactive learning","Lectures, discussions, group activities, case studies and practical exercises that encourage active participation, critical thinking and real-world application."]];
 $("howAcc").innerHTML=how.map((h,i)=>`<details${i?"":" open"}><summary>${h[0]}</summary><p>${h[1]}</p></details>`).join("");
 const empty=(i,h,p,k)=>`<div class="empty rv"><div class="thumb" style="background:${PAL[k%PAL.length]}">${icon(i)}</div><h3>${h}</h3><p style="margin:0 auto">${p}</p></div>`;
