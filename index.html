@@ -4,6 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Veridian Academy &amp; Consultants</title>
+<meta name="description" content="Courses, workshops and consultation services in Colombo — empowering individuals through education and personal development.">
+<link rel="canonical" href="https://veridian.lk/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Veridian Academy">
+<meta property="og:title" content="Veridian Academy for Skill Enhancement"><meta property="og:description" content="Courses, workshops and consultation services in Colombo — empowering individuals through education and personal development.">
+<meta property="og:url" content="https://veridian.lk/">
+<meta property="og:image" content="https://veridian.lk/img/share/home.jpg"><meta property="og:image:secure_url" content="https://veridian.lk/img/share/home.jpg"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://veridian.lk/img/share/home.jpg">
+<link rel="icon" href="img/mark.png">
 <style>
 /* VOICE: a university-style group site — confident, warm, colourful, easy to use on a phone.
    IDEA: two companies under one roof, like a university with its schools; the switch at the top changes the house colours.
@@ -139,6 +147,11 @@ body.co-cons .facts{border-top-color:var(--rust)}
 .offer em{margin-top:auto;padding:12px 22px 20px;font-style:normal;font-weight:700;color:#E8470C}
 .offer em span{display:inline-block;transition:transform .2s}
 .offer a:hover em span{transform:translateX(5px)}
+.sharebtn{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:9px 16px;border-radius:30px;border:1.5px solid rgba(255,255,255,.6);background:rgba(255,255,255,.08);color:#fff;font:700 15px "Times New Roman",Times,serif;cursor:pointer}
+.sharebtn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.sharebtn:hover{background:#FF6A13;border-color:#FF6A13}
+.band:not(.dark) .sharebtn{color:var(--c1);border-color:var(--line);background:var(--card)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#153462;color:#fff;padding:10px 18px;border-radius:30px;font-size:15px;z-index:200;opacity:0;transition:opacity .3s;pointer-events:none}.toast.on{opacity:1}
 .marq{overflow:hidden;background:#0e2547;padding:18px 0;-webkit-mask:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
 .marq-track{display:flex;gap:16px;width:max-content;animation:marq 90s linear infinite}
 .marq:hover .marq-track,.marq:focus-within .marq-track{animation-play-state:paused}
@@ -424,6 +437,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:20px;font-siz
   <section class="band" id="expressions" style="padding-bottom:0"><div class="wrap">
     <div class="label">Project 1</div>
     <h2 style="font-size:clamp(30px,4vw,46px)">Expressions — where art speaks for your soul</h2>
+    <button class="sharebtn" type="button" data-share="expressions"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>Share</button>
     <p class="lede">A free art session for parents and children at the Light House Galley, Colombo, helping parents get to know their children through art.</p>
   </div></section>
 
@@ -487,6 +501,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:20px;font-siz
     <div class="label">Project 2 · Disaster relief</div>
     <h2 style="font-size:clamp(30px,4vw,46px)">Cyclone Ditwah relief — standing with affected families</h2>
     <p class="lede" style="color:#e3e9f4">From the first days after the cyclone until the end of January 2026, Veridian supported people affected by Cyclone Ditwah with medical aid, relief materials and clothing.</p>
+    <button class="sharebtn" type="button" data-share="ditwah"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>Share</button>
     <p style="margin-top:14px;font-size:19px;color:#fff"><b>This project was carried out in collaboration with the Free Palestine Movement Sri Lanka.</b></p>
   </div></section>
 
@@ -539,6 +554,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:20px;font-siz
     <div class="label">Project 3 · Community health</div>
     <h2 style="font-size:clamp(30px,4vw,46px)">Eduragala Estate medical camp</h2>
     <p class="lede" style="color:#e3e9f4">On Sunday, 2 August 2026, Veridian had the privilege of supporting the people of Eduragala Estate, Ingiriya, through a free medical camp.</p>
+    <button class="sharebtn" type="button" data-share="eduragala"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>Share</button>
   </div></section>
 
   <section class="band"><div class="wrap split" style="align-items:start">
@@ -575,6 +591,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:20px;font-siz
     <div class="label">Project 4 · Community health</div>
     <h2 style="font-size:clamp(30px,4vw,46px)">Elpitiya Estate medical &amp; eye camp</h2>
     <p class="lede" style="color:#e3e9f4">On 12 September 2026, Veridian held another medical and eye check-up camp, this time at Elpitiya Estate, Elpitiya, for the workers and residents who call it home.</p>
+    <button class="sharebtn" type="button" data-share="elpitiya"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>Share</button>
   </div></section>
 
   <section class="band"><div class="wrap">
@@ -613,6 +630,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:20px;font-siz
     <div class="label">Project 5 · Fundraiser for Gaza</div>
     <h2 style="font-size:clamp(30px,4vw,46px)">An Afternoon of Art and Breath</h2>
     <p class="lede" style="color:#e3e9f4">On Sunday, 22 November 2026, a room in Colombo 5 filled with people who gave up their afternoon for an event with a purpose beyond the room.</p>
+    <button class="sharebtn" type="button" data-share="fearless"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>Share</button>
   </div></section>
 
   <section class="band"><div class="wrap split" style="align-items:start">
@@ -831,6 +849,9 @@ const dwPics=[["dw-medical","Cyclone Ditwah relief","Medical assistance in a Wel
 document.addEventListener("click",e=>{const b=e.target.closest("button.thumb.poster");if(!b)return;shown=[[b.dataset.po,"Poster",b.dataset.cap]];openLb(0)});
 const marqItems=[["po-english-it","courses","Basic English & IT for Job Seekers"],["po-trilingual","courses","Trilingual Basic Training"],["po-art-cert","courses","Certificate in Art Therapy"],["po-casualty","courses","First Aid Training Certificate"],["po-firstaid-day","courses","One-Day First Aid Training"],["po-leadership","courses","Leadership Training"],["po-team","courses","Team Building & Strategic Management"],["po-art-ladies","courses","Art Therapy for Ladies"],["po-career","services","Career guidance"],["po-parenting","services","Positive Parenting Coaching"],["po-parenting2","services","Positive parenting"],["po-adhd","services","ADHD Counselling"],["po-add","services","ADD support"],["po-child","services","Child Counselling"],["po-marriage","services","Marriage Counselling & Support"],["po-communication","services","Family Communication"],["po-emotions","services","Expressing emotions"],["po-low","services","Psychological Consultation"],["po-work","services","Counselling at work"],["po-stress","services","Stress at work"]];
 {const h=marqItems.map(m=>`<a href="#${m[1]}" aria-label="${m[2]}"><img src="img/${m[0]}.webp" alt="${m[2]}" loading="lazy"></a>`).join("");$("marq").innerHTML=h+h.replace(/<a /g,'<a tabindex="-1" aria-hidden="true" ')}
+document.addEventListener("click",async e=>{const b=e.target.closest("[data-share]");if(!b)return;const k=b.dataset.share,url="https://veridian.lk/p/"+k;const t=(b.closest("section")?.querySelector("h2")||{}).textContent||"Veridian Academy";
+ try{if(navigator.share){await navigator.share({title:t,url});return}}catch(_){return}
+ try{await navigator.clipboard.writeText(url);let n=document.querySelector(".toast");if(!n){n=document.createElement("div");n.className="toast";document.body.appendChild(n)}n.textContent="Link copied — paste it anywhere to share";n.classList.add("on");setTimeout(()=>n.classList.remove("on"),2500)}catch(_){prompt("Copy this link:",url)}});
 const edPics=[["ed-hall","Eduragala Estate medical camp","The camp in full swing"],["ed-opening","Eduragala Estate medical camp","Opening the camp"],["ed-sameera","Eduragala Estate medical camp","Sameera Mahboobdeen with a resident"],["ed-fit","Eye clinic","Fitting a new pair of glasses"],["ed-glasses","Eye clinic","Trying on new glasses"],["ed-eye","Eye clinic","Eye tests under way"],["ed-eye2","Eye clinic","The eye clinic"],["ed-doctor","Western medicine clinic","Consultations at the Western medicine clinic"],["ed-bp","Western medicine clinic","Blood pressure checks for those waiting"],["ed-bp2","Western medicine clinic","Recording blood pressure"],["ed-team","Eduragala Estate medical camp","Young volunteers at the pharmacy table"],["ed-register","Eduragala Estate medical camp","Registering residents"],["ed-pack","Eye clinic &amp; pharmacy","Packing glasses and medicines"],["ed-dispense","Eye clinic &amp; pharmacy","Glasses and medicines handed out"],["ed-crowd","Eduragala Estate medical camp","A busy morning at the camp"],["ed-queue","Eduragala Estate medical camp","Residents waiting to be seen"]];
 const elPics=[["el-hall","Elpitiya Estate camp","Optometrists testing eyes in the estate hall"],["el-trial","Elpitiya Estate camp","An optometrist fitting a trial frame"],["el-distance","Elpitiya Estate camp","An optometrist testing distance vision"],["el-near","Elpitiya Estate camp","An optometrist checking near vision"],["el-reading","Elpitiya Estate camp","An optometrist giving an estate worker a reading test"],["el-exam","Elpitiya Estate camp","An optometrist examining a patient's eyes"],["el-rx","Elpitiya Estate camp","An optometrist recording prescriptions for new glasses"],["el-glasses","Elpitiya Estate camp","Glasses ready for distribution"],["el-chart","Elpitiya Estate camp","The vision-testing room"],["el-doctors","Elpitiya Estate camp","Doctors consulting with patients"],["el-treat","Elpitiya Estate camp","A doctor treating a patient"],["el-prep","Elpitiya Estate camp","Preparing medicines"],["el-dispense","Elpitiya Estate camp","Dispensing medicines"],["el-meds","Elpitiya Estate camp","Medicines handed out"],["el-brief","Elpitiya Estate camp","Briefing participants"],["el-waiting","Elpitiya Estate camp","Waiting to be seen"],["el-queue1","Elpitiya Estate camp","Residents waiting their turn"],["el-queue2","Elpitiya Estate camp","Vision checks in the queue"],["el-queue3","Elpitiya Estate camp","Workers and residents in line"],["el-team","Elpitiya Estate camp","Doctors, optometrists and the Veridian team at Elpitiya Estate"]];
 function makeGal(id,pics,limit=8){const g=$(id);if(!g||!pics.length)return;let all=false;
