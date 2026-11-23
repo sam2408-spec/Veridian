@@ -894,7 +894,7 @@ slides("slidesA","dotsA");slides("slidesC","dotsC");
 /* reveal */
 const io="IntersectionObserver" in window?new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.12}):null;
 function reveal(root){root.querySelectorAll(".rv:not(.in)").forEach(el=>io&&!reduce?io.observe(el):el.classList.add("in"))}
-{const items=[...courses,...works].filter(c=>c.h!=="Computer & English Skills for Adults"),cats=["First Aid","Life Skills","Corporate Training","Child & Parenting","Language Training","Art & Wellbeing"],ch=$("courseChips"),gr=$("courseGrid");
+{const items=[...courses,...works,...svcs.filter(c=>c.h==="Positive Parenting Coaching").map(c=>({...c,g:["Child & Parenting"]}))].filter(c=>c.h!=="Computer & English Skills for Adults"),cats=["First Aid","Life Skills","Corporate Training","Child & Parenting","Language Training","Art & Wellbeing"],ch=$("courseChips"),gr=$("courseGrid");
  ch.innerHTML=["All",...cats].map((c,i)=>`<button class="chip${i?"":" on"}" data-c="${c}">${c==="All"?"All programmes":c} <small>${c==="All"?items.length:items.filter(o=>o.g.includes(c)).length}</small></button>`).join("");
  const draw=c=>{gr.innerHTML=items.filter(o=>c==="All"||o.g.includes(c)).map(card).join("");reveal(gr)};
  ch.addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;ch.querySelectorAll(".chip").forEach(x=>x.classList.toggle("on",x===b));draw(b.dataset.c)});draw("All")}
