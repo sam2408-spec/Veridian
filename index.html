@@ -418,6 +418,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:20px;font-siz
     <a class="card" href="#ditwah" style="text-decoration:none"><div class="thumb"><img src="img/dw-medical.webp" alt="" style="object-position:center 35%"></div><div class="body"><span class="tag">Project 2 · Disaster relief</span><h3>Cyclone Ditwah relief</h3><p>Medical assistance in Wellampitiya relief camps, relief materials and two clothes drives — in collaboration with the Free Palestine Movement Sri Lanka.</p><span class="more">Read more →</span></div></a>
     <a class="card" href="#eduragala" style="text-decoration:none"><div class="thumb"><img src="img/ed-hall.webp" alt="The Eduragala Estate medical camp in progress" loading="lazy"></div><div class="body"><span class="tag">Project 3 · Community health</span><h3>Eduragala Estate medical camp</h3><p>A free Ayurveda, Western medicine and eye clinic for the people of Eduragala Estate, Ingiriya, with glasses for those who needed them.</p><span class="more">Read more →</span></div></a>
     <a class="card" href="#elpitiya" style="text-decoration:none"><div class="thumb"><img src="img/el-hall.webp" alt="The Elpitiya Estate camp in progress" loading="lazy"></div><div class="body"><span class="tag">Project 4 · Community health</span><h3>Elpitiya Estate medical &amp; eye camp</h3><p>A medical and eye check-up camp for the workers and residents of Elpitiya Estate, with follow-up screening and hospital referrals.</p><span class="more">Read more →</span></div></a>
+    <a class="card" href="#fearless" style="text-decoration:none"><div class="thumb"><img src="img/sf-landscape.webp" alt="A painting made at the fundraiser" loading="lazy" style="object-position:center 60%"></div><div class="body"><span class="tag">Project 5 · Fundraiser for Gaza</span><h3>An Afternoon of Art and Breath</h3><p>An art and relaxation session at The Fearless Space, raising funds for Al Noor Educational Classes, a school in Gaza.</p><span class="more">Read more →</span></div></a>
   </div></div></section>
 
   <section class="band" id="expressions" style="padding-bottom:0"><div class="wrap">
@@ -607,6 +608,48 @@ footer .base{border-top:1px solid rgba(255,255,255,.15);margin-top:20px;font-siz
     <h2 class="rv">Thank you to everyone who made it possible</h2>
     <p class="rv" style="margin-top:12px">The Elpitiya camp would not have been possible without the people who stood behind it. Our heartfelt thanks go to Dr. Sudarshi Costa, who initiated the camp, and our deep gratitude to her father-in-law for his tireless effort in making it happen. Special thanks to Osandara Maddumaarachchi for her support, as always, and to the two doctors who travelled to the camp grounds to provide consultations for the participants. We thank our facilitators from the Sri Lanka Optometric Association for their valuable service, and all our sponsors and supporters, who generously provided medicines and glasses and helped in many other ways. Because of them, we were able to make this possible.</p>
   </div></section>
+
+  <section class="band dark" id="fearless" style="background:linear-gradient(90deg,rgba(10,25,50,.92),rgba(10,25,50,.6)),url(img/sf-table.webp) center 40%/cover"><div class="wrap">
+    <div class="label">Project 5 · Fundraiser for Gaza</div>
+    <h2 style="font-size:clamp(30px,4vw,46px)">An Afternoon of Art and Breath</h2>
+    <p class="lede" style="color:#e3e9f4">On Sunday, 22 November 2026, a room in Colombo 5 filled with people who gave up their afternoon for an event with a purpose beyond the room.</p>
+  </div></section>
+
+  <section class="band"><div class="wrap split" style="align-items:start">
+    <div class="rv">
+      <div class="label">The afternoon</div>
+      <h2>Arriving, breathing, creating</h2>
+      <p>The Sunflower Circle organised the fundraiser at The Fearless Space, and it began at 3 in the afternoon with a quiet start. Sameera Mahboobdeen, clinical psychologist and founder of Veridian Academy, led everyone through a relaxation session, guiding the room through deep breaths until the usual noise of the week began to settle. It was a gentle way to arrive, and it set the tone for the hours that followed.</p>
+      <p>Sameera then spoke about art and what it means to express ourselves through it — how a person’s mental state tends to show up in what they create, and how a piece can carry things a person has not yet found words for. She returned to the breathing exercises and showed how certain techniques can help the brain become more alert, giving everyone something practical to take home.</p>
+    </div>
+    <div class="rv">
+      <div class="label">The conversation</div>
+      <h2>Talking through the art</h2>
+      <p>What made the afternoon feel so personal was the conversation. Participants sat with Sameera and talked through their own work, asking what it might be saying and what it revealed about them. That kind of exchange with a professional is rare, and it was a highlight of the day.</p>
+      <p>The event wrapped up a little after 5, but its purpose carries on.</p>
+    </div>
+  </div></section>
+
+  <section class="band alt"><div class="wrap split" style="align-items:center">
+    <div class="rv">
+      <div class="label">Where the funds go</div>
+      <h2>Al Noor Educational Classes, Gaza</h2>
+      <p>All funds raised go to Al Noor Educational Classes, a school in Gaza, to help the school and its students through the winter. A school that stays open gives children a place to learn and a bit of routine — and everyone who came and took part helped make that possible.</p>
+    </div>
+    <div class="rv"><blockquote>“Everyone in that room came for an afternoon of art and left having done something for children they will probably never meet.”<cite>The Sunflower Circle</cite></blockquote></div>
+  </div></section>
+
+  <section class="band"><div class="wrap">
+    <div class="label rv">On the day</div>
+    <h2 class="rv">Scenes from The Fearless Space</h2>
+    <div class="gal" id="sfGal" style="margin-top:16px"></div>
+  </div></section>
+
+  <section class="band alt"><div class="wrap">
+    <div class="label rv">With gratitude</div>
+    <h2 class="rv">Thank you</h2>
+    <p class="rv" style="margin-top:12px">Our thanks to The Sunflower Circle for organising the fundraiser, to The Fearless Space for hosting us, and to everyone who showed up, painted, shared and gave so generously for the children of Gaza.</p>
+  </div></section>
 </section>
 
 <!-- ================= ACADEMY CONTACT ================= -->
@@ -794,6 +837,8 @@ function makeGal(id,pics,limit=8){const g=$(id);if(!g||!pics.length)return;let a
  const draw=()=>{const list=all?pics:pics.slice(0,limit);g.innerHTML=list.map((p,i)=>`<button data-i="${i}" aria-label="Open photo: ${p[2]}"><img src="img/${p[0]}.webp" alt="${p[2]}" loading="lazy"><span>${p[2]}</span></button>`).join("")+(pics.length>limit?`<button class="btn gal-more" type="button">${all?"Show fewer photos":"View all "+pics.length+" photos"}</button>`:"")};
  g.addEventListener("click",e=>{if(e.target.closest(".gal-more")){all=!all;draw();if(!all)g.scrollIntoView({block:"start"});return}const b=e.target.closest("button[data-i]");if(b){shown=pics;openLb(+b.dataset.i)}});draw()}
 makeGal("exGal",exPics);makeGal("dwGal",dwPics.slice(0,6));makeGal("edGal",edPics);
+const sfPics=[["sf-above","The Fearless Space","Painting together at The Fearless Space"],["sf-paint","The Fearless Space","Colour and movement on paper"],["sf-table","The Fearless Space","Brushes, paint and quiet focus"],["sf-paint2","The Fearless Space","A participant at work"],["sf-landscape","The Fearless Space","A finished landscape"]];
+makeGal("sfGal",sfPics);
 if(elPics.length){$("elGalWrap").hidden=false;makeGal("elGal",elPics)}
 document.querySelectorAll(".pbtn").forEach(b=>b.addEventListener("click",()=>{shown=dwPics;openLb(+b.dataset.dw)}));
 document.addEventListener("click",e=>{const m=e.target.closest(".mantra");document.querySelectorAll(".mantra.open").forEach(x=>{if(x!==m){x.classList.remove("open");x.setAttribute("aria-expanded","false")}});if(m){const o=m.classList.toggle("open");m.setAttribute("aria-expanded",o)}});
