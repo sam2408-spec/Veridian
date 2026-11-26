@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>الإسعافات الأولية · First aid — Zaytoun School</title>
+<meta name="description" content="Free first aid and CPR lessons in Arabic and English for teens and adults in disaster areas, with no equipment.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#b4432f">
+<link rel="manifest" href="/school/manifest.webmanifest">
+<link rel="icon" href="/school/icon.svg" type="image/svg+xml">
+<style>
+:root{--bg:#f1f5ec;--surface:#fff;--ink:#1d2a1a;--muted:#56664f;--olive:#4c6a2b;--olive-soft:#dfe8d2;--red:#b4432f;--red-soft:#f8e1dc;--sun-soft:#fbeccb;--line:#d3dcc9;
+ --f-ar:"Noto Naskh Arabic","Geeza Pro","Segoe UI","Tahoma",sans-serif;--f-ui:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif}
+@media (prefers-color-scheme:dark){:root{--bg:#141a12;--surface:#1e261b;--ink:#e7eee0;--muted:#a3b39a;--olive:#9cc06a;--olive-soft:#2b3a22;--red:#f08a76;--red-soft:#3d2229;--sun-soft:#3a3018;--line:#33402d;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:17px;line-height:1.6}
+html[dir="rtl"] body{font-family:var(--f-ar)}
+.wrap{max-width:720px;margin:0 auto;padding:18px max(16px,env(safe-area-inset-left,0px)) 40px;display:flex;flex-direction:column;gap:16px}
+header{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+h1{font-size:1.35rem;margin:0}h2{font-size:1.25rem;margin:0 0 8px}h3{font-size:1.05rem;margin:14px 0 6px}
+a{color:var(--olive)}
+.btn,.pill{font:inherit;border:0;border-radius:999px;cursor:pointer;min-height:44px;padding:8px 16px}
+.btn{background:var(--red);color:#fff;font-weight:700}
+.pill{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px}
+.draft{background:var(--sun-soft);border-radius:14px;padding:10px 14px;font-size:.92rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.topic{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px;font:inherit;color:inherit;cursor:pointer;min-height:96px}
+.topic .em{font-size:1.6rem;line-height:1}
+.topic.crit{border-color:var(--red);background:var(--red-soft)}
+ol,ul{padding-inline-start:1.3em;margin:6px 0}
+li{margin:5px 0}
+.flags{background:var(--red-soft);border-radius:14px;padding:10px 14px;margin-top:12px}
+.flags h3{color:var(--red);margin-top:4px}
+.tip{background:var(--olive-soft);border-radius:14px;padding:10px 14px;margin-top:12px}
+.dont{margin-top:10px}
+.src{font-size:.88rem;color:var(--muted)}
+footer{font-size:.85rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script>
+/* DRAFT — every lesson below must be checked by a qualified first aid Master Trainer, and the Arabic by a native speaker, before this page goes public.
+   Based on current UK first aid practice (St John Ambulance, British Red Cross, Resuscitation Council UK) adapted for places with no ambulance or equipment. */
+var L=(function(){try{return JSON.parse(localStorage.getItem("zs_lang"))||"ar"}catch(e){return "ar"}})();
+var UI={
+ ar:{title:"الإسعافات الأولية",sub:"لليافعين والكبار · بدون معدّات",back:"كل الدروس",home:"مدرسة الزيتون",
+  draft:"مسودّة: هذه الدروس قيد المراجعة من مدرّبة إسعافات أولية معتمدة قبل نشرها.",
+  intro:"خطوات بسيطة يمكن أن تنقذ حياة حتى لو لم يكن هناك إسعاف أو معدّات. اقرأها الآن، قبل أن تحتاجها، وتدرّب عليها مع عائلتك.",
+  crit:"أولًا: الحالات التي تهدّد الحياة",more:"إصابات أخرى",flags:"علامات خطر: اطلب مساعدة طبية فورًا",dont:"لا تفعل",tip:"عند غياب المعدّات",
+  see:"شاهد وتعلّم أكثر (بالإنجليزية) من سانت جون أمبولانس البريطانية:",
+  foot:"هذه الدروس لا تغني عن دورة عملية مع مدرّب. اعتنِ بنفسك أيضًا: لا تدخل مكانًا خطرًا، واطلب المساعدة دائمًا."},
+ en:{title:"First aid",sub:"For teens and adults · no equipment",back:"All lessons",home:"Zaytoun School",
+  draft:"Draft: these lessons are being reviewed by a qualified first aid Master Trainer before they are published.",
+  intro:"Simple steps that can save a life even when there is no ambulance and no equipment. Read them now, before you need them, and practise with your family.",
+  crit:"First: life-threatening emergencies",more:"Other injuries",flags:"Red flags: get medical help urgently",dont:"Do not",tip:"With no equipment",
+  see:"Watch and learn more from St John Ambulance (UK):",
+  foot:"These lessons do not replace a hands-on course with a trainer. Look after yourself too: do not enter a dangerous place, and always call for help."}
+};
+var SJA="https://www.sja.org.uk/";
+/* Each lesson: em, crit (life-threatening group), en/ar {t, s: steps, f: red flags, d: do-not list, x: no-equipment tip}, link */
+var T=[
+{id:"safe",em:"⚠️",crit:1,link:SJA+"get-advice/",
+ en:{t:"First steps at any emergency",s:["Danger: look for falling walls, fire, gas, wires and further strikes. Do not become the second casualty.","Response: speak loudly and tap the shoulders. Do they answer or open their eyes?","Shout for help so others can come.","Airway: tilt the head back gently with one hand on the forehead and two fingers lifting the chin.","Breathing: look, listen and feel for normal breathing for up to 10 seconds.","Not breathing normally → start CPR. Breathing but unresponsive → recovery position. Then look for severe bleeding.","With many injured: help first those who are not breathing or are bleeding heavily. Someone who is shouting is breathing."],
+  f:["Not breathing, or only gasping","Heavy bleeding","Unresponsive or confused"]},
+ ar:{t:"الخطوات الأولى في أي حالة طارئة",s:["الخطر: انتبه للجدران المتصدّعة والنار والغاز والأسلاك واحتمال قصف جديد. لا تصبح أنت المصاب الثاني.","الاستجابة: كلّمه بصوت عالٍ واضغط على كتفيه. هل يردّ أو يفتح عينيه؟","اصرخ طالبًا المساعدة حتى يأتي آخرون.","مجرى الهواء: أمِل الرأس للخلف بلطف، يد على الجبهة وإصبعان يرفعان الذقن.","التنفّس: انظر واسمع واشعر بالتنفّس الطبيعي لمدة لا تزيد عن ١٠ ثوانٍ.","لا يتنفّس طبيعيًا ← ابدأ الإنعاش القلبي. يتنفّس لكنه لا يستجيب ← وضعية الإفاقة. ثم ابحث عن نزيف شديد.","عند وجود مصابين كثيرين: ساعد أولًا من لا يتنفّس أو من ينزف بشدّة. من يصرخ فهو يتنفّس."],
+  f:["لا يتنفّس، أو يشهق شهقات متقطّعة فقط","نزيف شديد","لا يستجيب أو مشوّش"]}},
+{id:"cpr",em:"❤️",crit:1,link:SJA+"first-aid-advice/cardiac-arrest/",
+ en:{t:"CPR — adult (heart has stopped)",s:["Check: unresponsive and not breathing normally (gasping is not normal breathing).","Send someone for help and for a defibrillator (AED) if any exists nearby.","Kneel beside them. Put the heel of one hand in the centre of the chest, the other hand on top, fingers locked.","Arms straight, shoulders above your hands. Push down 5–6 cm, then let the chest come fully back up.","Push hard and fast: 100–120 times a minute (the beat of a fast song).","After 30 pushes, give 2 rescue breaths: tilt the head, lift the chin, pinch the nose, seal your mouth over theirs, blow for 1 second until the chest rises.","If you cannot or will not give breaths, do hands-only CPR without stopping.","Keep going until they breathe normally, help takes over, or you are too exhausted. Swap with another person every 2 minutes if you can."],
+  d:["Do not stop to check again and again","Do not worry about breaking ribs — without CPR they will die"]},
+ ar:{t:"الإنعاش القلبي الرئوي — للكبار (توقّف القلب)",s:["تأكّد: لا يستجيب ولا يتنفّس طبيعيًا (الشهقات ليست تنفّسًا طبيعيًا).","أرسل أحدًا لطلب المساعدة ولإحضار جهاز الصدمات (مزيل الرجفان) إن وُجد قريبًا.","اركع بجانبه. ضع راحة يدك في منتصف الصدر، واليد الأخرى فوقها، والأصابع متشابكة.","ذراعاك مستقيمتان وكتفاك فوق يديك. اضغط إلى عمق ٥–٦ سم، ثم دع الصدر يرتفع تمامًا.","اضغط بقوّة وسرعة: ١٠٠–١٢٠ مرّة في الدقيقة.","بعد ٣٠ ضغطة، أعطِ نفَسين: أمِل الرأس، ارفع الذقن، أغلق الأنف، ضع فمك على فمه وانفخ ثانية واحدة حتى يرتفع الصدر.","إن لم تستطع إعطاء الأنفاس، فاستمرّ بالضغط على الصدر فقط دون توقّف.","استمرّ حتى يتنفّس طبيعيًا، أو يصل من يستلم منك، أو تنهك تمامًا. بدّل مع شخص آخر كل دقيقتين إن أمكن."],
+  d:["لا تتوقّف لتفحص مرّة بعد مرّة","لا تخف من كسر الأضلاع، فبدون الإنعاش سيموت"]}},
+{id:"cprchild",em:"🧒",crit:1,link:SJA+"first-aid-advice/cardiac-arrest/",
+ en:{t:"CPR — child and baby",s:["Open the airway. If not breathing normally, give 5 rescue breaths first.","Child (1 year to puberty): cover the child's mouth with yours and pinch the nose. Baby (under 1): keep the head level, not tilted far back, and cover the baby's mouth and nose with your mouth.","Then 30 chest compressions: child — one or two hands in the centre of the chest, press one third of the chest depth (about 5 cm). Baby — two fingers in the centre of the chest, about 4 cm.","Then 2 breaths, 30 compressions, and repeat, at 100–120 a minute.","If you are alone with no phone, do CPR for 1 minute before going for help; carry a baby with you."]},
+ ar:{t:"الإنعاش القلبي — للطفل والرضيع",s:["افتح مجرى الهواء. إن لم يتنفّس طبيعيًا، أعطِ ٥ أنفاس أولًا.","الطفل (من سنة حتى البلوغ): ضع فمك على فمه وأغلق أنفه. الرضيع (أقل من سنة): أبقِ الرأس مستويًا دون إمالة كبيرة، وضع فمك على فمه وأنفه معًا.","ثم ٣٠ ضغطة على الصدر: الطفل — بيد أو يدين في منتصف الصدر، بعمق ثلث الصدر (نحو ٥ سم). الرضيع — بإصبعين في منتصف الصدر، نحو ٤ سم.","ثم نفَسان، ثم ٣٠ ضغطة، وكرّر، بمعدّل ١٠٠–١٢٠ في الدقيقة.","إن كنت وحدك بلا هاتف، قم بالإنعاش دقيقة كاملة قبل الذهاب لطلب المساعدة؛ واحمل الرضيع معك."]}},
+{id:"recovery",em:"🛌",crit:1,link:SJA+"get-advice/",
+ en:{t:"Recovery position (unresponsive but breathing)",s:["Kneel beside them. Put the arm nearest you at a right angle, palm up.","Bring the far arm across the chest and hold the back of that hand against their near cheek.","Bend the far knee up, then pull on that knee to roll them towards you onto their side.","Adjust the top leg so hip and knee are at right angles. Tilt the head back so vomit can drain out.","Check breathing all the time. If it stops, roll them on their back and start CPR."],
+  d:["If you suspect a spinal injury and they are breathing, keep them on their back holding the head still — roll them only if they vomit or you must leave them"]},
+ ar:{t:"وضعية الإفاقة (لا يستجيب لكنه يتنفّس)",s:["اركع بجانبه. ضع ذراعه القريبة منك بزاوية قائمة وكفّها للأعلى.","مرّر ذراعه البعيدة فوق صدره وثبّت ظهر يده على خدّه القريب منك.","اثنِ ركبته البعيدة للأعلى، ثم اسحبها نحوك ليتدحرج على جنبه.","عدّل الساق العليا لتكون الورك والركبة بزاوية قائمة. أمِل الرأس للخلف ليخرج القيء من الفم.","راقب تنفّسه باستمرار. إن توقّف، أعده على ظهره وابدأ الإنعاش."],
+  d:["إن شككت بإصابة في العمود الفقري وكان يتنفّس، أبقِه على ظهره مع تثبيت رأسه، ولا تقلبه إلا إذا تقيّأ أو اضطررت لتركه"]}},
+{id:"choke",em:"😮",crit:1,link:SJA+"first-aid-advice/choking/",
+ en:{t:"Choking",s:["If they can cough, encourage them to keep coughing.","If they cannot cough, speak or breathe: bend them forward and give up to 5 sharp back blows between the shoulder blades with the heel of your hand.","Still blocked: stand behind them, fist just above the belly button, other hand over it, pull sharply inwards and upwards up to 5 times.","Repeat 5 back blows and 5 thrusts until it comes out. If they become unresponsive, start CPR.","Baby: lay face down along your forearm, head low, 5 back blows; then turn face up and give 5 chest thrusts with two fingers in the centre of the chest. Never squeeze a baby's belly.","Anyone given abdominal thrusts must be checked by a medical worker afterwards."]},
+ ar:{t:"الاختناق (الغصّة)",s:["إن كان يستطيع السعال، شجّعه على الاستمرار بالسعال.","إن لم يستطع السعال أو الكلام أو التنفّس: أمِله للأمام واضرب حتى ٥ ضربات قوية بين لوحَي الكتف بأسفل راحة يدك.","إن بقي الانسداد: قف خلفه، ضع قبضتك فوق السرّة مباشرة واليد الأخرى فوقها، واسحب بقوّة للداخل وللأعلى حتى ٥ مرّات.","كرّر ٥ ضربات و٥ دفعات حتى يخرج الجسم. إن فقد الوعي، ابدأ الإنعاش القلبي.","الرضيع: ضعه على بطنه فوق ساعدك ورأسه منخفض، ٥ ضربات على الظهر؛ ثم اقلبه على ظهره وأعطِ ٥ ضغطات على الصدر بإصبعين في المنتصف. لا تضغط أبدًا على بطن الرضيع.","كل من أُعطي دفعات على البطن يجب أن يفحصه عامل صحي بعد ذلك."]}},
+{id:"bleed",em:"🩸",crit:1,link:SJA+"first-aid-advice/severe-bleeding/",
+ en:{t:"Severe bleeding",s:["Protect your hands if you can (plastic bag, gloves).","Press hard directly on the wound with a clean cloth — or your hand if there is nothing else. Keep pressing.","Deep wound: pack it firmly with cloth, pushing it right into the wound, then press on top for at least 10 minutes.","Tie a firm bandage over the pad. If blood comes through, add another pad on top — do not remove the first.","Lay them down and keep them warm (shock).","Life-threatening bleeding from an arm or leg that pressure cannot stop: use a tourniquet (see below)."],
+  x:"Improvised tourniquet: a strip of cloth at least 5 cm wide (a scarf, a folded shirt) — never wire, string or a thin cord. Tie it 5–7 cm above the wound, not on a joint. Tie a stick into the knot and twist until the bleeding stops. Tie the stick in place, write the time on the skin or the band, and do not loosen it. It hurts; that is expected. Get them to medical care.",
+  f:["Blood spurting or pouring","Bleeding that soaks through dressings","Pale, cold, sweaty skin, fast breathing (shock)"]},
+ ar:{t:"النزيف الشديد",s:["احمِ يديك إن أمكن (كيس بلاستيكي، قفّازات).","اضغط بقوّة مباشرة على الجرح بقطعة قماش نظيفة — أو بيدك إن لم يوجد غيرها. استمرّ بالضغط.","الجرح العميق: احشُه بإحكام بالقماش داخل الجرح نفسه، ثم اضغط فوقه ١٠ دقائق على الأقل.","اربط ضمادة محكمة فوق الحشوة. إن خرج الدم منها، أضف حشوة أخرى فوقها ولا تنزع الأولى.","مدّده وأبقِه دافئًا (الصدمة).","نزيف يهدّد الحياة من الذراع أو الساق لا يتوقّف بالضغط: استخدم رباطًا ضاغطًا (العاصبة) كما في الأسفل."],
+  x:"عاصبة مرتجلة: شريط قماش بعرض ٥ سم على الأقل (وشاح، قميص مطويّ) — لا تستخدم أبدًا سلكًا أو خيطًا رفيعًا. اربطه على بُعد ٥–٧ سم فوق الجرح، وليس على مفصل. أدخل عصا في العقدة ولفّها حتى يتوقّف النزيف. ثبّت العصا، واكتب الوقت على الجلد أو على الرباط، ولا ترخِه. سيؤلم، وهذا متوقّع. انقله إلى رعاية طبية.",
+  f:["دم يندفع أو يتدفّق","نزيف يبلّل الضمادات","جلد شاحب بارد متعرّق وتنفّس سريع (صدمة)"]}},
+{id:"shock",em:"🥶",crit:1,link:SJA+"get-advice/",
+ en:{t:"Shock (from blood loss)",s:["Signs: pale, cold, clammy skin; fast weak pulse; fast shallow breathing; thirst; confusion or drowsiness.","Treat the cause first — stop the bleeding.","Lay them down. If there is no leg, hip or spinal injury, raise and support their legs.","Keep them warm with blankets or clothes, under them as well as over them.","Loosen tight clothing. Reassure them and stay with them.","Check breathing and response often. Be ready to start CPR."],
+  d:["Do not give food. Do not let them walk around"]},
+ ar:{t:"الصدمة (بسبب فقدان الدم)",s:["العلامات: جلد شاحب بارد رطب، نبض سريع ضعيف، تنفّس سريع سطحي، عطش، تشوّش أو نعاس.","عالج السبب أولًا — أوقف النزيف.","مدّده. إن لم تكن هناك إصابة في الساق أو الورك أو العمود الفقري، ارفع ساقيه وادعمهما.","أبقِه دافئًا بالبطانيات أو الملابس، تحته وفوقه.","فكّ الملابس الضيّقة. طمئنه وابقَ معه.","راقب تنفّسه واستجابته كثيرًا. كن مستعدًا لبدء الإنعاش."],
+  d:["لا تعطه طعامًا. لا تدعه يمشي"]}},
+{id:"redflags",em:"🚩",crit:1,link:SJA+"get-advice/",
+ en:{t:"Red flags in any injury",s:["Not breathing, or noisy, very fast or very slow breathing","Unresponsive, very drowsy, confused, or a fit (seizure)","Heavy bleeding, or signs of shock: pale, cold, sweaty, fast pulse","Chest pain, or a wound to the chest, belly, neck or head","Blood or clear fluid from ears or nose after a head injury","Vomiting more than once after a head injury","Weakness, numbness or tingling in arms or legs after a fall or crush","A limb below an injury that is cold, blue/white or numb","Very little or dark (cola-coloured) urine after being trapped","Babies, pregnant women, older people and anyone with long-term illness need help sooner"]},
+ ar:{t:"علامات الخطر في أي إصابة",s:["لا يتنفّس، أو تنفّس مسموع أو سريع جدًا أو بطيء جدًا","لا يستجيب، أو نعاس شديد، أو تشوّش، أو نوبة تشنّج","نزيف شديد، أو علامات الصدمة: شحوب وبرودة وتعرّق ونبض سريع","ألم في الصدر، أو جرح في الصدر أو البطن أو الرقبة أو الرأس","دم أو سائل شفاف من الأذن أو الأنف بعد إصابة الرأس","قيء أكثر من مرّة بعد إصابة الرأس","ضعف أو خدر أو تنميل في الذراعين أو الساقين بعد سقوط أو انضغاط","طرف بعد الإصابة بارد أو أزرق/أبيض أو فاقد الإحساس","بول قليل جدًا أو داكن (بلون الكولا) بعد أن كان عالقًا","الرضّع والحوامل وكبار السن والمرضى المزمنون يحتاجون المساعدة أسرع"]}},
+{id:"crush",em:"🧱",link:SJA+"get-advice/",
+ en:{t:"Crush injuries (trapped under rubble)",s:["Make sure it is safe. Call for help — lifting heavy rubble needs several people; lift evenly so it does not fall back.","Free them as quickly and safely as you can, however long they have been trapped.","As soon as they are free, control any bleeding and treat for shock.","Check for broken bones and support them. Keep them warm and lying down.","If they are fully awake, can swallow and have no belly wound, small regular sips of clean water help protect the kidneys.","Anyone trapped for a long time (more than about an hour) can suddenly become very ill after release — get them to medical care quickly and watch them closely."],
+  d:["Do not tie a tourniquet just because a limb was crushed — only for life-threatening bleeding","Do not let them walk away even if they feel fine"],
+  f:["Little or dark urine","Swelling, hard and very painful limb","Irregular heartbeat, weakness, confusion"]},
+ ar:{t:"إصابات الانضغاط (العالقون تحت الأنقاض)",s:["تأكّد من الأمان. اطلب المساعدة — رفع الأنقاض الثقيلة يحتاج عدّة أشخاص؛ ارفعوا بالتساوي حتى لا تسقط من جديد.","حرّره بأسرع ما يمكن وبأمان، مهما طالت مدّة انحباسه.","فور تحريره، أوقف أي نزيف وعالج الصدمة.","افحص الكسور وثبّتها. أبقِه دافئًا وممدّدًا.","إن كان واعيًا تمامًا ويستطيع البلع وليس لديه جرح في البطن، فرشفات صغيرة منتظمة من الماء النظيف تساعد على حماية الكليتين.","من بقي عالقًا مدّة طويلة (أكثر من ساعة تقريبًا) قد يتدهور فجأة بعد تحريره — انقله إلى الرعاية الطبية بسرعة وراقبه عن قرب."],
+  d:["لا تربط عاصبة لمجرّد أن الطرف انضغط — فقط عند نزيف يهدّد الحياة","لا تدعه يمشي حتى لو شعر أنه بخير"],
+  f:["بول قليل أو داكن","طرف متورّم صلب ومؤلم جدًا","ضربات قلب غير منتظمة، ضعف، تشوّش"]}},
+{id:"head",em:"🧠",link:SJA+"get-advice/",
+ en:{t:"Head injury",s:["If they are unresponsive, check breathing, and treat as a possible spinal injury too.","If awake: sit or lay them down. Hold a cold cloth (wet cloth or cold water in a bag) on any bump for up to 10 minutes.","Scalp wounds bleed a lot: press firmly with a clean pad. Do not press hard if the skull feels soft or dented — press around the edges instead.","Stay with them and watch them closely for 24–48 hours: are they talking normally, recognising people, moving all limbs?","Wake a sleeping person every few hours to check they respond normally."],
+  f:["Getting more drowsy, confused or hard to wake","Vomiting more than once","Worsening headache","Fit (seizure)","Pupils of different sizes","Blood or clear fluid from ears or nose","Weakness, slurred speech, problems with sight","Bruising around the eyes or behind the ears"]},
+ ar:{t:"إصابة الرأس",s:["إن كان لا يستجيب، افحص التنفّس، وتعامل معه كأن لديه إصابة محتملة في العمود الفقري أيضًا.","إن كان واعيًا: أجلسه أو مدّده. ضع قطعة قماش باردة (مبلّلة أو ماء بارد في كيس) على أي انتفاخ حتى ١٠ دقائق.","جروح فروة الرأس تنزف كثيرًا: اضغط بقوّة بقطعة نظيفة. لا تضغط بقوّة إن شعرت أن الجمجمة ليّنة أو منخفضة — اضغط حول الأطراف بدلًا من ذلك.","ابقَ معه وراقبه عن قرب ٢٤–٤٨ ساعة: هل يتكلّم طبيعيًا، يعرف الناس، يحرّك أطرافه كلّها؟","أيقظ النائم كل بضع ساعات لتتأكّد أنه يستجيب طبيعيًا."],
+  f:["يزداد نعاسًا أو تشوّشًا أو يصعب إيقاظه","قيء أكثر من مرّة","صداع يزداد سوءًا","نوبة تشنّج","بؤبؤا العينين مختلفا الحجم","دم أو سائل شفاف من الأذن أو الأنف","ضعف، تلعثم في الكلام، مشاكل في الرؤية","كدمات حول العينين أو خلف الأذنين"]}},
+{id:"spine",em:"🦴",link:SJA+"get-advice/",
+ en:{t:"Spinal injury, log roll and collar",s:["Suspect it after a fall from height, a building collapse, a blast, or a head injury; or with neck or back pain, or tingling or weakness in limbs.","Tell them not to move. Kneel behind their head and hold it still with a hand over each ear, head, neck and body in a straight line.","Do not move them unless they are in danger, need CPR, or are vomiting.","Log roll (needs 3–4 people): one person holds the head and gives the commands. Others kneel along one side, hands on shoulder, hip and legs. On the count, roll the whole body together like a log, keeping head, neck and back in line.","Moving onto a board or door: log roll them onto the side, slide the board under, then roll back on the leader's count."],
+  x:"Keeping the head still: put rolled blankets, towels, clothes or bags of sand/soil on both sides of the head and tape or tie them to the board. If you must move them over a distance, an improvised collar can help: fold a newspaper, magazine or a large piece of cardboard to the width of the neck (chin to collarbone), wrap it in cloth and fit it loosely around the neck, tying it at the front. It must never press on the throat or stop breathing. A collar is never a replacement for someone holding the head.",
+  f:["Unable to move or feel arms or legs","Difficulty breathing","Loss of bladder or bowel control"]},
+ ar:{t:"إصابة العمود الفقري والتدحرج الجذعي والطوق",s:["اشتبه بها بعد السقوط من ارتفاع، أو انهيار مبنى، أو انفجار، أو إصابة في الرأس؛ أو مع ألم في الرقبة أو الظهر، أو تنميل أو ضعف في الأطراف.","اطلب منه ألّا يتحرّك. اركع خلف رأسه وثبّته بيد على كل أذن، بحيث يكون الرأس والرقبة والجسم في خطّ مستقيم.","لا تحرّكه إلا إذا كان في خطر، أو يحتاج للإنعاش، أو يتقيّأ.","التدحرج الجذعي (يحتاج ٣–٤ أشخاص): شخص يثبّت الرأس ويعطي الأوامر. الآخرون يركعون على جانب واحد وأيديهم على الكتف والورك والساقين. عند العدّ، اقلبوا الجسم كلّه معًا كجذع شجرة، مع إبقاء الرأس والرقبة والظهر في خطّ واحد.","النقل إلى لوح أو باب: اقلبوه على جنبه، أدخلوا اللوح تحته، ثم أعيدوه على عدّ القائد."],
+  x:"تثبيت الرأس: ضع بطانيات أو مناشف أو ملابس ملفوفة، أو أكياسًا من الرمل أو التراب على جانبي الرأس، وثبّتها باللوح. إن اضطررت لنقله مسافة، قد يساعد طوق مرتجل: اطوِ جريدة أو مجلّة أو قطعة كرتون كبيرة بعرض الرقبة (من الذقن إلى الترقوة)، ولفّها بقماش، وضعها حول الرقبة دون شدّ واربطها من الأمام. يجب ألّا تضغط أبدًا على الحلق أو تعيق التنفّس. الطوق لا يغني أبدًا عن شخص يثبّت الرأس بيديه.",
+  f:["لا يستطيع تحريك ذراعيه أو ساقيه أو الإحساس بهما","صعوبة في التنفّس","فقدان التحكّم بالمثانة أو الأمعاء"]}},
+{id:"fracture",em:"🩼",link:SJA+"get-advice/",
+ en:{t:"Broken bones and improvised splints",s:["Signs: pain, swelling, a strange shape, a grating feeling, cannot use it.","Keep the injured part still in the position you found it. Support it above and below the injury with your hands or padding.","Open fracture (bone through the skin): cover the wound with a clean cloth and press around the bone, not on it.","Splint only if you need to move them: pad well and tie the splint above and below the break, never over it.","Check below the injury every 15 minutes: warm, pink, can feel touch? If not, loosen the ties."],
+  x:"Splints from anything stiff: cardboard, rolled newspapers or magazines, flat pieces of wood, sticks, a rolled blanket, a pillow wrapped round an arm. Leg: tie the injured leg to the good leg with padding between the knees and ankles (feet tied in a figure-of-eight). Arm: a sling from a scarf, shirt or triangle of cloth, or pin the sleeve to the shirt.",
+  d:["Do not try to straighten a broken bone","Do not let them eat or drink if they may need an operation soon"],
+  f:["Bone through the skin","Thigh or pelvis injury (heavy internal bleeding)","Cold, pale or numb below the injury"]},
+ ar:{t:"الكسور والجبائر المرتجلة",s:["العلامات: ألم، تورّم، شكل غير طبيعي، إحساس بالاحتكاك، عدم القدرة على الاستعمال.","أبقِ الجزء المصاب ثابتًا على الوضع الذي وجدته عليه. ادعمه فوق الإصابة وتحتها بيديك أو بحشوات.","الكسر المفتوح (العظم خارج الجلد): غطِّ الجرح بقماش نظيف واضغط حول العظم وليس عليه.","استعمل الجبيرة فقط إن احتجت لنقله: ضع حشوًا جيدًا واربط الجبيرة فوق الكسر وتحته، وليس عليه أبدًا.","افحص ما تحت الإصابة كل ١٥ دقيقة: دافئ، ورديّ، يشعر باللمس؟ إن لم يكن كذلك، أرخِ الأربطة."],
+  x:"جبائر من أي شيء صلب: كرتون، جرائد أو مجلّات ملفوفة، ألواح خشب مسطّحة، عِصيّ، بطانية ملفوفة، وسادة تُلفّ حول الذراع. الساق: اربط الساق المصابة بالسليمة مع حشو بين الركبتين والكاحلين (والقدمان مربوطتان على شكل ٨). الذراع: علّاقة من وشاح أو قميص أو مثلّث قماش، أو ثبّت الكمّ بالقميص بدبّوس.",
+  d:["لا تحاول تقويم العظم المكسور","لا تعطه أكلًا أو شربًا إن كان قد يحتاج عملية قريبًا"],
+  f:["العظم خارج الجلد","إصابة الفخذ أو الحوض (نزيف داخلي شديد)","برودة أو شحوب أو خدر تحت الإصابة"]}},
+{id:"disloc",em:"💪",link:SJA+"get-advice/",
+ en:{t:"Dislocation, sprain, strain and cramp",s:["Dislocation (joint out of place — shoulder, finger, knee cap): support the limb in the most comfortable position with padding and a sling. Treat it like a broken bone.","Sprain or strain (twisted ankle, pulled muscle): Rest it, put something Cold on it for up to 20 minutes (cloth soaked in cold water), give Comfortable support with a bandage that is not too tight, and Elevate (raise) it.","If it does not improve, or they cannot put any weight on it, treat it as a broken bone.","Cramp: stretch the muscle gently and massage it. Calf cramp: straighten the knee and pull the toes up towards the shin.","Heat cramps after sweating: rest in the shade and drink water, with a pinch of salt and some sugar if available."],
+  d:["Do not try to push a dislocated joint back — it can damage nerves and blood vessels"]},
+ ar:{t:"الخلع والالتواء والشدّ العضلي والتشنّج",s:["الخلع (خروج المفصل من مكانه — الكتف، الإصبع، صابونة الركبة): ادعم الطرف بأكثر وضع مريح بالحشوات والعلّاقة. تعامل معه كالكسر.","الالتواء أو الشدّ (التواء الكاحل، شدّ العضلة): أرِحه، ضع عليه شيئًا باردًا حتى ٢٠ دقيقة (قماش مبلّل بماء بارد)، ادعمه برباط مريح غير مشدود، وارفعه للأعلى.","إن لم يتحسّن، أو لم يستطع الوقوف عليه أبدًا، تعامل معه كالكسر.","التشنّج: مدّ العضلة بلطف ودلّكها. تشنّج الساق: افرد الركبة واسحب أصابع القدم نحو الساق.","تشنّجات الحرّ بعد التعرّق: استرح في الظلّ واشرب ماءً، مع رشّة ملح وقليل من السكّر إن توفّر."],
+  d:["لا تحاول إرجاع المفصل المخلوع — قد يؤذي الأعصاب والأوعية الدموية"]}},
+{id:"wound",em:"📌",link:SJA+"get-advice/",
+ en:{t:"Puncture wounds and embedded objects",s:["Small puncture (nail, glass, shrapnel fragment that has come out): let it bleed a little, wash it well with the cleanest water you have for several minutes, cover with a clean dressing.","Object still stuck in the wound: leave it in — it may be plugging the bleeding. Press on both sides of it, then build padding around it (rolled cloth) and bandage over the padding, not over the object.","Wound to the chest: if air is bubbling or sucking in, leave it open or cover it loosely with a clean cloth — do not seal it completely. Sit them leaning towards the injured side and watch their breathing.","Wound to the belly: lay them down with knees bent; cover any exposed organs with a clean damp cloth. Do not push them back.","Any deep, dirty or puncture wound needs a tetanus vaccine check."],
+  d:["Do not pull out an embedded object","Do not give food or drink with a chest or belly wound"],
+  f:["Increasing redness, swelling, heat, pus, red lines spreading","Fever, or stiff jaw or muscles days later","Difficulty breathing after a chest wound"]},
+ ar:{t:"الجروح الوخزية والأجسام المغروزة",s:["الوخز الصغير (مسمار، زجاج، شظيّة خرجت): دعه ينزف قليلًا، واغسله جيدًا بأنظف ماء لديك لعدّة دقائق، وغطّه بضمادة نظيفة.","جسم ما زال مغروزًا في الجرح: اتركه مكانه — قد يكون سادًّا للنزيف. اضغط على جانبيه، ثم ضع حشوًا حوله (قماش ملفوف) واربط الضمادة فوق الحشو وليس فوق الجسم.","جرح في الصدر: إن كان الهواء يخرج فقاعات أو يُشفط، اتركه مكشوفًا أو غطّه بقماش نظيف دون إحكام — لا تغلقه تمامًا. أجلسه مائلًا نحو الجهة المصابة وراقب تنفّسه.","جرح في البطن: مدّده مع ثني الركبتين؛ غطِّ أي أحشاء ظاهرة بقماش نظيف مبلّل. لا تُرجعها للداخل.","كل جرح عميق أو ملوّث أو وخزي يحتاج التحقّق من لقاح الكزاز."],
+  d:["لا تنزع الجسم المغروز","لا تعطِ أكلًا أو شربًا مع جرح في الصدر أو البطن"],
+  f:["احمرار أو تورّم أو حرارة أو صديد يزداد، أو خطوط حمراء تنتشر","حمّى، أو تيبّس الفك أو العضلات بعد أيام","صعوبة تنفّس بعد جرح في الصدر"]}},
+{id:"eye",em:"👁️",link:SJA+"get-advice/",
+ en:{t:"Eye injuries",s:["Dust or grit: blink, then pour clean water gently across the eye from the inner corner outwards. Lift out a loose speck with the corner of a damp clean cloth.","Chemical in the eye: hold the eye open and pour clean water over it for at least 10–20 minutes, with the injured eye lowest so the water runs away from the good eye.","Blow or cut to the eye: lie them on their back, hold a clean pad lightly over the eye. Ask them to keep both eyes still (moving the good eye moves the injured one).","Object stuck in the eye: do not touch it. Place a paper cup or the bottom of a plastic bottle over the eye without pressing, and bandage it in place."],
+  d:["Do not rub the eye","Do not press on an injured eye","Do not try to remove anything stuck into the eye"],
+  f:["Any object stuck in the eye","Loss of or changes in vision","Blood inside the coloured part of the eye","Chemical injury"]},
+ ar:{t:"إصابات العين",s:["غبار أو رمل: اطلب منه أن يرمش، ثم اسكب ماءً نظيفًا بلطف على العين من الزاوية الداخلية نحو الخارج. أخرج الذرّة العالقة بطرف قماش نظيف مبلّل.","مادة كيميائية في العين: أبقِ العين مفتوحة واسكب عليها ماءً نظيفًا ١٠–٢٠ دقيقة على الأقل، والعين المصابة في الأسفل حتى لا يسيل الماء إلى العين السليمة.","ضربة أو جرح في العين: مدّده على ظهره، وضع قطعة نظيفة بخفّة على العين. اطلب منه إبقاء العينين ثابتتين (حركة العين السليمة تحرّك المصابة).","جسم مغروز في العين: لا تلمسه. ضع كوبًا ورقيًا أو قاع زجاجة بلاستيكية فوق العين دون ضغط، وثبّته برباط."],
+  d:["لا تفرك العين","لا تضغط على العين المصابة","لا تحاول نزع أي شيء مغروز في العين"],
+  f:["أي جسم مغروز في العين","فقدان الرؤية أو تغيّرها","دم داخل الجزء الملوّن من العين","إصابة بمادة كيميائية"]}},
+{id:"nose",em:"👃",link:SJA+"get-advice/",
+ en:{t:"Nosebleed",s:["Sit them down and lean them forward, not back.","Pinch the soft part of the nose (below the bony bridge) firmly for 10 minutes. Breathe through the mouth. Spit out any blood.","After 10 minutes release. If still bleeding, pinch again for two more periods of 10 minutes.","Once it stops, no blowing or picking the nose, hot drinks or heavy lifting for 24 hours."],
+  d:["Do not tip the head back — blood runs down the throat and can cause vomiting"],
+  f:["Bleeding for more than 30 minutes","Nosebleed after a head injury, especially with thin watery blood","Very heavy bleeding, or the person takes blood-thinning medicine"]},
+ ar:{t:"نزيف الأنف (الرّعاف)",s:["أجلسه وأمِله للأمام، وليس للخلف.","اضغط على الجزء الليّن من الأنف (تحت العظم) بإحكام ١٠ دقائق. يتنفّس من فمه. يبصق أي دم.","بعد ١٠ دقائق اترك الضغط. إن استمرّ النزيف، اضغط مرّتين أخريين كل مرّة ١٠ دقائق.","بعد توقّفه: لا يمخّط ولا يعبث بأنفه، ولا مشروبات ساخنة ولا حمل ثقيل لمدّة ٢٤ ساعة."],
+  d:["لا تُمِل الرأس للخلف — ينزل الدم إلى الحلق وقد يسبّب القيء"],
+  f:["نزيف أكثر من ٣٠ دقيقة","نزيف من الأنف بعد إصابة في الرأس، خاصة إن كان الدم مائيًا خفيفًا","نزيف غزير جدًا، أو يتناول أدوية مميّعة للدم"]}},
+{id:"burn",em:"🔥",link:SJA+"get-advice/",
+ en:{t:"Burns",s:["Stop the burning: get them away from the heat. If clothes are on fire: stop, drop and roll, or smother with a blanket.","Cool the burn with cool clean water for 20 minutes. If water is scarce, keep pouring a little at a time, or use a cloth soaked in water and keep re-wetting it.","Remove rings, watches and clothing near the burn unless they are stuck to the skin.","Cover loosely with cling film or a clean plastic bag — not a fluffy cloth.","Keep the person warm while cooling the burn. Children and older people get cold quickly."],
+  d:["Do not use ice, toothpaste, oil, butter or flour","Do not burst blisters"],
+  f:["Burns bigger than the person's hand, or on face, hands, feet, joints or private parts","Burns from chemicals, electricity or a blast","Coughing, hoarse voice, soot around nose or mouth (breathing in smoke)"]},
+ ar:{t:"الحروق",s:["أوقف الاحتراق: أبعده عن مصدر الحرارة. إن اشتعلت ملابسه: توقّف، انبطح، وتدحرج، أو اخنق النار ببطانية.","برّد الحرق بماء نظيف بارد معتدل ٢٠ دقيقة. إن كان الماء قليلًا، اسكب قليلًا قليلًا باستمرار، أو استخدم قماشًا مبلّلًا وأعد ترطيبه.","انزع الخواتم والساعات والملابس قرب الحرق إلا إذا كانت ملتصقة بالجلد.","غطّه برفق بغلاف بلاستيكي شفاف أو كيس نظيف — وليس بقماش وبري.","أبقِ المصاب دافئًا أثناء التبريد. الأطفال وكبار السن يبردون بسرعة."],
+  d:["لا تستعمل الثلج أو معجون الأسنان أو الزيت أو الزبدة أو الطحين","لا تفقأ الفقاعات"],
+  f:["حروق أكبر من كفّ المصاب، أو على الوجه أو اليدين أو القدمين أو المفاصل أو الأعضاء التناسلية","حروق من مواد كيميائية أو كهرباء أو انفجار","سعال، بحّة في الصوت، سواد حول الأنف أو الفم (استنشاق الدخان)"]}},
+{id:"carry",em:"🚶",link:SJA+"get-advice/",
+ en:{t:"Moving the injured without equipment",s:["Move someone only if they are in danger where they are, or you must take them to help. Treat breathing problems and heavy bleeding first.","Drag (one person, heavy or unresponsive casualty, no spinal injury suspected): grab the clothes at the shoulders, or put them on a blanket, and pull them along the length of their body, head first, supporting the head.","Human crutch (can walk a little): stand on the injured side, their arm round your neck, your arm round their waist.","Cradle carry: for children and light adults — one arm under the knees, one round the back.","Pick-a-back: for a light, conscious person who can hold on.","Two-handed seat (two helpers): squat facing each other, hold each other's wrists under the person's thighs, other arms across their back.","Four-handed seat (two helpers, conscious casualty who can hold on): each grips their own right wrist and the partner's left wrist to make a square seat.","Carry with your legs, not your back: bend your knees, keep a straight back, hold the person close."],
+  x:"Improvised stretcher: two strong poles (or broom handles, pipes) and a blanket folded in thirds around them; or two or three coats or shirts, buttoned, with the sleeves pulled inside and the poles pushed through the sleeves; or a door, a board, a ladder with blankets on it. Test it first with an uninjured person. Tie the casualty on if moving over rubble. Carry feet first, unless going uphill or upstairs.",
+  d:["Do not use seat carries for a suspected spinal injury or broken leg — use a board and log roll","Do not lift alone if you might drop them"]},
+ ar:{t:"نقل المصابين بدون معدّات",s:["لا تنقل المصاب إلا إذا كان في خطر حيث هو، أو اضطررت لأخذه إلى المساعدة. عالج مشاكل التنفّس والنزيف الشديد أولًا.","السحب (شخص واحد، مصاب ثقيل أو فاقد للوعي، دون شكّ بإصابة العمود الفقري): أمسك الملابس من الكتفين، أو ضعه على بطانية، واسحبه على طول جسمه والرأس أولًا، مع دعم الرأس.","العكّاز البشري (يستطيع المشي قليلًا): قف في الجهة المصابة، ذراعه حول رقبتك وذراعك حول خصره.","الحمل على الذراعين: للأطفال والكبار الخفيفين — ذراع تحت الركبتين وذراع حول الظهر.","الحمل على الظهر: لشخص خفيف واعٍ يستطيع التمسّك.","المقعد بيدين (مسعفان): اجلسا القرفصاء متقابلين، أمسكا معصمي بعضكما تحت فخذي المصاب، والذراعان الأخريان خلف ظهره.","المقعد بأربع أيدٍ (مسعفان، مصاب واعٍ يستطيع التمسّك): كل منكما يمسك معصمه الأيمن ومعصم شريكه الأيسر لتكوين مقعد مربّع.","احمل بساقيك لا بظهرك: اثنِ ركبتيك، أبقِ ظهرك مستقيمًا، وقرّب المصاب منك."],
+  x:"نقّالة مرتجلة: عصوان قويّتان (أو مقبضا مكنسة، أنابيب) وبطانية مطويّة على ثلاث طبقات حولهما؛ أو معطفان أو ثلاثة أو قمصان مزرّرة، والأكمام مقلوبة للداخل والعصوان داخل الأكمام؛ أو باب أو لوح أو سلّم عليه بطانيات. جرّبها أولًا بشخص سليم. اربط المصاب إن كنتم ستمرّون فوق الأنقاض. احملوه والقدمان أولًا، إلا عند الصعود.",
+  d:["لا تستعمل المقاعد اليدوية مع شكّ بإصابة العمود الفقري أو كسر في الساق — استعمل لوحًا والتدحرج الجذعي","لا ترفع وحدك إن كان قد يسقط منك"]}},
+{id:"care",em:"🤲",link:SJA+"get-advice/",
+ en:{t:"Caring for yourself and others",s:["After an emergency it is normal to shake, cry, feel numb or be unable to sleep.","Stay with the person you helped if you can; talk calmly and tell them what you are doing.","Wash your hands after helping, with soap if you have it.","Talk to someone you trust about what you saw. Rest, drink water and eat when you can.","Practise these skills with family and neighbours so more people can help."]},
+ ar:{t:"العناية بنفسك وبالآخرين",s:["بعد أي حالة طارئة من الطبيعي أن ترتجف أو تبكي أو تشعر بالخدر أو لا تستطيع النوم.","ابقَ مع الشخص الذي ساعدته إن أمكن؛ تكلّم بهدوء وأخبره بما تفعل.","اغسل يديك بعد المساعدة، بالصابون إن وُجد.","تكلّم مع شخص تثق به عمّا رأيت. استرح واشرب الماء وكُل متى استطعت.","تدرّب على هذه المهارات مع عائلتك وجيرانك ليستطيع عدد أكبر من الناس المساعدة."]}}
+];
+var app=document.getElementById("app"),cur=location.hash.slice(1);
+function u(k){return UI[L][k]}
+function li(a){return a.map(function(x){return "<li>"+x+"</li>"}).join("")}
+function render(){
+ document.documentElement.lang=L;document.documentElement.dir=L==="ar"?"rtl":"ltr";
+ var h='<header><div><h1>'+u("title")+'</h1><div class="src">'+u("sub")+'</div></div><div style="display:flex;gap:8px"><button class="pill" id="lang">'+(L==="ar"?"English":"العربية")+'</button><a class="pill" style="text-decoration:none;display:inline-flex;align-items:center" href="/school">'+u("home")+'</a></div></header>'+
+  '<div class="draft">'+u("draft")+'</div>';
+ var t=T.filter(function(x){return x.id===cur})[0];
+ if(!t){
+  var tile=function(x){return '<button class="topic'+(x.crit?" crit":"")+'" data-id="'+x.id+'"><span class="em" aria-hidden="true">'+x.em+'</span><b>'+x[L].t+'</b></button>'};
+  h+='<p>'+u("intro")+'</p><h2>'+u("crit")+'</h2><div class="grid">'+T.filter(function(x){return x.crit}).map(tile).join("")+'</div><h2>'+u("more")+'</h2><div class="grid">'+T.filter(function(x){return !x.crit}).map(tile).join("")+'</div>';
+ } else {
+  var c=t[L];
+  h+='<div class="card"><h2><span aria-hidden="true">'+t.em+'</span> '+c.t+'</h2><ol>'+li(c.s)+'</ol>'+
+   (c.x?'<div class="tip"><h3>'+u("tip")+'</h3><p style="margin:0">'+c.x+'</p></div>':'')+
+   (c.d?'<div class="dont"><h3>'+u("dont")+'</h3><ul>'+li(c.d)+'</ul></div>':'')+
+   (c.f?'<div class="flags"><h3>'+u("flags")+'</h3><ul>'+li(c.f)+'</ul></div>':'')+
+   '<p class="src">'+u("see")+' <a href="'+t.link+'" target="_blank" rel="noopener">St John Ambulance</a></p></div>'+
+   '<button class="pill" data-id="">'+u("back")+'</button>';
+ }
+ h+='<footer><p>'+u("foot")+'</p><p><a href="/">Veridian Academy · veridian.lk</a></p></footer>';
+ app.innerHTML=h;
+}
+app.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
+ if(b.id==="lang"){L=L==="ar"?"en":"ar";try{localStorage.setItem("zs_lang",JSON.stringify(L))}catch(x){}render();return}
+ if(b.dataset.id!==undefined){cur=b.dataset.id;history.pushState(null,"",cur?"#"+cur:location.pathname);render();window.scrollTo(0,0)}});
+window.addEventListener("popstate",function(){cur=location.hash.slice(1);render()});
+render();
+if("serviceWorker" in navigator&&location.protocol.indexOf("http")===0){navigator.serviceWorker.register("/school-sw.js",{scope:"/school"}).catch(function(){})}
+</script>
+</body>
+</html>

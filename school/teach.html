@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Volunteer to teach — Zaytoun School</title>
+<meta name="description" content="Volunteer teachers apply to run free group video classes for children in Gaza. Every teacher is checked by the Veridian team.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#4c6a2b">
+<link rel="icon" href="/school/icon.svg" type="image/svg+xml">
+<style>
+:root{--bg:#f1f5ec;--surface:#fff;--ink:#1d2a1a;--muted:#56664f;--olive:#4c6a2b;--olive-soft:#dfe8d2;--sun-soft:#fbeccb;--line:#d3dcc9;--bad:#b4432f;
+ --f-ui:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif;--f-ar:"Noto Naskh Arabic","Geeza Pro","Segoe UI","Tahoma",sans-serif}
+@media (prefers-color-scheme:dark){:root{--bg:#141a12;--surface:#1e261b;--ink:#e7eee0;--muted:#a3b39a;--olive:#9cc06a;--olive-soft:#2b3a22;--sun-soft:#3a3018;--line:#33402d;--bad:#f08a76;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:17px;line-height:1.55}
+.wrap{max-width:700px;margin:0 auto;padding:18px 16px 40px;display:flex;flex-direction:column;gap:16px}
+h1{font-size:1.4rem;margin:0}h2{font-size:1.15rem;margin:0 0 8px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px}
+.ar{font-family:var(--f-ar);direction:rtl;text-align:right;color:var(--muted)}
+label{display:block;font-weight:600;margin:12px 0 4px}
+label small{font-weight:400;color:var(--muted)}
+input,select,textarea{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink)}
+textarea{min-height:90px}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:400;margin:10px 0}
+.check input{width:22px;height:22px;flex:none;margin-top:2px}
+.btn{font:inherit;font-weight:700;border:0;border-radius:999px;background:var(--olive);color:#fff;min-height:48px;padding:10px 22px;cursor:pointer;margin-top:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}@media(max-width:520px){.two{grid-template-columns:1fr}}
+ol li,ul li{margin:4px 0}
+.ok{background:var(--olive-soft);border-radius:14px;padding:14px}
+footer{font-size:.85rem;color:var(--muted)}
+a{color:var(--olive)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>Volunteer to teach at Zaytoun School</h1><p class="ar">كن معلّمًا متطوّعًا في مدرسة الزيتون</p><p><a href="/school">← Zaytoun School</a></p></header>
+
+<div class="ok" id="thanks" hidden><b>Thank you — your application has been sent.</b><br>The Veridian team will check your qualifications and references and contact you by email. <span class="ar" style="display:block">شكرًا لك، وصل طلبك. سيتواصل معك فريق فيريديان عبر البريد الإلكتروني.</span></div>
+
+<div class="card">
+<h2>How it works</h2>
+<ol>
+<li>You apply here with your qualifications, a certificate and two references.</li>
+<li>The Veridian Academy team checks every application and contacts your referees. Nobody teaches until they are approved.</li>
+<li>Approved teachers run <b>group classes only</b>, by free video call (Jitsi Meet), at times posted on the school page.</li>
+<li>Every class has a second adult (a moderator) present. Children join with a first name only.</li>
+</ol>
+</div>
+
+<div class="card">
+<h2>Our safeguarding rules</h2>
+<ul>
+<li>No one-to-one or private contact with any child — not by video, phone, WhatsApp, social media or email.</li>
+<li>Never ask for a child's surname, address, phone number, photo or location.</li>
+<li>No recording or screenshots of children.</li>
+<li>Do not ask children to describe what they have been through. If a child tells you they are in danger or being hurt, stay calm, listen, and report it to the moderator and the Veridian team the same day.</li>
+<li>Teach kindly: no shouting, no political or religious pressure, no promises you cannot keep.</li>
+<li>Any breach means you will be removed straight away.</li>
+</ul>
+</div>
+
+<form class="card" id="apply" action="https://formsubmit.co/veridian@sltnet.lk" method="POST" enctype="multipart/form-data">
+<h2>Application</h2>
+<input type="hidden" name="_subject" value="Zaytoun School — new volunteer teacher application">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" id="next" value="https://veridian.lk/school/teach?sent=1">
+<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+<div class="two">
+<div><label for="n">Full name</label><input id="n" name="Full name" required autocomplete="name"></div>
+<div><label for="e">Email</label><input id="e" type="email" name="email" required autocomplete="email"></div>
+<div><label for="p">WhatsApp / phone <small>(with country code)</small></label><input id="p" name="Phone" required autocomplete="tel"></div>
+<div><label for="c">Country you live in</label><input id="c" name="Country" required autocomplete="country-name"></div>
+</div>
+
+<label for="s">What would you like to teach?</label>
+<select id="s" name="Subject" required>
+<option value="">Choose…</option>
+<option>Arabic reading and writing</option><option>English</option><option>Maths</option><option>Quran</option>
+<option>Science</option><option>Art and drawing</option><option>Songs and music</option><option>Stories and reading</option>
+<option>Wellbeing and calm activities</option><option>First aid (teens and adults)</option><option>Other</option>
+</select>
+
+<div class="two">
+<div><label for="ag">Age group</label><select id="ag" name="Age group" required><option value="">Choose…</option><option>4–7</option><option>8–11</option><option>12–15</option><option>16–18</option><option>Adults</option></select></div>
+<div><label for="lg">Languages you teach in</label><input id="lg" name="Languages" placeholder="Arabic, English…" required></div>
+</div>
+
+<label for="q">Qualifications <small>(degree, teaching certificate, ijazah, first aid instructor, etc.)</small></label>
+<textarea id="q" name="Qualifications" required></textarea>
+
+<label for="x">Teaching experience with children <small>(where, how long, what age)</small></label>
+<textarea id="x" name="Experience" required></textarea>
+
+<label for="sg">Have you done child safeguarding / child protection training? <small>(name of course and year)</small></label>
+<input id="sg" name="Safeguarding training">
+
+<label for="pc">Police or criminal record clearance from your country</label>
+<select id="pc" name="Police clearance" required><option value="">Choose…</option><option>Yes, I can provide it</option><option>I can apply for it</option><option>Not available where I live</option></select>
+
+<label for="f">Upload your main certificate <small>(PDF or photo, under 5 MB)</small></label>
+<input id="f" type="file" name="attachment" accept=".pdf,image/*" required>
+
+<h2 style="margin-top:18px">Two references</h2>
+<p style="margin:0;color:var(--muted)">People who know your work with children — not family members.</p>
+<div class="two">
+<div><label for="r1">Reference 1: name and role</label><input id="r1" name="Reference 1" required></div>
+<div><label for="r1c">Reference 1: email or phone</label><input id="r1c" name="Reference 1 contact" required></div>
+<div><label for="r2">Reference 2: name and role</label><input id="r2" name="Reference 2" required></div>
+<div><label for="r2c">Reference 2: email or phone</label><input id="r2c" name="Reference 2 contact" required></div>
+</div>
+
+<label for="av">When could you teach? <small>(days and times, with your time zone)</small></label>
+<input id="av" name="Availability" required>
+
+<label class="check"><input type="checkbox" name="Agrees to safeguarding rules" value="Yes" required> I have read and will follow the safeguarding rules above, including no private contact with any child.</label>
+<label class="check"><input type="checkbox" name="Agrees to checks" value="Yes" required> I agree that the Veridian team may check my qualifications and contact my references.</label>
+<label class="check"><input type="checkbox" name="Information is true" value="Yes" required> The information I have given is true.</label>
+
+<button class="btn" type="submit">Send application</button>
+<p style="font-size:.85rem;color:var(--muted)">Your application goes by email to the Veridian Academy team (veridian@sltnet.lk) and is used only to check your suitability to teach.</p>
+</form>
+
+<footer><p><a href="/">Veridian Academy · veridian.lk</a></p></footer>
+</div>
+<script>
+if(/[?&]sent=1/.test(location.search)){document.getElementById("thanks").hidden=false;document.getElementById("apply").hidden=true}
+document.getElementById("next").value=location.origin+"/school/teach?sent=1";
+document.getElementById("f").addEventListener("change",function(){if(this.files[0]&&this.files[0].size>5*1024*1024){alert("Please choose a file under 5 MB.");this.value=""}});
+</script>
+</body>
+</html>

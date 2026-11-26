@@ -1,0 +1,5 @@
+{
+  "_how_to_add_a_class": "Copy the example below into the classes list. Use a new Jitsi room name for each class (https://meet.jit.si/Zaytoun-something-unique). The teacher signs in to Jitsi to start the room and turns on the lobby so they can admit each child.",
+  "_example": {"icon": "📖", "title_ar": "قراءة عربية للصغار", "title_en": "Arabic reading for little ones", "when_ar": "كل يوم سبت، الساعة ٤ عصرًا بتوقيت غزة", "when_en": "Every Saturday, 4 pm Gaza time", "link": "https://meet.jit.si/Zaytoun-Arabic-Reading-7Q2X"},
+  "classes": []
+}

@@ -55,7 +55,9 @@ h3{font-size:1rem;margin:0;color:var(--muted);font-weight:700}
 .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
 .tile{border:0;border-radius:18px;padding:14px 16px;min-height:118px;text-align:start;cursor:pointer;color:var(--ink);
   display:flex;flex-direction:column;justify-content:space-between;gap:8px}
-.tile .glyph{font-size:1.9rem;font-weight:700;line-height:1}
+.tile .ico{width:52px;height:52px;display:block;filter:drop-shadow(0 2px 2px rgba(0,0,0,.12))}.tile .ico svg{width:100%;height:100%;display:block}
+.tile:active .ico{transform:scale(.94)}
+.tilelink{text-decoration:none}
 .tile b{font-size:1.02rem}
 .tile small{color:var(--muted);font-size:.84rem}
 .c-olive{background:var(--olive-soft)} .c-olive .glyph{color:var(--olive)}
@@ -128,6 +130,13 @@ h3{font-size:1rem;margin:0;color:var(--muted);font-weight:700}
 .circle{width:110px;height:110px;border-radius:50%;background:var(--olive-soft);border:3px solid var(--olive);display:grid;place-items:center;font-weight:700;color:var(--olive);animation:breathe 8s ease-in-out infinite}
 @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.8)}}
 @media (prefers-reduced-motion:reduce){.circle{animation:none}}
+.quran{display:flex;flex-direction:column;gap:6px;font-family:"Amiri Quran","KFGQPC Uthmanic Script HAFS","Scheherazade New","Traditional Arabic",var(--f-ar);font-size:1.7rem;line-height:2.3}
+.quran.bas{text-align:center;color:var(--olive);margin:0}
+.ayah{border:0;background:transparent;color:var(--ink);text-align:right;font:inherit;padding:4px 10px;border-radius:12px;cursor:pointer}
+.ayah.on{background:var(--olive-soft)}
+.ayah .an{color:var(--olive);font-size:.9em}
+.quran.hide .ayah{color:transparent;text-shadow:0 0 14px rgba(76,106,43,.55)}
+.quran.hide .ayah.peek{color:var(--ink);text-shadow:none}
 .ground{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
 .ground li{background:var(--bg);border-radius:12px;padding:10px 14px}
 .ground b{color:var(--olive);font-size:1.2rem}
@@ -173,10 +182,14 @@ var T={
   breathe:"التنفّس",ground:"٥-٤-٣-٢-١",
   groundHint:"حين تشعر بالقلق، انظر حولك وعُدّ:",
   g5:"أشياء تراها",g4:"أشياء تلمسها",g3:"أصوات تسمعها",g2:"روائح تشمّها",g1:"شيء واحد تتذوّقه أو تحبّه",
+  s_quran:"القرآن الكريم",s_quran2:"استمع واحفظ",s_live:"دروس مباشرة",s_live2:"مع معلّمين متطوّعين",s_aid:"الإسعافات الأولية",s_aid2:"لليافعين والكبار",s_teach:"كن معلّمًا متطوّعًا",s_teach2:"سجّل هنا",
+  g_faith:"القرآن والدروس المباشرة",g_help:"للكبار واليافعين",
+  qLoading:"جارٍ التحميل…",qOffline:"تحتاج إلى الإنترنت أول مرة فقط لتحميل هذه السورة، ثم تبقى على هاتفك.",qPlay:"استمع للسورة",qRepeat:"كرّر الآية",qHide:"احفظ: أخفِ الآيات",qShow:"أظهر الآيات",qReciter:"بصوت الشيخ مشاري العفاسي",qTap:"اضغط على آية لتسمعها",
+  liveIntro:"دروس جماعية عبر الفيديو مع معلّمين تحقّقنا منهم. ادخل باسمك الأول فقط، ويمكنك إبقاء الكاميرا مطفأة. من الأفضل أن يكون أحد الكبار بجانبك.",liveNone:"ستُعلن أولى الدروس قريبًا إن شاء الله.",join:"ادخل الدرس",liveRules:"قواعد الأمان: لا تعطِ رقم هاتفك أو عنوانك لأي أحد. إذا أزعجك أحد، اخرج من الدرس وأخبر أحد الكبار.",
   journal:"دفتري",jHint:"اكتب ما تشاء. يبقى على هذا الهاتف فقط، ولا يراه أحد.",newPrompt:"فكرة أخرى",saved:"حُفظ",
   times:"جدول الضرب",
   safe:"<strong>آمن للأطفال:</strong> لا محادثة مع غرباء، لا إعلانات، لا حسابات. كل شيء يُحفظ على هذا الهاتف فقط.",
-  light:"<strong>خفيف:</strong> يعمل على الهواتف البسيطة، وبدون إنترنت بعد أول فتح.",
+  light:"<strong>خفيف:</strong> يعمل على الهواتف البسيطة، وبدون إنترنت بعد أول فتح. القرآن يُحمَّل من خدمة Al Quran Cloud الموثوقة مرة واحدة.",
   grown:"<strong>للكبار:</strong> إذا رأيت طفلًا متعبًا أو خائفًا جدًا، ابقَ قريبًا منه واستمع إليه."},
  en:{name:"Zaytoun School",badge:"Free · works offline",
   hello:"Welcome! This is your school.",
@@ -208,10 +221,14 @@ var T={
   breathe:"Breathing",ground:"5-4-3-2-1",
   groundHint:"When you feel worried, look around and count:",
   g5:"things you can see",g4:"things you can touch",g3:"sounds you can hear",g2:"things you can smell",g1:"thing you can taste or love",
+  s_quran:"Holy Quran",s_quran2:"Listen and memorise",s_live:"Live classes",s_live2:"With volunteer teachers",s_aid:"First aid",s_aid2:"For teens and adults",s_teach:"Volunteer to teach",s_teach2:"Sign up here",
+  g_faith:"Quran and live classes",g_help:"For teens and adults",
+  qLoading:"Loading…",qOffline:"You need internet only the first time to load this surah; then it stays on your phone.",qPlay:"Listen to the surah",qRepeat:"Repeat verse",qHide:"Memorise: hide verses",qShow:"Show verses",qReciter:"Recited by Sheikh Mishary Alafasy",qTap:"Tap a verse to hear it",
+  liveIntro:"Group video classes with teachers we have checked. Join with your first name only, and you can keep your camera off. It is best to have a grown-up nearby.",liveNone:"The first classes will be announced soon.",join:"Join class",liveRules:"Safety rules: never give anyone your phone number or address. If anyone upsets you, leave the class and tell a grown-up.",
   journal:"My journal",jHint:"Write anything you like. It stays on this phone only, and nobody else sees it.",newPrompt:"Another idea",saved:"Saved",
   times:"Times tables",
   safe:"<strong>Safe for children:</strong> no chat with strangers, no ads, no accounts. Everything is saved on this phone only.",
-  light:"<strong>Light:</strong> works on simple phones, and without internet after the first visit.",
+  light:"<strong>Light:</strong> works on simple phones, and without internet after the first visit. Quran text and audio load once from the trusted Al Quran Cloud service.",
   grown:"<strong>For grown-ups:</strong> if a child seems very tired or frightened, stay close and listen to them."}
 };
 
@@ -298,7 +315,7 @@ function load(k,d){try{var v=localStorage.getItem(k);return v===null?d:JSON.pars
 function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 var S={lang:load("zs_lang","ar"),stars:load("zs_stars",0),view:"home",letter:0,q:null,
   enCat:"hello",song:-1,story:-1,drawMode:"free",drawIdx:-1,drawStep:0,page:-1,colour:"#3c8c3c",
-  arMode:"read",game:"memory",mem:null,shape:null,teen:"journal",calm:"breathe",tq:null,prompt:0};
+  arMode:"read",surah:0,qRepeat:false,qHide:false,game:"memory",mem:null,shape:null,teen:"journal",calm:"breathe",tq:null,prompt:0};
 var app=document.getElementById("app");
 var canSpeak=("speechSynthesis" in window);
 function t(k){return T[S.lang][k]}
@@ -324,6 +341,24 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp
 function star(){S.stars++;save("zs_stars",S.stars)}
 function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),x=a[i];a[i]=a[j];a[j]=x}return a}
 
+/* ---------- illustrated icons ---------- */
+var IC={
+ ar:'<svg viewBox="0 0 48 48"><rect x="6" y="8" width="36" height="32" rx="6" fill="#4c6a2b"/><rect x="10" y="12" width="28" height="24" rx="4" fill="#fff"/><text x="24" y="31" text-anchor="middle" font-size="18" font-weight="700" fill="#4c6a2b" font-family="Tahoma,sans-serif">أ ب</text></svg>',
+ en:'<svg viewBox="0 0 48 48"><rect x="4" y="24" width="18" height="18" rx="3" fill="#e9a92c"/><rect x="26" y="24" width="18" height="18" rx="3" fill="#2a73a8"/><rect x="15" y="5" width="18" height="18" rx="3" fill="#c2546f"/><g font-family="Arial" font-weight="700" font-size="12" fill="#fff" text-anchor="middle"><text x="24" y="18">A</text><text x="13" y="37">B</text><text x="35" y="37">C</text></g></svg>',
+ math:'<svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="5" fill="none" stroke="#8a5a2b" stroke-width="3"/><g stroke="#8a5a2b" stroke-width="2"><line x1="6" y1="16" x2="42" y2="16"/><line x1="6" y1="24" x2="42" y2="24"/><line x1="6" y1="32" x2="42" y2="32"/></g><g><circle cx="13" cy="16" r="3.5" fill="#d93a3a"/><circle cx="20" cy="16" r="3.5" fill="#d93a3a"/><circle cx="28" cy="24" r="3.5" fill="#2a73a8"/><circle cx="35" cy="24" r="3.5" fill="#2a73a8"/><circle cx="13" cy="32" r="3.5" fill="#f2c230"/><circle cx="20" cy="32" r="3.5" fill="#f2c230"/><circle cx="27" cy="32" r="3.5" fill="#f2c230"/></g></svg>',
+ song:'<svg viewBox="0 0 48 48"><path d="M18 34V10l22-5v24" fill="none" stroke="#c2546f" stroke-width="3.5" stroke-linejoin="round"/><ellipse cx="13" cy="35" rx="6" ry="5" fill="#c2546f"/><ellipse cx="35" cy="30" rx="6" ry="5" fill="#6b4c9a"/><circle cx="8" cy="12" r="2" fill="#e9a92c"/><circle cx="42" cy="40" r="2" fill="#e9a92c"/></svg>',
+ draw:'<svg viewBox="0 0 48 48"><rect x="5" y="7" width="30" height="34" rx="3" fill="#fff" stroke="#2a73a8" stroke-width="2"/><path d="M10 33c5-9 9 4 14-6" fill="none" stroke="#e57fb0" stroke-width="3" stroke-linecap="round"/><g transform="rotate(40 34 22)"><rect x="30" y="2" width="8" height="30" rx="2" fill="#f2c230"/><polygon points="30,32 38,32 34,40" fill="#f5d7a8"/><polygon points="32.5,37 35.5,37 34,40" fill="#333"/><rect x="30" y="2" width="8" height="5" rx="2" fill="#e57fb0"/></g></svg>',
+ colour:'<svg viewBox="0 0 48 48"><g transform="rotate(-20 24 24)"><rect x="10" y="12" width="7" height="28" rx="2" fill="#d93a3a"/><polygon points="10,12 17,12 13.5,4" fill="#d93a3a"/></g><g><rect x="20.5" y="12" width="7" height="28" rx="2" fill="#3c8c3c"/><polygon points="20.5,12 27.5,12 24,4" fill="#3c8c3c"/></g><g transform="rotate(20 24 24)"><rect x="31" y="12" width="7" height="28" rx="2" fill="#2a73a8"/><polygon points="31,12 38,12 34.5,4" fill="#2a73a8"/></g></svg>',
+ game:'<svg viewBox="0 0 48 48"><path d="M8 8h12a5 5 0 1 1 8 0h12v12a5 5 0 1 0 0 8v12H28a5 5 0 1 1-8 0H8V28a5 5 0 1 0 0-8z" fill="#6b4c9a"/><circle cx="24" cy="24" r="5" fill="#f2c230"/></svg>',
+ story:'<svg viewBox="0 0 48 48"><path d="M24 12C18 8 10 8 4 10v28c6-2 14-2 20 2 6-4 14-4 20-2V10c-6-2-14-2-20 2z" fill="#4c6a2b"/><path d="M24 14v26" stroke="#fff" stroke-width="2"/><polygon points="36,3 38,8 43,8 39,11 40.5,16 36,13 31.5,16 33,11 29,8 34,8" fill="#e9a92c"/></svg>',
+ calm:'<svg viewBox="0 0 48 48"><path d="M30 6a18 18 0 1 0 12 30A15 15 0 0 1 30 6z" fill="#2a73a8"/><circle cx="36" cy="12" r="2" fill="#e9a92c"/><circle cx="42" cy="20" r="1.5" fill="#e9a92c"/><circle cx="12" cy="10" r="1.5" fill="#e9a92c"/></svg>',
+ teen:'<svg viewBox="0 0 48 48"><rect x="8" y="5" width="28" height="38" rx="3" fill="#6b4c9a"/><rect x="12" y="5" width="3" height="38" fill="#4a3170"/><g stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="19" y1="14" x2="31" y2="14"/><line x1="19" y1="20" x2="31" y2="20"/><line x1="19" y1="26" x2="27" y2="26"/></g><g transform="rotate(35 38 30)"><rect x="35" y="14" width="6" height="22" rx="2" fill="#e9a92c"/><polygon points="35,36 41,36 38,42" fill="#333"/></g></svg>',
+ quran:'<svg viewBox="0 0 48 48"><path d="M8 34l16-6 16 6-16 8z" fill="#8a5a2b"/><path d="M24 10C19 7 12 7 7 9v19c5-2 12-2 17 1 5-3 12-3 17-1V9c-5-2-12-2-17 1z" fill="#2f7d3a"/><path d="M24 11v18" stroke="#e9c46a" stroke-width="1.6"/><path d="M14 16a5 5 0 1 0 5 6 4 4 0 0 1-5-6z" fill="#e9c46a"/><path d="M33 15l1 2.5 2.6.2-2 1.7.6 2.6-2.2-1.4-2.2 1.4.6-2.6-2-1.7 2.6-.2z" fill="#e9c46a"/></svg>',
+ live:'<svg viewBox="0 0 48 48"><rect x="4" y="12" width="28" height="24" rx="5" fill="#2a73a8"/><polygon points="32,20 44,13 44,35 32,28" fill="#2a73a8"/><path d="M18 30s-7-4.5-7-9a3.7 3.7 0 0 1 7-1.6A3.7 3.7 0 0 1 25 21c0 4.5-7 9-7 9z" fill="#fff"/></svg>',
+ aid:'<svg viewBox="0 0 48 48"><rect x="5" y="12" width="38" height="30" rx="6" fill="#d93a3a"/><path d="M17 12V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4" fill="none" stroke="#d93a3a" stroke-width="3"/><rect x="20" y="17" width="8" height="20" rx="1.5" fill="#fff"/><rect x="14" y="23" width="20" height="8" rx="1.5" fill="#fff"/></svg>',
+ teach:'<svg viewBox="0 0 48 48"><rect x="4" y="6" width="34" height="24" rx="3" fill="#2f5d3a"/><g stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="9" y1="13" x2="22" y2="13"/><line x1="9" y1="19" x2="18" y2="19"/></g><circle cx="36" cy="27" r="6" fill="#f5c9a0"/><path d="M26 44a10 10 0 0 1 20 0z" fill="#c2546f"/><line x1="25" y1="16" x2="32" y2="24" stroke="#8a5a2b" stroke-width="2.5" stroke-linecap="round"/></svg>'
+};
+
 /* ---------- tune player (Web Audio, no files) ---------- */
 var AC=null,tuneTimer=null,playing=-1;
 function freq(n){var m={C:0,D:2,E:4,F:5,G:7,A:9,B:11}[n[0]],o=+n[n.length-1];return 440*Math.pow(2,(m+12*(o+1)-69)/12)}
@@ -341,7 +376,7 @@ function header(){
  return '<header><div class="brand"><div class="mark" aria-hidden="true">'+LEAF+'</div><div><h1>'+t("name")+'</h1><div class="badge">'+t("badge")+'</div></div></div>'+
  '<div class="lang" role="group" aria-label="Language"><button data-lang="ar" aria-pressed="'+(S.lang==="ar")+'" lang="ar">العربية</button><button data-lang="en" aria-pressed="'+(S.lang==="en")+'" lang="en">English</button></div></header>'}
 function footer(){return '<footer><p>'+t("safe")+'</p><p>'+t("light")+'</p><p>'+t("grown")+'</p><p><a href="/" style="color:inherit">Veridian Academy · veridian.lk</a></p></footer>'}
-function tile(v,c,g,a,b){return '<button class="tile '+c+'" data-go="'+v+'"><span class="glyph" aria-hidden="true">'+g+'</span><span><b>'+a+'</b><br><small>'+b+'</small></span></button>'}
+function tile(v,c,g,a,b){return '<button class="tile '+c+'" data-go="'+v+'"><span class="ico" aria-hidden="true">'+(IC[v]||g)+'</span><span><b>'+a+'</b><br><small>'+b+'</small></span></button>'}
 function panel(title,body){return '<section class="panel"><button class="back" data-go="home">'+(S.lang==="ar"?"→ ":"← ")+t("back")+'</button><h2>'+title+'</h2>'+body+'</section>'}
 function pills(key,list){return '<div class="row" role="group">'+list.map(function(p){return '<button class="pill" data-set="'+key+'" data-val="'+p[0]+'" aria-pressed="'+(S[key]===p[0])+'">'+p[1]+'</button>'}).join("")+'</div>'}
 function palette(){return '<div class="colors" role="group" aria-label="Colours">'+PALETTE.map(function(c){return '<button data-colour="'+c+'" aria-label="'+c+'" aria-pressed="'+(S.colour===c)+'" style="background:'+c+';'+(c==="#ffffff"?"box-shadow:inset 0 0 0 1px #999":"")+'"></button>'}).join("")+'</div>'}
@@ -361,9 +396,13 @@ function home(){
  '<h3>'+t("g_play")+'</h3><div class="tiles">'+
  tile("game","c-plum","◆",t("s_game"),t("s_game2"))+
  tile("story","c-olive","📖",t("s_story"),t("s_story2"))+'</div>'+
+ '<h3>'+t("g_faith")+'</h3><div class="tiles">'+tile("quran","c-olive","",t("s_quran"),t("s_quran2"))+tile("live","c-sky","",t("s_live"),t("s_live2"))+'</div>'+
  '<h3>'+t("g_care")+'</h3><div class="tiles">'+
  tile("calm","c-plain","◯",t("s_calm"),t("s_calm2"))+
- tile("teen","c-plum","✍",t("s_teen"),t("s_teen2"))+'</div>'}
+ tile("teen","c-plum","✍",t("s_teen"),t("s_teen2"))+'</div>'+
+ '<h3>'+t("g_help")+'</h3><div class="tiles">'+
+ '<a class="tile c-rose tilelink" href="/school/firstaid"><span class="ico" aria-hidden="true">'+IC.aid+'</span><span><b>'+t("s_aid")+'</b><br><small>'+t("s_aid2")+'</small></span></a>'+
+ '<a class="tile c-plain tilelink" href="/school/teach"><span class="ico" aria-hidden="true">'+IC.teach+'</span><span><b>'+t("s_teach")+'</b><br><small>'+t("s_teach2")+'</small></span></a></div>'}
 
 function arabic(){var L=LETTERS[S.letter];
  var top=pills("arMode",[["read",S.lang==="ar"?"اقرأ":"Read"],["write",S.lang==="ar"?"اكتب":"Write"]]);
@@ -458,6 +497,40 @@ function teen(){
  return panel(t("s_teen"),top+'<p class="hint">'+t("jHint")+'</p><p class="lyrics '+S.lang+'" style="font-weight:700">'+esc(p)+'</p>'+
  '<button class="pill" data-prompt="1" style="align-self:center">'+t("newPrompt")+'</button><textarea id="journal" aria-label="'+t("journal")+'">'+esc(load("zs_journal",""))+'</textarea><p class="hint" id="jsaved" role="status"></p>')}
 
+/* ---------- Quran: exact Uthmani text and Alafasy recitation from the Al Quran Cloud service; kept on the phone after the first load ---------- */
+var SURAHS=[[1,"الفاتحة","Al-Fatihah"],[93,"الضحى","Ad-Duha"],[94,"الشرح","Ash-Sharh"],[103,"العصر","Al-Asr"],[105,"الفيل","Al-Fil"],[106,"قريش","Quraysh"],[107,"الماعون","Al-Ma'un"],[108,"الكوثر","Al-Kawthar"],[109,"الكافرون","Al-Kafirun"],[110,"النصر","An-Nasr"],[111,"المسد","Al-Masad"],[112,"الإخلاص","Al-Ikhlas"],[113,"الفلق","Al-Falaq"],[114,"الناس","An-Nas"]];
+var QD={},qAudio=null,qIdx=-1,qQueue=[];
+function qCacheGet(url){return (window.caches?caches.open("zaytoun-quran").then(function(c){return c.match(url)}):Promise.resolve(null))}
+function qFetch(url){return qCacheGet(url).then(function(hit){if(hit)return hit;return fetch(url).then(function(r){if(r.ok&&window.caches){var cp=r.clone();caches.open("zaytoun-quran").then(function(c){c.put(url,cp)})}return r})})}
+function loadSurah(n){if(QD[n])return;QD[n]={loading:true};render();
+ qFetch("https://api.alquran.cloud/v1/surah/"+n+"/ar.alafasy").then(function(r){return r.json()}).then(function(j){
+  var ay=j.data.ayahs.map(function(a){return {t:a.text,a:a.audio,n:a.numberInSurah}}),bas=null;
+  if(n!==1&&ay.length){var w=ay[0].t.replace(/^\ufeff/,"").split(" ");if(w[0].indexOf("بِسْمِ")===0&&w.length>4){bas=w.slice(0,4).join(" ");ay[0].t=w.slice(4).join(" ")}}
+  QD[n]={ay:ay,bas:bas};if(S.view==="quran")render()}).catch(function(){QD[n]={err:true};if(S.view==="quran")render()})}
+function playUrl(url,done){stopQuran(true);qFetch(url).then(function(r){return r.blob()}).then(function(b){qAudio=new Audio(URL.createObjectURL(b));qAudio.onended=done;qAudio.play()}).catch(function(){qAudio=new Audio(url);qAudio.onended=done;qAudio.play().catch(function(){})})}
+function stopQuran(keep){if(qAudio){try{qAudio.pause()}catch(e){}qAudio=null}if(!keep){qQueue=[];qIdx=-1}}
+function hl(){app.querySelectorAll(".ayah").forEach(function(el){el.classList.toggle("on",+el.dataset.ay===qIdx)})}
+function playFrom(i){var d=QD[S.surah];if(!d||!d.ay||i>=d.ay.length){qIdx=-1;hl();return}qIdx=i;hl();playUrl(d.ay[i].a,function(){if(S.qRepeat)playFrom(i);else playFrom(i+1)})}
+function quran(){
+ if(!S.surah)return panel(t("s_quran"),'<p class="hint">'+t("qReciter")+'</p><div class="cards">'+SURAHS.map(function(x){return '<button class="card" data-surah="'+x[0]+'" style="background:var(--olive-soft)"><span class="en" style="direction:rtl;font-family:var(--f-ar);font-size:1.3rem">'+x[1]+'</span><span class="ar" style="direction:ltr">'+x[2]+'</span></button>'}).join("")+'</div>');
+ var meta=SURAHS.filter(function(x){return x[0]===S.surah})[0],d=QD[S.surah];if(!d){loadSurah(S.surah);d=QD[S.surah]}
+ var body;
+ if(d.loading)body='<p class="center">'+t("qLoading")+'</p><p class="hint">'+t("qOffline")+'</p>';
+ else if(d.err)body='<p class="center" style="color:var(--bad)">'+t("qOffline")+'</p><button class="btn" data-surah="'+S.surah+'" data-retry="1">↻</button>';
+ else body='<div class="row" style="justify-content:center"><button class="btn" data-qplay="1">▶ '+t("qPlay")+'</button><button class="pill" data-qstop="1">■</button><button class="pill" data-qrep="1" aria-pressed="'+!!S.qRepeat+'">⟳ '+t("qRepeat")+'</button><button class="pill" data-qhide="1" aria-pressed="'+!!S.qHide+'">'+(S.qHide?t("qShow"):t("qHide"))+'</button></div>'+
+  '<p class="hint">'+t("qTap")+'</p>'+(d.bas?'<p class="quran bas">'+d.bas+'</p>':'')+
+  '<div class="quran'+(S.qHide?' hide':'')+'" lang="ar" dir="rtl">'+d.ay.map(function(a,i){return '<button class="ayah'+(i===qIdx?' on':'')+'" data-ay="'+i+'">'+a.t+' <span class="an">﴿'+String(a.n).replace(/\d/g,function(x){return "٠١٢٣٤٥٦٧٨٩"[x]})+'﴾</span></button>'}).join("")+'</div>'+
+  '<p class="hint" style="font-size:.8rem">'+t("qReciter")+' · alquran.cloud</p>';
+ return panel(meta[1]+' · '+meta[2],body+'<button class="pill" data-surah="0">'+t("s_quran")+'</button>')}
+
+/* ---------- live classes: the schedule lives in /school/classes.json, edited by the Veridian team ---------- */
+var LIVE=null;
+function loadLive(){if(LIVE)return;LIVE={loading:true};fetch("/school/classes.json",{cache:"no-cache"}).then(function(r){return r.json()}).then(function(j){LIVE={list:j.classes||[]};if(S.view==="live")render()}).catch(function(){LIVE={list:[]};if(S.view==="live")render()})}
+function live(){loadLive();var L=LIVE.list||[];
+ return panel(t("s_live"),'<p>'+t("liveIntro")+'</p>'+
+ (L.length?'<div class="list">'+L.map(function(c){return '<div class="item" style="cursor:default;flex-wrap:wrap"><span class="em" aria-hidden="true">'+(c.icon||"🎓")+'</span><span style="flex:1;min-width:160px"><b>'+esc(S.lang==="ar"?c.title_ar:c.title_en)+'</b><br><small>'+esc(S.lang==="ar"?c.when_ar:c.when_en)+'</small></span><a class="btn" style="text-decoration:none" target="_blank" rel="noopener" href="'+esc(c.link)+'">'+t("join")+'</a></div>'}).join("")+'</div>':'<p class="center"><b>'+t("liveNone")+'</b></p>')+
+ '<p class="lyrics '+S.lang+'" style="font-size:.95rem">'+t("liveRules")+'</p>')}
+
 /* ---------- canvas drawing ---------- */
 function setupPad(){var c=document.getElementById("pad");if(!c)return;var x=c.getContext("2d"),down=false,last=null;
  function bg(){x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);var tr=c.dataset.trace;
@@ -479,7 +552,7 @@ function setupJournal(){var j=document.getElementById("journal");if(!j)return;va
  j.addEventListener("input",function(){clearTimeout(tm);tm=setTimeout(function(){save("zs_journal",j.value);var s=document.getElementById("jsaved");if(s)s.textContent=t("saved")},400)})}
 
 /* ---------- render and events ---------- */
-var VIEWS={home:home,ar:arabic,math:maths,en:english,song:songs,story:stories,draw:drawing,colour:colouring,game:games,calm:calm,teen:teen};
+var VIEWS={quran:quran,live:live,home:home,ar:arabic,math:maths,en:english,song:songs,story:stories,draw:drawing,colour:colouring,game:games,calm:calm,teen:teen};
 function render(){
  document.documentElement.lang=S.lang;document.documentElement.dir=S.lang==="ar"?"rtl":"ltr";
  app.innerHTML=header()+(VIEWS[S.view]||home)()+'<p class="hint" id="voicemsg" role="status"></p>'+footer();
@@ -487,7 +560,7 @@ function render(){
 
 app.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var d=b.dataset;
  if(d.lang){S.lang=d.lang;save("zs_lang",S.lang);render();return}
- if(d.go){if(canSpeak)speechSynthesis.cancel();stopTune();S.view=d.go;S.song=-1;S.story=-1;S.page=-1;S.drawIdx=-1;if(d.go==="math")newQ();render();window.scrollTo(0,0);return}
+ if(d.go){if(canSpeak)speechSynthesis.cancel();stopTune();stopQuran();S.surah=0;S.view=d.go;S.song=-1;S.story=-1;S.page=-1;S.drawIdx=-1;if(d.go==="math")newQ();render();window.scrollTo(0,0);return}
  if(d.set){S[d.set]=d.val;if(d.set==="teen"&&d.val==="times")newT();render();return}
  if(d.letter){S.letter=+d.letter;render();var L=LETTERS[S.letter];speak(L[0]+"، "+L[1],"ar");return}
  if(d.say){speak(d.say,d.sl);return}
@@ -513,6 +586,12 @@ app.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)
  if(d.shape){if(S.shape.picked===S.shape.ans)return;S.shape.picked=d.shape;if(d.shape===S.shape.ans)star();render();return}
  if(d.newshape){newShape();render();return}
  if(d.prompt){S.prompt++;render();return}
+ if(d.surah!==undefined){stopQuran();S.surah=+d.surah;if(d.retry)delete QD[S.surah];render();window.scrollTo(0,0);return}
+ if(d.qplay){playFrom(qIdx>=0?qIdx:0);return}
+ if(d.qstop){stopQuran();hl();return}
+ if(d.qrep){S.qRepeat=!S.qRepeat;b.setAttribute("aria-pressed",S.qRepeat);return}
+ if(d.qhide){S.qHide=!S.qHide;render();return}
+ if(d.ay!==undefined){if(S.qHide){b.classList.toggle("peek");return}playFrom(+d.ay);return}
 });
 render();
 })();
