@@ -5,7 +5,7 @@
     ':root{--zn-navy:#153462;--zn-navy2:#0e2547;--zn-amber:#FDBA1E}' +
     '.zn-side{position:fixed;left:0;top:0;bottom:0;width:272px;z-index:40;background:var(--zn-navy2);color:#fff;display:flex;flex-direction:column;overflow-y:auto;border-right:4px solid var(--zn-amber);transition:transform .3s ease;direction:ltr}' +
     '.zn-brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;padding:22px 20px 18px;border-bottom:1px solid rgba(255,255,255,.14)}' +
-    '.zn-mark{width:46px;height:46px;border-radius:50%;background:#4c6a2b;display:grid;place-items:center;flex:none;box-shadow:0 0 0 3px rgba(253,186,30,.35)}.zn-mark svg{width:28px;height:28px}' +
+    '.zn-mark{width:46px;height:46px;border-radius:50%;background:#153462;display:grid;place-items:center;flex:none;border:2px solid #FDBA1E}.zn-mark svg{width:28px;height:28px}' +
     '.zn-brand b{display:block;font:600 19px/1.1 "Times New Roman",Times,serif;letter-spacing:.05em}' +
     '.zn-brand small{display:block;font-size:10.5px;letter-spacing:.12em;color:#cfd8ea;margin-top:4px}' +
     '.zn-menu{list-style:none;margin:0;padding:10px 0;flex:1}.zn-menu ul{list-style:none;margin:0;padding:0}' +
@@ -31,7 +31,7 @@
     '.zn-btn{display:flex;align-items:center;gap:8px;background:none;border:1px solid rgba(255,255,255,.55);color:#fff;font:600 15px "Times New Roman",Times,serif;padding:0 14px;border-radius:4px;min-height:44px;cursor:pointer;flex:none}' +
     '.zn-btn span{display:block;width:18px;height:2px;background:#fff;box-shadow:0 6px 0 #fff,0 -6px 0 #fff}}' +
     '@media(prefers-reduced-motion:reduce){.zn-side{transition:none}}';
-  var LEAF = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21V9" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><ellipse cx="8" cy="9" rx="4" ry="2" transform="rotate(-30 8 9)" fill="#fff"/><ellipse cx="16" cy="7" rx="4" ry="2" transform="rotate(30 16 7)" fill="#fff"/><ellipse cx="9" cy="14" rx="3.4" ry="1.7" transform="rotate(-25 9 14)" fill="#fff"/><circle cx="15" cy="13" r="2" fill="#FDBA1E"/></svg>';
+  var LEAF = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19C9 15 13 11 19 5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M9 15c-2.6.2-4.2-.8-4.8-2.6 2.4-.6 4.2.2 4.8 2.6z" fill="#fff"/><path d="M9 15c.4-2.6-.4-4.4-2-5.4-.8 2.2-.4 4.2 2 5.4z" fill="#fff"/><path d="M13 11c-2.4.6-4.2-.2-5-1.8 2.2-.9 4.1-.4 5 1.8z" fill="#fff"/><path d="M13 11c.2-2.6-.8-4.3-2.5-5.1-.6 2.3 0 4.2 2.5 5.1z" fill="#fff"/><path d="M16.5 7.5c-2.2.8-4 .3-4.9-1.2 2-1.1 3.9-.8 4.9 1.2z" fill="#fff"/><path d="M16.5 7.5c-.2-2.4-1.4-3.8-3-4.3-.3 2.2.6 3.8 3 4.3z" fill="#fff"/><ellipse cx="15.3" cy="11.2" rx="1.5" ry="1.9" transform="rotate(35 15.3 11.2)" fill="#FDBA1E"/><ellipse cx="10.8" cy="17.2" rx="1.4" ry="1.8" transform="rotate(35 10.8 17.2)" fill="#FDBA1E"/></svg>';
   // [key, link, English, Arabic]
   var SCHOOL = [["about", "/school", "About the school", "عن المدرسة"], ["kids", "/school#kids", "Kids' area", "ألعاب ودروس الأطفال"]];
   var ITEMS = [["quran", "/school#quran", "Holy Quran", "القرآن الكريم"], ["live", "/school#live", "Live classes", "دروس مباشرة"],

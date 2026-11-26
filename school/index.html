@@ -62,7 +62,7 @@ html[dir="rtl"] body{font-family:var(--f-ar)}
   display:flex;flex-direction:column;gap:20px}
 header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:10px}
-.mark{width:44px;height:44px;border-radius:50%;background:var(--olive);display:grid;place-items:center;flex:none}
+.mark{width:44px;height:44px;border-radius:50%;background:#153462;border:2px solid #FDBA1E;display:grid;place-items:center;flex:none}
 .mark svg{width:26px;height:26px}
 h1{font-size:1.35rem;margin:0;line-height:1.2}
 .badge{font-size:.72rem;letter-spacing:.04em;color:var(--muted)}
@@ -105,13 +105,15 @@ html[dir="rtl"] .kick{letter-spacing:0;font-family:var(--f-ar)}
 html[dir="rtl"] .hbtn{font-family:var(--f-ar)}
 .dedic{background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid #FDBA1E;border-radius:6px;padding:20px 22px}
 .dedic h2{font:700 1.45rem/1.2 "Times New Roman",Times,serif;color:var(--olive);margin:0 0 8px}
-.dedic p:last-child{margin:0}
+.dedic p{margin:0 0 10px}.dedic p:last-child{margin:0;font-style:italic}
 .sect{font:700 1.3rem "Times New Roman",Times,serif;color:var(--olive)!important;margin:6px 0 0}
 html[dir="rtl"] .sect{font-family:var(--f-ar)}
 .pcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
 .pcard{display:flex;align-items:center;gap:14px;text-align:start;background:var(--surface);border:1px solid var(--line);border-top:4px solid #153462;border-radius:6px;padding:16px;font:inherit;color:var(--ink);text-decoration:none;cursor:pointer}
 .pcard:hover{border-top-color:#FDBA1E}
-.pcard .ico{width:46px;height:46px;flex:none}.pcard .ico svg{width:100%;height:100%}
+.pico{width:48px;height:48px;flex:none;border-radius:50%;background:#e3e9f3;color:#153462;display:grid;place-items:center}.pico svg{width:24px;height:24px}
+.pcard:hover .pico{background:#153462;color:#FDBA1E}
+@media (prefers-color-scheme:dark){.pico{background:#1d3866;color:#FDBA1E}}
 .pcard b{display:block;font-size:1.05rem}.pcard small{color:var(--muted)}
 .promise{margin:0;padding:16px 20px 16px 36px;background:var(--olive-soft);border-radius:6px}
 html[dir="rtl"] .promise{padding:16px 36px 16px 20px}
@@ -240,8 +242,8 @@ var T={
   ab_kick:"مشروع خيري من أكاديمية فيريديان",ab_title:"مدرسة الزيتون",
   ab_lead:"مدرسة مجانية على الهاتف للأطفال الذين حرمتهم الحرب والنزوح من التعليم: في غزة وكل فلسطين، والسودان، والكونغو، وسوريا، ولبنان، واليمن، ولأطفال الروهينغا.",
   ab_start:"ادخل إلى ركن الأطفال",ab_help:"اطلب دعمًا دراسيًا",
-  ab_dkick:"إهداء",ab_dtitle:"باسم بيبي زهيرة ومحبوب الدين",
-  ab_dtext:"مدرسة الزيتون مشروع خيري أهدته مؤسِّسة أكاديمية فيريديان، سميرة محبوب الدين، إلى والديها: أمّها بيبي زهيرة، وأبيها محبوب الدين. فقد ساندا طوال حياتهما تعليم الأطفال الذين يحتاجون إلى العون ليواصلوا دراستهم، وهذه المدرسة امتداد لعطائهما.",
+  ab_dkick:"إهداء ووفاء",ab_dtitle:"باسم بيبي زهيرة ومحبوب الدين",
+  ab_dtext:"مدرسة الزيتون مشروع خيري أهدته سميرة محبوب الدين، مؤسِّسة أكاديمية فيريديان، إلى روح والديها الراحلَين: أمّها بيبي زهيرة، وأبيها محبوب الدين. فقد ساندا طوال حياتهما تعليم الأطفال الذين احتاجوا إلى العون ليواصلوا دراستهم، وهذه المدرسة امتداد لعطائهما.|وتستذكر بالعرفان معلّمها للغة الإنجليزية، الأستاذ فوزر، رحمه الله، الذي شجّعها على أن تتبع ما يمليه قلبها.|ويقف إلى جانبها زوجها محمد إنصاف، وولداها زينة وظهير، في دعمها المتواصل لشعب فلسطين بكل ما تستطيع.|وإن انتفع بهذا الجهد طفلٌ واحد، فليكن أجره كلّه لوالديها ولمعلّمها، صدقةً جاريةً باسمهم. رحمهم الله جميعًا.",
   ab_what:"ماذا تجد هنا",ab_c1:"ركن الأطفال",ab_c1b:"حروف وأرقام وأناشيد ورسم وقصص وألعاب",ab_c2b:"استمع إلى السور القصيرة واحفظها",ab_c3b:"دروس جماعية مع معلّمين متطوّعين",ab_c4b:"دروس لليافعين والكبار بدون معدّات",ab_c5b:"للأهل والمعلّمين: اطلبوا مساعدة في الدراسة",ab_c6b:"انضمّ إلينا كمعلّم متطوّع",
   ab_promise:"مجانية بالكامل، بلا إعلانات ولا حسابات|تعمل على الهواتف البسيطة، وبدون إنترنت بعد أول فتح|لا نطلب أسماء الأطفال الكاملة ولا صورهم ولا عناوينهم",
   s_quran:"القرآن الكريم",s_quran2:"استمع واحفظ",s_live:"دروس مباشرة",s_live2:"مع معلّمين متطوّعين",s_aid:"الإسعافات الأولية",s_aid2:"لليافعين والكبار",s_teach:"كن معلّمًا متطوّعًا",s_teach2:"سجّل هنا",
@@ -287,7 +289,7 @@ var T={
   ab_lead:"A free school on the phone for children whose education has been taken from them by war and displacement: in Gaza and across Palestine, Sudan, Congo, Syria, Lebanon and Yemen, and for Rohingya children.",
   ab_start:"Enter the kids' area",ab_help:"Ask for academic support",
   ab_dkick:"Dedication",ab_dtitle:"In the name of Beebi Zahira and Mahboobdeen",
-  ab_dtext:"Zaytoun School is a charity project dedicated by the founder of Veridian Academy, Sameera Mahboobdeen, to her parents: her mother, Beebi Zahira, and her father, Mahboobdeen. Throughout their lives they supported the education of children who needed help to stay in school. This school carries their work forward.",
+  ab_dtext:"Zaytoun School is a charity project dedicated by Sameera Mahboobdeen, founder of Veridian Academy, to her late parents: her mother, Beebi Zahira, and her father, Mahboobdeen. Throughout their lives they supported the education of children who needed help to stay in school, and this school continues their work.|She also honours her late English teacher, Mr. Fawzer, who encouraged her to follow her heart.|Her husband, Mohamed Inshaf, and her children, Zaina and Zaheer, stand beside her in her continuing support for the people of Palestine, in every way she is able.|If even one child benefits from this effort, may every reward from it pass to her parents and her teacher, as a continuing charity (sadaqah jariyah) in their name. May Allah have mercy on them.",
   ab_what:"What you will find here",ab_c1:"Kids' area",ab_c1b:"Letters, numbers, songs, drawing, stories and games",ab_c2b:"Listen to and memorise the short surahs",ab_c3b:"Group classes with volunteer teachers",ab_c4b:"Lessons for teens and adults, no equipment",ab_c5b:"For parents and teachers: request help with studies",ab_c6b:"Join us as a volunteer teacher",
   ab_promise:"Completely free, with no adverts and no accounts|Works on simple phones, and offline after the first visit|We never ask for children's full names, photos or addresses",
   s_quran:"Holy Quran",s_quran2:"Listen and memorise",s_live:"Live classes",s_live2:"With volunteer teachers",s_aid:"First aid",s_aid2:"For teens and adults",s_teach:"Volunteer to teach",s_teach2:"Sign up here",
@@ -443,7 +445,7 @@ function playTune(i){stopTune();var Ctx=window.AudioContext||window.webkitAudioC
 
 
 /* ---------- shared pieces ---------- */
-var LEAF='<svg viewBox="0 0 24 24" fill="none"><path d="M12 21V9" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><ellipse cx="8" cy="9" rx="4" ry="2" transform="rotate(-30 8 9)" fill="#fff"/><ellipse cx="16" cy="7" rx="4" ry="2" transform="rotate(30 16 7)" fill="#fff"/><ellipse cx="9" cy="14" rx="3.4" ry="1.7" transform="rotate(-25 9 14)" fill="#fff"/><circle cx="15" cy="13" r="2" fill="#fff"/></svg>';
+var LEAF='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19C9 15 13 11 19 5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M9 15c-2.6.2-4.2-.8-4.8-2.6 2.4-.6 4.2.2 4.8 2.6z" fill="#fff"/><path d="M9 15c.4-2.6-.4-4.4-2-5.4-.8 2.2-.4 4.2 2 5.4z" fill="#fff"/><path d="M13 11c-2.4.6-4.2-.2-5-1.8 2.2-.9 4.1-.4 5 1.8z" fill="#fff"/><path d="M13 11c.2-2.6-.8-4.3-2.5-5.1-.6 2.3 0 4.2 2.5 5.1z" fill="#fff"/><path d="M16.5 7.5c-2.2.8-4 .3-4.9-1.2 2-1.1 3.9-.8 4.9 1.2z" fill="#fff"/><path d="M16.5 7.5c-.2-2.4-1.4-3.8-3-4.3-.3 2.2.6 3.8 3 4.3z" fill="#fff"/><ellipse cx="15.3" cy="11.2" rx="1.5" ry="1.9" transform="rotate(35 15.3 11.2)" fill="#FDBA1E"/><ellipse cx="10.8" cy="17.2" rx="1.4" ry="1.8" transform="rotate(35 10.8 17.2)" fill="#FDBA1E"/></svg>';
 function header(){
  return '<header><div class="brand"><div class="mark" aria-hidden="true">'+LEAF+'</div><div><h1>'+t("name")+'</h1><div class="badge">'+t("badge")+'</div></div></div>'+
  '<div class="lang" role="group" aria-label="Language"><button data-lang="ar" aria-pressed="'+(S.lang==="ar")+'" lang="ar">العربية</button><button data-lang="en" aria-pressed="'+(S.lang==="en")+'" lang="en">English</button></div></header>'}
@@ -455,14 +457,22 @@ function palette(){return '<div class="colors" role="group" aria-label="Colours"
 
 /* ---------- views ---------- */
 /* ---------- about the school (landing page) ---------- */
+var PIC=(function(){var w=function(d){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+d+'</svg>'};return {
+ kids:w('<path d="M4 19V8l8-4 8 4v11"/><path d="M9 19v-5h6v5"/><path d="M8 10h.01M16 10h.01"/>'),
+ quran:w('<path d="M12 6.5C10 5 6.5 4.6 3.5 5.3v13c3-.7 6.5-.3 8.5 1.2 2-1.5 5.5-1.9 8.5-1.2v-13C17.5 4.6 14 5 12 6.5z"/><path d="M12 6.5v13"/>'),
+ live:w('<rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/>'),
+ aid:w('<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4.5h6V7M12 10.5v6M9 13.5h6"/>'),
+ help:w('<path d="M2.5 9.5L12 5l9.5 4.5L12 14z"/><path d="M6.5 11.5v4.5c3 2 8 2 11 0v-4.5M21.5 9.5v5"/>'),
+ teach:w('<circle cx="9" cy="7.5" r="3"/><path d="M3.5 19.5c.5-3.5 2.8-5.5 5.5-5.5s5 2 5.5 5.5"/><path d="M15 4.5h6v6h-4"/>')}})();
+
 function about(){
- var card=function(go,href,ic,a,b){var inner='<span class="ico" aria-hidden="true">'+IC[ic]+'</span><span><b>'+a+'</b><small>'+b+'</small></span>';
+ var card=function(go,href,ic,a,b){var inner='<span class="pico" aria-hidden="true">'+PIC[ic]+'</span><span><b>'+a+'</b><small>'+b+'</small></span>';
   return href?'<a class="pcard" href="'+href+'">'+inner+'</a>':'<button class="pcard" data-go="'+go+'">'+inner+'</button>'};
  return '<section class="hero"><p class="kick">'+t("ab_kick")+'</p><h2>'+t("ab_title")+'</h2><p>'+t("ab_lead")+'</p>'+
   '<div class="herobtns"><button class="hbtn" data-go="kids">'+t("ab_start")+'</button><a class="hbtn ghost" href="/school/help">'+t("ab_help")+'</a></div></section>'+
-  '<section class="dedic"><p class="kick">'+t("ab_dkick")+'</p><h2>'+t("ab_dtitle")+'</h2><p>'+t("ab_dtext")+'</p></section>'+
+  '<section class="dedic"><p class="kick">'+t("ab_dkick")+'</p><h2>'+t("ab_dtitle")+'</h2>'+t("ab_dtext").split("|").map(function(x){return '<p>'+x+'</p>'}).join("")+'</section>'+
   '<h3 class="sect">'+t("ab_what")+'</h3><div class="pcards">'+
-  card("kids",0,"game",t("ab_c1"),t("ab_c1b"))+card("quran",0,"quran",t("s_quran"),t("ab_c2b"))+card("live",0,"live",t("s_live"),t("ab_c3b"))+
+  card("kids",0,"kids",t("ab_c1"),t("ab_c1b"))+card("quran",0,"quran",t("s_quran"),t("ab_c2b"))+card("live",0,"live",t("s_live"),t("ab_c3b"))+
   card(0,"/school/firstaid","aid",t("s_aid"),t("ab_c4b"))+card(0,"/school/help","help",t("ab_help"),t("ab_c5b"))+card(0,"/school/teach","teach",t("s_teach"),t("ab_c6b"))+'</div>'+
   '<ul class="promise">'+t("ab_promise").split("|").map(function(x){return "<li>"+x+"</li>"}).join("")+'</ul>'}
 
