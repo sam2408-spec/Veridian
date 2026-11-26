@@ -11,8 +11,6 @@
 <style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>
 </head>
 <body>
-<div class="vbar"><a href="/"><img src="/img/mark.png" alt="Veridian logo" width="34" height="34"><span><b>VERIDIAN ACADEMY</b><small>ZAYTOUN SCHOOL · A COMMUNITY PROJECT</small></span></a></div>
-<nav class="vtabs" id="vtabs"></nav>
 <style>
 /* One narrow column, phone first; big tap targets; no web fonts, no images, no outside requests, so it stays tiny and works offline */
 :root{
@@ -89,6 +87,31 @@ h3{font-size:1rem;margin:0;color:var(--muted);font-weight:700}
 .c-rose{background:var(--rose-soft)} .c-rose .glyph{color:var(--rose)}
 .c-plum{background:var(--plum-soft)} .c-plum .glyph{color:var(--plum)}
 .c-plain{background:var(--surface);border:1.5px solid var(--line)} .c-plain .glyph{color:var(--olive)}
+.hero{background:linear-gradient(135deg,#153462,#0e2547);color:#fff;border-radius:6px;padding:26px 22px;border-bottom:4px solid #FDBA1E}
+.hero h2{font:700 2.1rem/1.1 "Times New Roman",Times,serif;margin:4px 0 10px;color:#fff}
+html[dir="rtl"] .hero h2,html[dir="rtl"] .dedic h2{font-family:var(--f-ar)}
+.hero p{margin:0;color:#dfe6f2;font-size:1.05rem}
+.kick{font:700 .78rem/1.3 var(--f-ui);letter-spacing:.12em;text-transform:uppercase;color:#FDBA1E;margin:0 0 4px}
+html[dir="rtl"] .kick{letter-spacing:0;font-family:var(--f-ar)}
+.dedic .kick{color:#b07a00}
+.herobtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.hbtn{display:inline-flex;align-items:center;min-height:46px;padding:0 20px;border-radius:4px;font:700 15px var(--f-ui);border:2px solid #FDBA1E;background:#FDBA1E;color:#153462;text-decoration:none;cursor:pointer}
+.hbtn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+html[dir="rtl"] .hbtn{font-family:var(--f-ar)}
+.dedic{background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid #FDBA1E;border-radius:6px;padding:20px 22px}
+.dedic h2{font:700 1.45rem/1.2 "Times New Roman",Times,serif;color:var(--olive);margin:0 0 8px}
+.dedic p:last-child{margin:0}
+.sect{font:700 1.3rem "Times New Roman",Times,serif;color:var(--olive)!important;margin:6px 0 0}
+html[dir="rtl"] .sect{font-family:var(--f-ar)}
+.pcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.pcard{display:flex;align-items:center;gap:14px;text-align:start;background:var(--surface);border:1px solid var(--line);border-top:4px solid #153462;border-radius:6px;padding:16px;font:inherit;color:var(--ink);text-decoration:none;cursor:pointer}
+.pcard:hover{border-top-color:#FDBA1E}
+.pcard .ico{width:46px;height:46px;flex:none}.pcard .ico svg{width:100%;height:100%}
+.pcard b{display:block;font-size:1.05rem}.pcard small{color:var(--muted)}
+.promise{margin:0;padding:16px 20px 16px 36px;background:var(--olive-soft);border-radius:6px}
+html[dir="rtl"] .promise{padding:16px 36px 16px 20px}
+.promise li{margin:4px 0}
+.wrap{max-width:820px}
 .panel.pro{border-radius:6px;border-top:4px solid #153462;padding:22px}
 .panel.pro h2{font-family:"Times New Roman",Times,serif;font-size:1.6rem;color:var(--olive)}
 html[dir="rtl"] .panel.pro h2{font-family:var(--f-ar)}
@@ -174,6 +197,7 @@ footer strong{color:var(--ink)}
 
 <div class="wrap" id="app"></div>
 
+<script src="/school/nav.js"></script>
 <script>
 (function(){
 /* ---------- words for the interface ---------- */
@@ -208,6 +232,13 @@ var T={
   breathe:"التنفّس",ground:"٥-٤-٣-٢-١",
   groundHint:"حين تشعر بالقلق، انظر حولك وعُدّ:",
   g5:"أشياء تراها",g4:"أشياء تلمسها",g3:"أصوات تسمعها",g2:"روائح تشمّها",g1:"شيء واحد تتذوّقه أو تحبّه",
+  ab_kick:"مشروع خيري من أكاديمية فيريديان",ab_title:"مدرسة الزيتون",
+  ab_lead:"مدرسة مجانية على الهاتف للأطفال الذين حرمتهم الحرب والنزوح من التعليم: في غزة وكل فلسطين، والسودان، والكونغو، وسوريا، ولبنان، واليمن، ولأطفال الروهينغا.",
+  ab_start:"ادخل إلى ركن الأطفال",ab_help:"اطلب دعمًا دراسيًا",
+  ab_dkick:"إهداء",ab_dtitle:"باسم بيني زهيرة ومحبوب الدين",
+  ab_dtext:"مدرسة الزيتون مشروع خيري أهدته مؤسِّسة أكاديمية فيريديان، سميرة محبوب الدين، إلى والديها: أمّها بيني زهيرة، وأبيها محبوب الدين. فقد ساندا طوال حياتهما تعليم الأطفال الذين يحتاجون إلى العون ليواصلوا دراستهم، وهذه المدرسة امتداد لعطائهما.",
+  ab_what:"ماذا تجد هنا",ab_c1:"ركن الأطفال",ab_c1b:"حروف وأرقام وأناشيد ورسم وقصص وألعاب",ab_c2b:"استمع إلى السور القصيرة واحفظها",ab_c3b:"دروس جماعية مع معلّمين متطوّعين",ab_c4b:"دروس لليافعين والكبار بدون معدّات",ab_c5b:"للأهل والمعلّمين: اطلبوا مساعدة في الدراسة",ab_c6b:"انضمّ إلينا كمعلّم متطوّع",
+  ab_promise:"مجانية بالكامل، بلا إعلانات ولا حسابات|تعمل على الهواتف البسيطة، وبدون إنترنت بعد أول فتح|لا نطلب أسماء الأطفال الكاملة ولا صورهم ولا عناوينهم",
   s_quran:"القرآن الكريم",s_quran2:"استمع واحفظ",s_live:"دروس مباشرة",s_live2:"مع معلّمين متطوّعين",s_aid:"الإسعافات الأولية",s_aid2:"لليافعين والكبار",s_teach:"كن معلّمًا متطوّعًا",s_teach2:"سجّل هنا",
   g_faith:"القرآن والدروس المباشرة",g_help:"للكبار واليافعين",
   qLoading:"جارٍ التحميل…",qOffline:"تحتاج إلى الإنترنت أول مرة فقط لتحميل هذه السورة، ثم تبقى على هاتفك.",qPlay:"استمع للسورة",qRepeat:"كرّر الآية",qHide:"احفظ: أخفِ الآيات",qShow:"أظهر الآيات",qReciter:"بصوت الشيخ مشاري العفاسي",qTap:"اضغط على آية لتسمعها",
@@ -247,6 +278,13 @@ var T={
   breathe:"Breathing",ground:"5-4-3-2-1",
   groundHint:"When you feel worried, look around and count:",
   g5:"things you can see",g4:"things you can touch",g3:"sounds you can hear",g2:"things you can smell",g1:"thing you can taste or love",
+  ab_kick:"A charity project of Veridian Academy",ab_title:"Zaytoun School",
+  ab_lead:"A free school on the phone for children whose education has been taken from them by war and displacement: in Gaza and across Palestine, Sudan, Congo, Syria, Lebanon and Yemen, and for Rohingya children.",
+  ab_start:"Enter the kids' area",ab_help:"Ask for academic support",
+  ab_dkick:"Dedication",ab_dtitle:"In the name of Beeni Zahira and Mahboobdeen",
+  ab_dtext:"Zaytoun School is a charity project dedicated by the founder of Veridian Academy, Sameera Mahboobdeen, to her parents: her mother, Beeni Zahira, and her father, Mahboobdeen. Throughout their lives they supported the education of children who needed help to stay in school. This school carries their work forward.",
+  ab_what:"What you will find here",ab_c1:"Kids' area",ab_c1b:"Letters, numbers, songs, drawing, stories and games",ab_c2b:"Listen to and memorise the short surahs",ab_c3b:"Group classes with volunteer teachers",ab_c4b:"Lessons for teens and adults, no equipment",ab_c5b:"For parents and teachers: request help with studies",ab_c6b:"Join us as a volunteer teacher",
+  ab_promise:"Completely free, with no adverts and no accounts|Works on simple phones, and offline after the first visit|We never ask for children's full names, photos or addresses",
   s_quran:"Holy Quran",s_quran2:"Listen and memorise",s_live:"Live classes",s_live2:"With volunteer teachers",s_aid:"First aid",s_aid2:"For teens and adults",s_teach:"Volunteer to teach",s_teach2:"Sign up here",
   g_faith:"Quran and live classes",g_help:"For teens and adults",
   qLoading:"Loading…",qOffline:"You need internet only the first time to load this surah; then it stays on your phone.",qPlay:"Listen to the surah",qRepeat:"Repeat verse",qHide:"Memorise: hide verses",qShow:"Show verses",qReciter:"Recited by Sheikh Mishary Alafasy",qTap:"Tap a verse to hear it",
@@ -382,6 +420,7 @@ var IC={
  quran:'<svg viewBox="0 0 48 48"><path d="M8 34l16-6 16 6-16 8z" fill="#8a5a2b"/><path d="M24 10C19 7 12 7 7 9v19c5-2 12-2 17 1 5-3 12-3 17-1V9c-5-2-12-2-17 1z" fill="#2f7d3a"/><path d="M24 11v18" stroke="#e9c46a" stroke-width="1.6"/><path d="M14 16a5 5 0 1 0 5 6 4 4 0 0 1-5-6z" fill="#e9c46a"/><path d="M33 15l1 2.5 2.6.2-2 1.7.6 2.6-2.2-1.4-2.2 1.4.6-2.6-2-1.7 2.6-.2z" fill="#e9c46a"/></svg>',
  live:'<svg viewBox="0 0 48 48"><rect x="4" y="12" width="28" height="24" rx="5" fill="#2a73a8"/><polygon points="32,20 44,13 44,35 32,28" fill="#2a73a8"/><path d="M18 30s-7-4.5-7-9a3.7 3.7 0 0 1 7-1.6A3.7 3.7 0 0 1 25 21c0 4.5-7 9-7 9z" fill="#fff"/></svg>',
  aid:'<svg viewBox="0 0 48 48"><rect x="5" y="12" width="38" height="30" rx="6" fill="#d93a3a"/><path d="M17 12V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4" fill="none" stroke="#d93a3a" stroke-width="3"/><rect x="20" y="17" width="8" height="20" rx="1.5" fill="#fff"/><rect x="14" y="23" width="20" height="8" rx="1.5" fill="#fff"/></svg>',
+ help:'<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="#FDBA1E"/><path d="M14 20l10-5 10 5-10 5z" fill="#153462"/><path d="M18 23v6c3 2.5 9 2.5 12 0v-6" fill="none" stroke="#153462" stroke-width="2.5"/><path d="M34 20v7" stroke="#153462" stroke-width="2" stroke-linecap="round"/></svg>',
  teach:'<svg viewBox="0 0 48 48"><rect x="4" y="6" width="34" height="24" rx="3" fill="#2f5d3a"/><g stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="9" y1="13" x2="22" y2="13"/><line x1="9" y1="19" x2="18" y2="19"/></g><circle cx="36" cy="27" r="6" fill="#f5c9a0"/><path d="M26 44a10 10 0 0 1 20 0z" fill="#c2546f"/><line x1="25" y1="16" x2="32" y2="24" stroke="#8a5a2b" stroke-width="2.5" stroke-linecap="round"/></svg>'
 };
 
@@ -397,17 +436,6 @@ function playTune(i){stopTune();var Ctx=window.AudioContext||window.webkitAudioC
  tuneTimer=setTimeout(function(){stopTune();render()},(tm-AC.currentTime)*1000+200)}
 
 
-/* Tabs shared by every school page: the kids' area, then the sections for families, teens and adults */
-var TABS=[["kids","/school","ألعاب ودروس الأطفال","Kids' area"],["quran","/school#quran","القرآن الكريم","Quran"],["live","/school#live","دروس مباشرة","Live classes"],["firstaid","/school/firstaid","الإسعافات الأولية","First aid"],["teach","/school/teach","المعلّمون المتطوّعون","Volunteer teachers"]];
-var TABIC={kids:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><circle cx="17.5" cy="17.5" r="3.5"/></svg>',
- quran:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 6C9 4 5 4 2 5v14c3-1 7-1 10 1 3-2 7-2 10-1V5c-3-1-7-1-10 1z"/><path d="M12 6v14"/></svg>',
- live:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg>',
- firstaid:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="6" width="18" height="15" rx="2"/><path d="M9 6V3h6v3M12 10v7M8.5 13.5h7"/></svg>',
- teach:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>'};
-function drawTabs(active,lang,spa){var n=document.getElementById("vtabs");if(!n)return;
- n.innerHTML='<div class="in" role="navigation" aria-label="'+(lang==="ar"?"أقسام المدرسة":"School sections")+'">'+TABS.map(function(x){var inner=TABIC[x[0]]+'<span>'+(lang==="ar"?x[2]:x[3])+'</span>',on=x[0]===active?' class="on" aria-current="page"':'';
-  return spa&&spa.indexOf(x[0])>=0?'<button data-tab="'+x[0]+'"'+on+'>'+inner+'</button>':'<a href="'+x[1]+'"'+on+'>'+inner+'</a>'}).join("")+'</div>';
- var a=n.querySelector(".on");if(a&&a.scrollIntoView)a.scrollIntoView({block:"nearest",inline:"center"})}
 
 /* ---------- shared pieces ---------- */
 var LEAF='<svg viewBox="0 0 24 24" fill="none"><path d="M12 21V9" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><ellipse cx="8" cy="9" rx="4" ry="2" transform="rotate(-30 8 9)" fill="#fff"/><ellipse cx="16" cy="7" rx="4" ry="2" transform="rotate(30 16 7)" fill="#fff"/><ellipse cx="9" cy="14" rx="3.4" ry="1.7" transform="rotate(-25 9 14)" fill="#fff"/><circle cx="15" cy="13" r="2" fill="#fff"/></svg>';
@@ -416,12 +444,24 @@ function header(){
  '<div class="lang" role="group" aria-label="Language"><button data-lang="ar" aria-pressed="'+(S.lang==="ar")+'" lang="ar">العربية</button><button data-lang="en" aria-pressed="'+(S.lang==="en")+'" lang="en">English</button></div></header>'}
 function footer(){return '<footer><p>'+t("safe")+'</p><p>'+t("light")+'</p><p>'+t("grown")+'</p><p><a href="/" style="color:inherit">Veridian Academy · veridian.lk</a></p></footer>'}
 function tile(v,c,g,a,b){return '<button class="tile '+c+'" data-go="'+v+'"><span class="ico" aria-hidden="true">'+(IC[v]||g)+'</span><span><b>'+a+'</b><br><small>'+b+'</small></span></button>'}
-function panel(title,body){var top=(S.view==="quran"||S.view==="live")?'':'<button class="back" data-go="home">'+(S.lang==="ar"?"→ ":"← ")+t("back")+'</button>';return '<section class="panel'+(top?'':' pro')+'">'+top+'<h2>'+title+'</h2>'+body+'</section>'}
+function panel(title,body){var top=(S.view==="quran"||S.view==="live")?'':'<button class="back" data-go="kids">'+(S.lang==="ar"?"→ ":"← ")+t("back")+'</button>';return '<section class="panel'+(top?'':' pro')+'">'+top+'<h2>'+title+'</h2>'+body+'</section>'}
 function pills(key,list){return '<div class="row" role="group">'+list.map(function(p){return '<button class="pill" data-set="'+key+'" data-val="'+p[0]+'" aria-pressed="'+(S[key]===p[0])+'">'+p[1]+'</button>'}).join("")+'</div>'}
 function palette(){return '<div class="colors" role="group" aria-label="Colours">'+PALETTE.map(function(c){return '<button data-colour="'+c+'" aria-label="'+c+'" aria-pressed="'+(S.colour===c)+'" style="background:'+c+';'+(c==="#ffffff"?"box-shadow:inset 0 0 0 1px #999":"")+'"></button>'}).join("")+'</div>'}
 
 /* ---------- views ---------- */
-function home(){
+/* ---------- about the school (landing page) ---------- */
+function about(){
+ var card=function(go,href,ic,a,b){var inner='<span class="ico" aria-hidden="true">'+IC[ic]+'</span><span><b>'+a+'</b><small>'+b+'</small></span>';
+  return href?'<a class="pcard" href="'+href+'">'+inner+'</a>':'<button class="pcard" data-go="'+go+'">'+inner+'</button>'};
+ return '<section class="hero"><p class="kick">'+t("ab_kick")+'</p><h2>'+t("ab_title")+'</h2><p>'+t("ab_lead")+'</p>'+
+  '<div class="herobtns"><button class="hbtn" data-go="kids">'+t("ab_start")+'</button><a class="hbtn ghost" href="/school/help">'+t("ab_help")+'</a></div></section>'+
+  '<section class="dedic"><p class="kick">'+t("ab_dkick")+'</p><h2>'+t("ab_dtitle")+'</h2><p>'+t("ab_dtext")+'</p></section>'+
+  '<h3 class="sect">'+t("ab_what")+'</h3><div class="pcards">'+
+  card("kids",0,"game",t("ab_c1"),t("ab_c1b"))+card("quran",0,"quran",t("s_quran"),t("ab_c2b"))+card("live",0,"live",t("s_live"),t("ab_c3b"))+
+  card(0,"/school/firstaid","aid",t("s_aid"),t("ab_c4b"))+card(0,"/school/help","help",t("ab_help"),t("ab_c5b"))+card(0,"/school/teach","teach",t("s_teach"),t("ab_c6b"))+'</div>'+
+  '<ul class="promise">'+t("ab_promise").split("|").map(function(x){return "<li>"+x+"</li>"}).join("")+'</ul>'}
+
+function kids(){
  return '<section class="hello"><p class="big">'+t("hello")+'</p><p>'+t("for")+'</p></section>'+
  '<div class="stars">'+t("stars")+': <span aria-hidden="true">★</span> '+num(S.stars)+'</div>'+
  '<h3>'+t("g_learn")+'</h3><div class="tiles">'+
@@ -587,17 +627,17 @@ function setupJournal(){var j=document.getElementById("journal");if(!j)return;va
  j.addEventListener("input",function(){clearTimeout(tm);tm=setTimeout(function(){save("zs_journal",j.value);var s=document.getElementById("jsaved");if(s)s.textContent=t("saved")},400)})}
 
 /* ---------- render and events ---------- */
-var VIEWS={quran:quran,live:live,home:home,ar:arabic,math:maths,en:english,song:songs,story:stories,draw:drawing,colour:colouring,game:games,calm:calm,teen:teen};
+var VIEWS={quran:quran,live:live,home:about,kids:kids,ar:arabic,math:maths,en:english,song:songs,story:stories,draw:drawing,colour:colouring,game:games,calm:calm,teen:teen};
 function render(){
  document.documentElement.lang=S.lang;document.documentElement.dir=S.lang==="ar"?"rtl":"ltr";
  app.innerHTML=header()+(VIEWS[S.view]||home)()+'<p class="hint" id="voicemsg" role="status"></p>'+footer();
- drawTabs(S.view==="quran"||S.view==="live"?S.view:"kids",S.lang,["kids","quran","live"]);
+ ZNav.draw(S.view==="home"?"about":(S.view==="quran"||S.view==="live")?S.view:"kids");
  setupPad();setupColour();setupJournal()}
 
 function goView(v){if(canSpeak)speechSynthesis.cancel();stopTune();stopQuran();S.surah=0;S.view=v;S.song=-1;S.story=-1;S.page=-1;S.drawIdx=-1;if(v==="math")newQ();
- var h=(v==="quran"||v==="live")?"#"+v:"";if(location.hash!==h)history.replaceState(null,"",location.pathname+h);render();window.scrollTo(0,0)}
-document.getElementById("vtabs").addEventListener("click",function(e){var b=e.target.closest("button[data-tab]");if(!b)return;goView(b.dataset.tab==="kids"?"home":b.dataset.tab)});
-window.addEventListener("hashchange",function(){var h=location.hash.slice(1);if((h==="quran"||h==="live")&&S.view!==h)goView(h)});
+ var h=(v==="home")?"":(v==="quran"||v==="live")?"#"+v:"#kids";if(location.hash!==h)history.replaceState(null,"",location.pathname+h);render();window.scrollTo(0,0)}
+function hashView(){var h=location.hash.slice(1);return h==="quran"||h==="live"?h:h==="kids"?"kids":h===""?"home":null}
+window.addEventListener("hashchange",function(){var v=hashView();if(!v)return;if(v==="kids"&&S.view!=="home"&&S.view!=="quran"&&S.view!=="live")return;if(S.view!==v)goView(v)});
 app.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var d=b.dataset;
  if(d.lang){S.lang=d.lang;save("zs_lang",S.lang);render();return}
  if(d.go){goView(d.go);return}
@@ -633,7 +673,7 @@ app.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)
  if(d.qhide){S.qHide=!S.qHide;render();return}
  if(d.ay!==undefined){if(S.qHide){b.classList.toggle("peek");return}playFrom(+d.ay);return}
 });
-(function(){var h=location.hash.slice(1);if(h==="quran"||h==="live")S.view=h})();
+(function(){var v=hashView();if(v)S.view=v})();
 render();
 })();
 </script>

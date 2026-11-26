@@ -68,24 +68,12 @@ footer{font-size:.85rem;color:var(--muted)}
 </style>
 </head>
 <body>
-<div class="vbar"><a href="/"><img src="/img/mark.png" alt="Veridian logo" width="34" height="34"><span><b>VERIDIAN ACADEMY</b><small>ZAYTOUN SCHOOL · A COMMUNITY PROJECT</small></span></a></div>
-<nav class="vtabs" id="vtabs"></nav>
 <div class="wrap" id="app"></div>
+<script src="/school/nav.js"></script>
 <script>
 /* DRAFT — every lesson below must be checked by a qualified first aid Master Trainer, and the Arabic by a native speaker, before this page goes public.
    Based on current UK first aid practice (St John Ambulance, British Red Cross, Resuscitation Council UK) adapted for places with no ambulance or equipment. */
 
-/* Tabs shared by every school page: the kids' area, then the sections for families, teens and adults */
-var TABS=[["kids","/school","ألعاب ودروس الأطفال","Kids' area"],["quran","/school#quran","القرآن الكريم","Quran"],["live","/school#live","دروس مباشرة","Live classes"],["firstaid","/school/firstaid","الإسعافات الأولية","First aid"],["teach","/school/teach","المعلّمون المتطوّعون","Volunteer teachers"]];
-var TABIC={kids:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><circle cx="17.5" cy="17.5" r="3.5"/></svg>',
- quran:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 6C9 4 5 4 2 5v14c3-1 7-1 10 1 3-2 7-2 10-1V5c-3-1-7-1-10 1z"/><path d="M12 6v14"/></svg>',
- live:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg>',
- firstaid:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="6" width="18" height="15" rx="2"/><path d="M9 6V3h6v3M12 10v7M8.5 13.5h7"/></svg>',
- teach:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>'};
-function drawTabs(active,lang,spa){var n=document.getElementById("vtabs");if(!n)return;
- n.innerHTML='<div class="in" role="navigation" aria-label="'+(lang==="ar"?"أقسام المدرسة":"School sections")+'">'+TABS.map(function(x){var inner=TABIC[x[0]]+'<span>'+(lang==="ar"?x[2]:x[3])+'</span>',on=x[0]===active?' class="on" aria-current="page"':'';
-  return spa&&spa.indexOf(x[0])>=0?'<button data-tab="'+x[0]+'"'+on+'>'+inner+'</button>':'<a href="'+x[1]+'"'+on+'>'+inner+'</a>'}).join("")+'</div>';
- var a=n.querySelector(".on");if(a&&a.scrollIntoView)a.scrollIntoView({block:"nearest",inline:"center"})}
 
 var L=(function(){try{return JSON.parse(localStorage.getItem("zs_lang"))||"ar"}catch(e){return "ar"}})();
 var UI={
@@ -238,7 +226,7 @@ function render(){
    '<button class="pill" data-id="">'+u("back")+'</button>';
  }
  h+='<footer><p>'+u("foot")+'</p><p><a href="/">Veridian Academy · veridian.lk</a></p></footer>';
- app.innerHTML=h;drawTabs("firstaid",L);
+ app.innerHTML=h;ZNav.draw("firstaid");
 }
 app.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
  if(b.id==="lang"){L=L==="ar"?"en":"ar";try{localStorage.setItem("zs_lang",JSON.stringify(L))}catch(x){}render();return}
