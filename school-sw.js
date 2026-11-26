@@ -1,5 +1,5 @@
 // Saves the school on the phone the first time it opens, so it works with no internet afterwards.
-var CACHE = "zaytoun-v1";
+var CACHE = "zaytoun-v2";
 var FILES = ["/school", "/school/manifest.webmanifest", "/school/icon.svg"];
 self.addEventListener("install", function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(FILES); }).then(function () { return self.skipWaiting(); }));
