@@ -1,0 +1,12 @@
+{
+  "name": "مدرسة الزيتون · Zaytoun School",
+  "short_name": "Zaytoun",
+  "start_url": "/school",
+  "scope": "/school",
+  "display": "standalone",
+  "background_color": "#f1f5ec",
+  "theme_color": "#4c6a2b",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [{"src": "/school/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}]
+}
