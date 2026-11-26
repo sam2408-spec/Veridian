@@ -12,6 +12,7 @@
 </head>
 <body>
 <div class="vbar"><a href="/"><img src="/img/mark.png" alt="Veridian logo" width="34" height="34"><span><b>VERIDIAN ACADEMY</b><small>ZAYTOUN SCHOOL · A COMMUNITY PROJECT</small></span></a></div>
+<nav class="vtabs" id="vtabs"></nav>
 <style>
 /* One narrow column, phone first; big tap targets; no web fonts, no images, no outside requests, so it stays tiny and works offline */
 :root{
@@ -30,7 +31,19 @@
   --plum:#b9a0e0; --plum-soft:#2c2340;
   --good:#7fcf88; --bad:#f08a76; --line:#24395f; color-scheme:dark}}
 /* Veridian site bar: same navy, amber and serif type as veridian.lk */
-.vbar{background:#153462;border-bottom:4px solid #FDBA1E;color:#fff}
+
+/* Section tabs, styled like the tabs on veridian.lk */
+.vtabs{background:#153462}
+.vtabs .in{max-width:720px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding:0 8px}
+.vtabs .in::-webkit-scrollbar{display:none}
+.vtabs a,.vtabs button{flex:none;display:flex;align-items:center;gap:7px;background:none;border:0;border-bottom:3px solid transparent;padding:0 14px;min-height:48px;font:700 15px "Times New Roman",Times,serif;color:#c9d3e6;text-decoration:none;cursor:pointer;white-space:nowrap}
+html[dir="rtl"] .vtabs a,html[dir="rtl"] .vtabs button{font-family:var(--f-ar);font-size:15px}
+.vtabs a:hover,.vtabs button:hover{color:#fff}
+.vtabs .on{color:#fff;border-bottom-color:#FDBA1E}
+.vtabs svg{width:20px;height:20px}
+.vbar{border-bottom:0}
+.vtabs{border-bottom:4px solid #FDBA1E}
+.vbar{background:#153462;color:#fff}
 .vbar a{display:flex;align-items:center;gap:10px;max-width:720px;margin:0 auto;padding:10px 16px;color:#fff;text-decoration:none;direction:ltr}
 .vbar img{height:34px;width:auto}
 .vbar b{display:block;font:600 16px/1.1 "Times New Roman",Times,serif;letter-spacing:.05em}
@@ -76,6 +89,9 @@ h3{font-size:1rem;margin:0;color:var(--muted);font-weight:700}
 .c-rose{background:var(--rose-soft)} .c-rose .glyph{color:var(--rose)}
 .c-plum{background:var(--plum-soft)} .c-plum .glyph{color:var(--plum)}
 .c-plain{background:var(--surface);border:1.5px solid var(--line)} .c-plain .glyph{color:var(--olive)}
+.panel.pro{border-radius:6px;border-top:4px solid #153462;padding:22px}
+.panel.pro h2{font-family:"Times New Roman",Times,serif;font-size:1.6rem;color:var(--olive)}
+html[dir="rtl"] .panel.pro h2{font-family:var(--f-ar)}
 .panel{background:var(--surface);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:16px;border:1.5px solid var(--line)}
 .back{align-self:flex-start;border:0;background:var(--bg);color:var(--ink);border-radius:999px;padding:8px 14px;cursor:pointer}
 .row{display:flex;flex-wrap:wrap;gap:8px}
@@ -380,6 +396,19 @@ function playTune(i){stopTune();var Ctx=window.AudioContext||window.webkitAudioC
   o.connect(g);g.connect(AC.destination);o.start(tm);o.stop(tm+d);tm+=d});
  tuneTimer=setTimeout(function(){stopTune();render()},(tm-AC.currentTime)*1000+200)}
 
+
+/* Tabs shared by every school page: the kids' area, then the sections for families, teens and adults */
+var TABS=[["kids","/school","ألعاب ودروس الأطفال","Kids' area"],["quran","/school#quran","القرآن الكريم","Quran"],["live","/school#live","دروس مباشرة","Live classes"],["firstaid","/school/firstaid","الإسعافات الأولية","First aid"],["teach","/school/teach","المعلّمون المتطوّعون","Volunteer teachers"]];
+var TABIC={kids:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><circle cx="17.5" cy="17.5" r="3.5"/></svg>',
+ quran:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 6C9 4 5 4 2 5v14c3-1 7-1 10 1 3-2 7-2 10-1V5c-3-1-7-1-10 1z"/><path d="M12 6v14"/></svg>',
+ live:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg>',
+ firstaid:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="6" width="18" height="15" rx="2"/><path d="M9 6V3h6v3M12 10v7M8.5 13.5h7"/></svg>',
+ teach:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>'};
+function drawTabs(active,lang,spa){var n=document.getElementById("vtabs");if(!n)return;
+ n.innerHTML='<div class="in" role="navigation" aria-label="'+(lang==="ar"?"أقسام المدرسة":"School sections")+'">'+TABS.map(function(x){var inner=TABIC[x[0]]+'<span>'+(lang==="ar"?x[2]:x[3])+'</span>',on=x[0]===active?' class="on" aria-current="page"':'';
+  return spa&&spa.indexOf(x[0])>=0?'<button data-tab="'+x[0]+'"'+on+'>'+inner+'</button>':'<a href="'+x[1]+'"'+on+'>'+inner+'</a>'}).join("")+'</div>';
+ var a=n.querySelector(".on");if(a&&a.scrollIntoView)a.scrollIntoView({block:"nearest",inline:"center"})}
+
 /* ---------- shared pieces ---------- */
 var LEAF='<svg viewBox="0 0 24 24" fill="none"><path d="M12 21V9" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><ellipse cx="8" cy="9" rx="4" ry="2" transform="rotate(-30 8 9)" fill="#fff"/><ellipse cx="16" cy="7" rx="4" ry="2" transform="rotate(30 16 7)" fill="#fff"/><ellipse cx="9" cy="14" rx="3.4" ry="1.7" transform="rotate(-25 9 14)" fill="#fff"/><circle cx="15" cy="13" r="2" fill="#fff"/></svg>';
 function header(){
@@ -387,7 +416,7 @@ function header(){
  '<div class="lang" role="group" aria-label="Language"><button data-lang="ar" aria-pressed="'+(S.lang==="ar")+'" lang="ar">العربية</button><button data-lang="en" aria-pressed="'+(S.lang==="en")+'" lang="en">English</button></div></header>'}
 function footer(){return '<footer><p>'+t("safe")+'</p><p>'+t("light")+'</p><p>'+t("grown")+'</p><p><a href="/" style="color:inherit">Veridian Academy · veridian.lk</a></p></footer>'}
 function tile(v,c,g,a,b){return '<button class="tile '+c+'" data-go="'+v+'"><span class="ico" aria-hidden="true">'+(IC[v]||g)+'</span><span><b>'+a+'</b><br><small>'+b+'</small></span></button>'}
-function panel(title,body){return '<section class="panel"><button class="back" data-go="home">'+(S.lang==="ar"?"→ ":"← ")+t("back")+'</button><h2>'+title+'</h2>'+body+'</section>'}
+function panel(title,body){var top=(S.view==="quran"||S.view==="live")?'':'<button class="back" data-go="home">'+(S.lang==="ar"?"→ ":"← ")+t("back")+'</button>';return '<section class="panel'+(top?'':' pro')+'">'+top+'<h2>'+title+'</h2>'+body+'</section>'}
 function pills(key,list){return '<div class="row" role="group">'+list.map(function(p){return '<button class="pill" data-set="'+key+'" data-val="'+p[0]+'" aria-pressed="'+(S[key]===p[0])+'">'+p[1]+'</button>'}).join("")+'</div>'}
 function palette(){return '<div class="colors" role="group" aria-label="Colours">'+PALETTE.map(function(c){return '<button data-colour="'+c+'" aria-label="'+c+'" aria-pressed="'+(S.colour===c)+'" style="background:'+c+';'+(c==="#ffffff"?"box-shadow:inset 0 0 0 1px #999":"")+'"></button>'}).join("")+'</div>'}
 
@@ -406,13 +435,9 @@ function home(){
  '<h3>'+t("g_play")+'</h3><div class="tiles">'+
  tile("game","c-plum","◆",t("s_game"),t("s_game2"))+
  tile("story","c-olive","📖",t("s_story"),t("s_story2"))+'</div>'+
- '<h3>'+t("g_faith")+'</h3><div class="tiles">'+tile("quran","c-olive","",t("s_quran"),t("s_quran2"))+tile("live","c-sky","",t("s_live"),t("s_live2"))+'</div>'+
  '<h3>'+t("g_care")+'</h3><div class="tiles">'+
  tile("calm","c-plain","◯",t("s_calm"),t("s_calm2"))+
- tile("teen","c-plum","✍",t("s_teen"),t("s_teen2"))+'</div>'+
- '<h3>'+t("g_help")+'</h3><div class="tiles">'+
- '<a class="tile c-rose tilelink" href="/school/firstaid"><span class="ico" aria-hidden="true">'+IC.aid+'</span><span><b>'+t("s_aid")+'</b><br><small>'+t("s_aid2")+'</small></span></a>'+
- '<a class="tile c-plain tilelink" href="/school/teach"><span class="ico" aria-hidden="true">'+IC.teach+'</span><span><b>'+t("s_teach")+'</b><br><small>'+t("s_teach2")+'</small></span></a></div>'}
+ tile("teen","c-plum","✍",t("s_teen"),t("s_teen2"))+'</div>'}
 
 function arabic(){var L=LETTERS[S.letter];
  var top=pills("arMode",[["read",S.lang==="ar"?"اقرأ":"Read"],["write",S.lang==="ar"?"اكتب":"Write"]]);
@@ -566,11 +591,16 @@ var VIEWS={quran:quran,live:live,home:home,ar:arabic,math:maths,en:english,song:
 function render(){
  document.documentElement.lang=S.lang;document.documentElement.dir=S.lang==="ar"?"rtl":"ltr";
  app.innerHTML=header()+(VIEWS[S.view]||home)()+'<p class="hint" id="voicemsg" role="status"></p>'+footer();
+ drawTabs(S.view==="quran"||S.view==="live"?S.view:"kids",S.lang,["kids","quran","live"]);
  setupPad();setupColour();setupJournal()}
 
+function goView(v){if(canSpeak)speechSynthesis.cancel();stopTune();stopQuran();S.surah=0;S.view=v;S.song=-1;S.story=-1;S.page=-1;S.drawIdx=-1;if(v==="math")newQ();
+ var h=(v==="quran"||v==="live")?"#"+v:"";if(location.hash!==h)history.replaceState(null,"",location.pathname+h);render();window.scrollTo(0,0)}
+document.getElementById("vtabs").addEventListener("click",function(e){var b=e.target.closest("button[data-tab]");if(!b)return;goView(b.dataset.tab==="kids"?"home":b.dataset.tab)});
+window.addEventListener("hashchange",function(){var h=location.hash.slice(1);if((h==="quran"||h==="live")&&S.view!==h)goView(h)});
 app.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var d=b.dataset;
  if(d.lang){S.lang=d.lang;save("zs_lang",S.lang);render();return}
- if(d.go){if(canSpeak)speechSynthesis.cancel();stopTune();stopQuran();S.surah=0;S.view=d.go;S.song=-1;S.story=-1;S.page=-1;S.drawIdx=-1;if(d.go==="math")newQ();render();window.scrollTo(0,0);return}
+ if(d.go){goView(d.go);return}
  if(d.set){S[d.set]=d.val;if(d.set==="teen"&&d.val==="times")newT();render();return}
  if(d.letter){S.letter=+d.letter;render();var L=LETTERS[S.letter];speak(L[0]+"، "+L[1],"ar");return}
  if(d.say){speak(d.say,d.sl);return}
@@ -603,6 +633,7 @@ app.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)
  if(d.qhide){S.qHide=!S.qHide;render();return}
  if(d.ay!==undefined){if(S.qHide){b.classList.toggle("peek");return}playFrom(+d.ay);return}
 });
+(function(){var h=location.hash.slice(1);if(h==="quran"||h==="live")S.view=h})();
 render();
 })();
 </script>

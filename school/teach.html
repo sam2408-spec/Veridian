@@ -13,7 +13,19 @@
  --f-ui:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif;--f-ar:"Noto Naskh Arabic","Geeza Pro","Segoe UI","Tahoma",sans-serif}
 @media (prefers-color-scheme:dark){:root{--bg:#0b1a33;--surface:#132a52;--ink:#e9eef7;--muted:#aab6cc;--olive:#FDBA1E;--olive-soft:#1d3866;--sun-soft:#3a3018;--line:#24395f;--bad:#f08a76;color-scheme:dark}}
 /* Veridian site bar: same navy, amber and serif type as veridian.lk */
-.vbar{background:#153462;border-bottom:4px solid #FDBA1E;color:#fff}
+
+/* Section tabs, styled like the tabs on veridian.lk */
+.vtabs{background:#153462}
+.vtabs .in{max-width:720px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding:0 8px}
+.vtabs .in::-webkit-scrollbar{display:none}
+.vtabs a,.vtabs button{flex:none;display:flex;align-items:center;gap:7px;background:none;border:0;border-bottom:3px solid transparent;padding:0 14px;min-height:48px;font:700 15px "Times New Roman",Times,serif;color:#c9d3e6;text-decoration:none;cursor:pointer;white-space:nowrap}
+html[dir="rtl"] .vtabs a,html[dir="rtl"] .vtabs button{font-family:var(--f-ar);font-size:15px}
+.vtabs a:hover,.vtabs button:hover{color:#fff}
+.vtabs .on{color:#fff;border-bottom-color:#FDBA1E}
+.vtabs svg{width:20px;height:20px}
+.vbar{border-bottom:0}
+.vtabs{border-bottom:4px solid #FDBA1E}
+.vbar{background:#153462;color:#fff}
 .vbar a{display:flex;align-items:center;gap:10px;max-width:720px;margin:0 auto;padding:10px 16px;color:#fff;text-decoration:none;direction:ltr}
 .vbar img{height:34px;width:auto}
 .vbar b{display:block;font:600 16px/1.1 "Times New Roman",Times,serif;letter-spacing:.05em}
@@ -24,8 +36,8 @@ html[dir="rtl"] h1,html[dir="rtl"] h2,html[dir="rtl"] h3{font-family:var(--f-ar)
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:17px;line-height:1.55}
 .wrap{max-width:700px;margin:0 auto;padding:18px 16px 40px;display:flex;flex-direction:column;gap:16px}
-h1{font-size:1.4rem;margin:0}h2{font-size:1.15rem;margin:0 0 8px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px}
+h1{font-size:1.7rem;margin:0;color:var(--olive)}h2{font-size:1.15rem;margin:0 0 8px}
+.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid #153462;border-radius:6px;padding:20px}
 .ar{font-family:var(--f-ar);direction:rtl;text-align:right;color:var(--muted)}
 label{display:block;font-weight:600;margin:12px 0 4px}
 label small{font-weight:400;color:var(--muted)}
@@ -43,8 +55,9 @@ a{color:var(--olive)}
 </head>
 <body>
 <div class="vbar"><a href="/"><img src="/img/mark.png" alt="Veridian logo" width="34" height="34"><span><b>VERIDIAN ACADEMY</b><small>ZAYTOUN SCHOOL · A COMMUNITY PROJECT</small></span></a></div>
+<nav class="vtabs" id="vtabs"></nav>
 <div class="wrap">
-<header><h1>Volunteer to teach at Zaytoun School</h1><p class="ar">كن معلّمًا متطوّعًا في مدرسة الزيتون</p><p><a href="/school">← Zaytoun School</a></p></header>
+<header><h1>Volunteer to teach at Zaytoun School</h1><p class="ar">كن معلّمًا متطوّعًا في مدرسة الزيتون</p></header>
 
 <div class="ok" id="thanks" hidden><b>Thank you — your application has been sent.</b><br>The Veridian team will check your qualifications and references and contact you by email. <span class="ar" style="display:block">شكرًا لك، وصل طلبك. سيتواصل معك فريق فيريديان عبر البريد الإلكتروني.</span></div>
 
@@ -135,6 +148,20 @@ a{color:var(--olive)}
 <footer><p><a href="/">Veridian Academy · veridian.lk</a></p></footer>
 </div>
 <script>
+
+/* Tabs shared by every school page: the kids' area, then the sections for families, teens and adults */
+var TABS=[["kids","/school","ألعاب ودروس الأطفال","Kids' area"],["quran","/school#quran","القرآن الكريم","Quran"],["live","/school#live","دروس مباشرة","Live classes"],["firstaid","/school/firstaid","الإسعافات الأولية","First aid"],["teach","/school/teach","المعلّمون المتطوّعون","Volunteer teachers"]];
+var TABIC={kids:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><circle cx="17.5" cy="17.5" r="3.5"/></svg>',
+ quran:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 6C9 4 5 4 2 5v14c3-1 7-1 10 1 3-2 7-2 10-1V5c-3-1-7-1-10 1z"/><path d="M12 6v14"/></svg>',
+ live:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg>',
+ firstaid:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="6" width="18" height="15" rx="2"/><path d="M9 6V3h6v3M12 10v7M8.5 13.5h7"/></svg>',
+ teach:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>'};
+function drawTabs(active,lang,spa){var n=document.getElementById("vtabs");if(!n)return;
+ n.innerHTML='<div class="in" role="navigation" aria-label="'+(lang==="ar"?"أقسام المدرسة":"School sections")+'">'+TABS.map(function(x){var inner=TABIC[x[0]]+'<span>'+(lang==="ar"?x[2]:x[3])+'</span>',on=x[0]===active?' class="on" aria-current="page"':'';
+  return spa&&spa.indexOf(x[0])>=0?'<button data-tab="'+x[0]+'"'+on+'>'+inner+'</button>':'<a href="'+x[1]+'"'+on+'>'+inner+'</a>'}).join("")+'</div>';
+ var a=n.querySelector(".on");if(a&&a.scrollIntoView)a.scrollIntoView({block:"nearest",inline:"center"})}
+
+drawTabs("teach","en");
 if(/[?&]sent=1/.test(location.search)){document.getElementById("thanks").hidden=false;document.getElementById("apply").hidden=true}
 document.getElementById("next").value=location.origin+"/school/teach?sent=1";
 document.getElementById("f").addEventListener("change",function(){if(this.files[0]&&this.files[0].size>5*1024*1024){alert("Please choose a file under 5 MB.");this.value=""}});

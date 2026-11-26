@@ -14,7 +14,19 @@
  --f-ar:"Noto Naskh Arabic","Geeza Pro","Segoe UI","Tahoma",sans-serif;--f-ui:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif}
 @media (prefers-color-scheme:dark){:root{--bg:#0b1a33;--surface:#132a52;--ink:#e9eef7;--muted:#aab6cc;--olive:#FDBA1E;--olive-soft:#1d3866;--red:#f08a76;--red-soft:#3d2229;--sun-soft:#3a3018;--line:#24395f;color-scheme:dark}}
 /* Veridian site bar: same navy, amber and serif type as veridian.lk */
-.vbar{background:#153462;border-bottom:4px solid #FDBA1E;color:#fff}
+
+/* Section tabs, styled like the tabs on veridian.lk */
+.vtabs{background:#153462}
+.vtabs .in{max-width:720px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding:0 8px}
+.vtabs .in::-webkit-scrollbar{display:none}
+.vtabs a,.vtabs button{flex:none;display:flex;align-items:center;gap:7px;background:none;border:0;border-bottom:3px solid transparent;padding:0 14px;min-height:48px;font:700 15px "Times New Roman",Times,serif;color:#c9d3e6;text-decoration:none;cursor:pointer;white-space:nowrap}
+html[dir="rtl"] .vtabs a,html[dir="rtl"] .vtabs button{font-family:var(--f-ar);font-size:15px}
+.vtabs a:hover,.vtabs button:hover{color:#fff}
+.vtabs .on{color:#fff;border-bottom-color:#FDBA1E}
+.vtabs svg{width:20px;height:20px}
+.vbar{border-bottom:0}
+.vtabs{border-bottom:4px solid #FDBA1E}
+.vbar{background:#153462;color:#fff}
 .vbar a{display:flex;align-items:center;gap:10px;max-width:720px;margin:0 auto;padding:10px 16px;color:#fff;text-decoration:none;direction:ltr}
 .vbar img{height:34px;width:auto}
 .vbar b{display:block;font:600 16px/1.1 "Times New Roman",Times,serif;letter-spacing:.05em}
@@ -27,15 +39,15 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-ui);font
 html[dir="rtl"] body{font-family:var(--f-ar)}
 .wrap{max-width:720px;margin:0 auto;padding:18px max(16px,env(safe-area-inset-left,0px)) 40px;display:flex;flex-direction:column;gap:16px}
 header{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-h1{font-size:1.35rem;margin:0}h2{font-size:1.25rem;margin:0 0 8px}h3{font-size:1.05rem;margin:14px 0 6px}
+h1{font-size:1.7rem;margin:0;color:var(--olive)}h2{font-size:1.25rem;margin:0 0 8px}h3{font-size:1.05rem;margin:14px 0 6px}
 a{color:var(--olive)}
 .btn,.pill{font:inherit;border:0;border-radius:999px;cursor:pointer;min-height:44px;padding:8px 16px}
 .btn{background:var(--red);color:#fff;font-weight:700}
 .pill{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid #153462;border-radius:6px;padding:20px}
 .draft{background:var(--sun-soft);border-radius:14px;padding:10px 14px;font-size:.92rem}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
-.topic{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px;font:inherit;color:inherit;cursor:pointer;min-height:96px}
+.topic{border-radius:6px!important;display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px;font:inherit;color:inherit;cursor:pointer;min-height:96px}
 .topic .em{font-size:1.6rem;line-height:1}
 .topic.crit{border-color:var(--red);background:var(--red-soft)}
 ol,ul{padding-inline-start:1.3em;margin:6px 0}
@@ -57,10 +69,24 @@ footer{font-size:.85rem;color:var(--muted)}
 </head>
 <body>
 <div class="vbar"><a href="/"><img src="/img/mark.png" alt="Veridian logo" width="34" height="34"><span><b>VERIDIAN ACADEMY</b><small>ZAYTOUN SCHOOL · A COMMUNITY PROJECT</small></span></a></div>
+<nav class="vtabs" id="vtabs"></nav>
 <div class="wrap" id="app"></div>
 <script>
 /* DRAFT — every lesson below must be checked by a qualified first aid Master Trainer, and the Arabic by a native speaker, before this page goes public.
    Based on current UK first aid practice (St John Ambulance, British Red Cross, Resuscitation Council UK) adapted for places with no ambulance or equipment. */
+
+/* Tabs shared by every school page: the kids' area, then the sections for families, teens and adults */
+var TABS=[["kids","/school","ألعاب ودروس الأطفال","Kids' area"],["quran","/school#quran","القرآن الكريم","Quran"],["live","/school#live","دروس مباشرة","Live classes"],["firstaid","/school/firstaid","الإسعافات الأولية","First aid"],["teach","/school/teach","المعلّمون المتطوّعون","Volunteer teachers"]];
+var TABIC={kids:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><circle cx="17.5" cy="17.5" r="3.5"/></svg>',
+ quran:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 6C9 4 5 4 2 5v14c3-1 7-1 10 1 3-2 7-2 10-1V5c-3-1-7-1-10 1z"/><path d="M12 6v14"/></svg>',
+ live:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg>',
+ firstaid:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="6" width="18" height="15" rx="2"/><path d="M9 6V3h6v3M12 10v7M8.5 13.5h7"/></svg>',
+ teach:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>'};
+function drawTabs(active,lang,spa){var n=document.getElementById("vtabs");if(!n)return;
+ n.innerHTML='<div class="in" role="navigation" aria-label="'+(lang==="ar"?"أقسام المدرسة":"School sections")+'">'+TABS.map(function(x){var inner=TABIC[x[0]]+'<span>'+(lang==="ar"?x[2]:x[3])+'</span>',on=x[0]===active?' class="on" aria-current="page"':'';
+  return spa&&spa.indexOf(x[0])>=0?'<button data-tab="'+x[0]+'"'+on+'>'+inner+'</button>':'<a href="'+x[1]+'"'+on+'>'+inner+'</a>'}).join("")+'</div>';
+ var a=n.querySelector(".on");if(a&&a.scrollIntoView)a.scrollIntoView({block:"nearest",inline:"center"})}
+
 var L=(function(){try{return JSON.parse(localStorage.getItem("zs_lang"))||"ar"}catch(e){return "ar"}})();
 var UI={
  ar:{title:"الإسعافات الأولية",sub:"لليافعين والكبار · بدون معدّات",back:"كل الدروس",home:"مدرسة الزيتون",
@@ -196,7 +222,7 @@ function vids(id){var v=VID[id];if(!v)return "";
  return '<div class="vids"><h3>▶ '+u("vid")+'</h3><p class="src" style="margin:0 0 8px">'+u("vidnote")+'</p>'+v.map(function(x){return '<button class="vid" data-yt="'+x[0]+'" aria-label="'+x[1]+'"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/'+x[0]+'/hqdefault.jpg"><span class="play" aria-hidden="true">▶</span><span class="cap">'+x[1]+'</span></button>'}).join("")+'</div>'}
 function render(){
  document.documentElement.lang=L;document.documentElement.dir=L==="ar"?"rtl":"ltr";
- var h='<header><div><h1>'+u("title")+'</h1><div class="src">'+u("sub")+'</div></div><div style="display:flex;gap:8px"><button class="pill" id="lang">'+(L==="ar"?"English":"العربية")+'</button><a class="pill" style="text-decoration:none;display:inline-flex;align-items:center" href="/school">'+u("home")+'</a></div></header>'+
+ var h='<header><div><h1>'+u("title")+'</h1><div class="src">'+u("sub")+'</div></div><div style="display:flex;gap:8px"><button class="pill" id="lang">'+(L==="ar"?"English":"العربية")+'</button></div></header>'+
   '<div class="draft">'+u("draft")+'</div>';
  var t=T.filter(function(x){return x.id===cur})[0];
  if(!t){
@@ -212,7 +238,7 @@ function render(){
    '<button class="pill" data-id="">'+u("back")+'</button>';
  }
  h+='<footer><p>'+u("foot")+'</p><p><a href="/">Veridian Academy · veridian.lk</a></p></footer>';
- app.innerHTML=h;
+ app.innerHTML=h;drawTabs("firstaid",L);
 }
 app.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
  if(b.id==="lang"){L=L==="ar"?"en":"ar";try{localStorage.setItem("zs_lang",JSON.stringify(L))}catch(x){}render();return}
