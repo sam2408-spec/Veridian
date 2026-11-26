@@ -5,29 +5,39 @@
 <meta name="description" content="A free, Arabic-first learning and play space for children of Gaza and every child affected by war. Songs, lessons, drawing, colouring, games and stories. Works offline.">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#4c6a2b">
+<meta name="theme-color" content="#153462">
 <link rel="manifest" href="/school/manifest.webmanifest">
 <link rel="icon" href="/school/icon.svg" type="image/svg+xml">
 <style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>
 </head>
 <body>
+<div class="vbar"><a href="/"><img src="/img/mark.png" alt="Veridian logo" width="34" height="34"><span><b>VERIDIAN ACADEMY</b><small>ZAYTOUN SCHOOL · A COMMUNITY PROJECT</small></span></a></div>
 <style>
 /* One narrow column, phone first; big tap targets; no web fonts, no images, no outside requests, so it stays tiny and works offline */
 :root{
-  --bg:#f1f5ec; --surface:#ffffff; --ink:#1d2a1a; --muted:#56664f;
-  --olive:#4c6a2b; --olive-soft:#dfe8d2; --sky:#2a73a8; --sky-soft:#dcebf5;
-  --sun:#e9a92c; --sun-soft:#fbeccb; --rose:#c2546f; --rose-soft:#f7dfe5;
+  --bg:#f4f6fa; --surface:#ffffff; --ink:#14213a; --muted:#4a5670;
+  --olive:#153462; --olive-soft:#e3e9f3; --sky:#2a73a8; --sky-soft:#dcebf5;
+  --sun:#FDBA1E; --sun-soft:#fbeccb; --rose:#c2546f; --rose-soft:#f7dfe5;
   --plum:#6b4c9a; --plum-soft:#e7def3;
-  --good:#2f7d3a; --bad:#b4432f; --line:#d3dcc9;
+  --good:#2f7d3a; --bad:#9F2C0F; --line:#dde3ec;
   --f-ar:"Noto Naskh Arabic","Geeza Pro","Segoe UI","Tahoma",sans-serif;
   --f-ui:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif;
 }
 @media (prefers-color-scheme:dark){:root{
-  --bg:#141a12; --surface:#1e261b; --ink:#e7eee0; --muted:#a3b39a;
-  --olive:#9cc06a; --olive-soft:#2b3a22; --sky:#7cb9e4; --sky-soft:#1d3142;
+  --bg:#0b1a33; --surface:#132a52; --ink:#e9eef7; --muted:#aab6cc;
+  --olive:#FDBA1E; --olive-soft:#1d3866; --sky:#7cb9e4; --sky-soft:#1d3142;
   --sun:#f0c060; --sun-soft:#3a3018; --rose:#ef8fa6; --rose-soft:#3d2229;
   --plum:#b9a0e0; --plum-soft:#2c2340;
-  --good:#7fcf88; --bad:#f08a76; --line:#33402d; color-scheme:dark}}
+  --good:#7fcf88; --bad:#f08a76; --line:#24395f; color-scheme:dark}}
+/* Veridian site bar: same navy, amber and serif type as veridian.lk */
+.vbar{background:#153462;border-bottom:4px solid #FDBA1E;color:#fff}
+.vbar a{display:flex;align-items:center;gap:10px;max-width:720px;margin:0 auto;padding:10px 16px;color:#fff;text-decoration:none;direction:ltr}
+.vbar img{height:34px;width:auto}
+.vbar b{display:block;font:600 16px/1.1 "Times New Roman",Times,serif;letter-spacing:.05em}
+.vbar small{display:block;font-size:10px;letter-spacing:.12em;color:#cfd8ea;margin-top:3px}
+h1,h2,h3{font-family:"Times New Roman",Times,serif}
+html[dir="rtl"] h1,html[dir="rtl"] h2,html[dir="rtl"] h3{font-family:var(--f-ar)}
+
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:17px;line-height:1.55}
 html[dir="rtl"] body{font-family:var(--f-ar)}
