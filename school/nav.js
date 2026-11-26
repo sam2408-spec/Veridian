@@ -6,7 +6,7 @@
     '.zn-side{position:fixed;left:0;top:0;bottom:0;width:272px;z-index:40;background:var(--zn-navy2);color:#fff;display:flex;flex-direction:column;overflow-y:auto;border-right:4px solid var(--zn-amber);transition:transform .3s ease;direction:ltr}' +
     '.zn-brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;padding:22px 20px 18px;border-bottom:1px solid rgba(255,255,255,.14)}' +
     '.zn-mark{width:46px;height:46px;border-radius:50%;background:#153462;display:grid;place-items:center;flex:none;border:2px solid #FDBA1E}.zn-mark svg{width:28px;height:28px}' +
-    '.zn-vlogo{height:44px;width:auto;flex:none}.zn-brand{gap:10px!important}' +
+    '.zn-vlogo{height:48px;width:auto;flex:none}.zn-brand{gap:10px!important}' +
     '.zn-by{display:flex;align-items:center;gap:8px;padding:10px 20px;font:13px/1.3 system-ui,sans-serif;color:#cfd8ea;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.15)}.zn-by img{height:22px;width:auto}.zn-by b{color:#FDBA1E;font-weight:600}' +
     '.zn-brand b{display:block;font:600 19px/1.1 "Times New Roman",Times,serif;letter-spacing:.05em}' +
     '.zn-brand small{display:block;font-size:10.5px;letter-spacing:.12em;color:#cfd8ea;margin-top:4px}' +
@@ -49,7 +49,7 @@
     var side = document.createElement("aside"); side.className = "zn-side"; side.id = "zn-side"; side.setAttribute("aria-label", "School menu");
     var shade = document.createElement("button"); shade.className = "zn-shade"; shade.id = "zn-shade"; shade.tabIndex = -1; shade.setAttribute("aria-label", "Close menu");
     var top = document.createElement("div"); top.className = "zn-top";
-    top.innerHTML = '<a class="zn-brand" href="/school"><img class="zn-vlogo" src="/img/mark.png" alt="Veridian Academy"><span class="zn-mark">' + LEAF + '</span><b>ZAYTOUN</b></a><button class="zn-btn" id="zn-btn" aria-expanded="false" aria-controls="zn-side"><span></span>Menu</button>';
+    top.innerHTML = '<a class="zn-brand" href="/school"><img class="zn-vlogo" src="/img/mark.png" alt="Veridian Academy"><b>ZAYTOUN</b></a><button class="zn-btn" id="zn-btn" aria-expanded="false" aria-controls="zn-side"><span></span>Menu</button>';
     document.body.insertBefore(top, document.body.firstChild);
     document.body.insertBefore(shade, document.body.firstChild);
     document.body.insertBefore(side, document.body.firstChild);
@@ -67,7 +67,7 @@
       build();
       var inSchool = on === "about" || on === "kids";
       document.getElementById("zn-side").innerHTML =
-        '<a class="zn-brand" href="/school"><img class="zn-vlogo" src="/img/mark.png" alt="Veridian Academy"><span class="zn-mark">' + LEAF + '</span><span><b>ZAYTOUN</b><small>SCHOOL · مدرسة الزيتون</small></span></a>' +
+        '<a class="zn-brand" href="/school"><img class="zn-vlogo" src="/img/mark.png" alt="Veridian Academy"><span><b>ZAYTOUN</b><small>SCHOOL · مدرسة الزيتون</small></span></a>' +
         '<a class="zn-by" href="/">A project of&nbsp;<b>Veridian Academy</b></a>' +
         '<nav><ul class="zn-menu">' +
         '<li class="' + (inSchool ? "open" : "") + '"><button class="zn-grp" aria-expanded="' + inSchool + '"><span class="zn-gname"><b>Zaytoun School</b><small>for children who need support</small></span></button><ul class="zn-sub">' +

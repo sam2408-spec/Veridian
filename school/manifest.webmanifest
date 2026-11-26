@@ -4,9 +4,9 @@
   "start_url": "/school",
   "scope": "/school",
   "display": "standalone",
-  "background_color": "#f1f5ec",
-  "theme_color": "#4c6a2b",
+  "background_color": "#f4f6fa",
+  "theme_color": "#153462",
   "lang": "ar",
   "dir": "rtl",
-  "icons": [{"src": "/school/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}]
+  "icons": [{"src": "/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"}]
 }
