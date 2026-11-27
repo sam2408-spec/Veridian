@@ -38,6 +38,7 @@
   var SCHOOL = [["about", "/school", "About the school", "عن المدرسة"], ["kids", "/school#kids", "Kids' area", "ألعاب ودروس الأطفال"]];
   var ITEMS = [["quran", "/school#quran", "Holy Quran", "القرآن الكريم"], ["live", "/school#live", "Live classes", "دروس مباشرة"],
     ["firstaid", "/school/firstaid", "First aid", "الإسعافات الأولية"], ["help", "/school/help", "Ask for academic support", "اطلب دعمًا دراسيًا"],
+    ["sponsor", "/school/sponsor", "Sponsor a child's education", "اكفل تعليم طفل"],
     ["teach", "/school/teach", "Volunteer teachers", "المعلّمون المتطوّعون"]];
   function item(x, on) {
     return '<li><a href="' + x[1] + '"' + (x[0] === on ? ' class="on" aria-current="page"' : '') + ' data-zn="' + x[0] + '"><span class="zn-t">' + x[2] + '<span class="zn-ar" lang="ar">' + x[3] + '</span></span></a></li>';
