@@ -1,8 +1,8 @@
 // Saves the school on the phone the first time it opens, so it works with no internet afterwards.
 // Quran surahs are kept in a separate cache ("zaytoun-quran") by the page itself, and are never deleted here.
-var CACHE = "zaytoun-v12";
+var CACHE = "zaytoun-v13";
 var KEEP = [CACHE, "zaytoun-quran"];
-var FILES = ["/school", "/school/firstaid", "/school/teach", "/school/help", "/school/sponsor", "/school/nav.js", "/school/manifest.webmanifest", "/img/icon-512.png"];
+var FILES = ["/school", "/school/firstaid", "/school/teach", "/school/help", "/school/sponsor", "/school/nav.js", "/school/manifest.webmanifest", "/img/icon-512.png", "/img/apple-touch-icon.png", "/img/mark.png"];
 self.addEventListener("install", function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(FILES); }).then(function () { return self.skipWaiting(); }));
 });

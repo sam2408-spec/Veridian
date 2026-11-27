@@ -23,6 +23,8 @@
     '.zn-ar{display:block;font-family:"Noto Naskh Arabic","Geeza Pro","Segoe UI",Tahoma,sans-serif;font-weight:400;font-size:13px;color:#aebbd4;direction:rtl}' +
     '.zn-menu a .zn-t{display:flex;flex-direction:column;line-height:1.2;padding:5px 0}' +
     '.zn-mini{padding:16px 20px 22px;font-size:12.5px;line-height:1.7;color:#cfd8ea;border-top:1px solid rgba(255,255,255,.14);font-family:system-ui,sans-serif}.zn-mini a{color:#cfd8ea}' +
+    '.zn-offbox{padding:12px 20px 0}.zn-off{margin:0;font:600 12.5px/1.4 system-ui,sans-serif}.zn-off:empty{display:none}.zn-ready{color:#9be38f}.zn-offline{color:#FDBA1E}' +
+    '.zn-inst{margin-top:10px;width:100%;min-height:42px;border-radius:4px;border:1px solid #FDBA1E;background:#FDBA1E;color:#153462;font:700 14px system-ui,sans-serif;cursor:pointer}.zn-inst[hidden]{display:none}' +
     '.zn-shade{display:none;position:fixed;inset:0;z-index:35;background:rgba(5,12,25,.5);border:0;padding:0}' +
     '.zn-top{display:none}' +
     'body{padding-left:272px}' +
@@ -63,6 +65,19 @@
       if (e.target.closest("a")) close();
     });
   }
+  var installEvt = null;
+  window.addEventListener("beforeinstallprompt", function (e) { e.preventDefault(); installEvt = e; var b = document.getElementById("zn-install"); if (b) b.hidden = false; });
+  if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
+    navigator.serviceWorker.register("/school-sw.js", { scope: "/school" }).catch(function () {});
+  }
+  function offStatus() {
+    var el = document.getElementById("zn-off"); if (!el) return;
+    if (!navigator.onLine) { el.textContent = "● Offline now: saved lessons still work"; el.className = "zn-off zn-offline"; return; }
+    if ("serviceWorker" in navigator && navigator.serviceWorker.controller) { el.textContent = "✓ Saved on this phone: works without internet"; el.className = "zn-off zn-ready"; }
+    else { el.textContent = ""; }
+  }
+  window.addEventListener("online", offStatus); window.addEventListener("offline", offStatus);
+  if ("serviceWorker" in navigator) navigator.serviceWorker.addEventListener("controllerchange", offStatus);
   window.ZNav = {
     draw: function (on) {
       build();
@@ -76,7 +91,11 @@
         ITEMS.map(function (x) { return item(x, on); }).join("") +
         '<li><a href="/">Veridian Academy<span aria-hidden="true">↗</span></a></li>' +
         '</ul></nav>' +
+        '<div class="zn-offbox"><p id="zn-off" class="zn-off"></p><button id="zn-install" class="zn-inst" hidden>📲 Add the school to your home screen</button></div>' +
         '<div class="zn-mini">A charity project of Veridian Academy<br>+94 76 171 8171<br><a href="mailto:veridian@sltnet.lk">veridian@sltnet.lk</a></div>';
+      offStatus();
+      var ib = document.getElementById("zn-install"); if (installEvt) ib.hidden = false;
+      ib.addEventListener("click", function () { if (!installEvt) return; installEvt.prompt(); installEvt.userChoice.then(function () { installEvt = null; ib.hidden = true; }); });
     }
   };
 })();
