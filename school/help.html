@@ -34,71 +34,73 @@ ul li,ol li{margin:4px 0}
 .note{font-size:.88rem;color:var(--muted)}
 footer{font-size:.85rem;color:var(--muted)}
 a{color:var(--navy)}
+.langbtn{float:right;font:600 15px var(--f-ar);min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+body:not(.show-ar) .ar{display:none!important}
 </style>
 </head>
 <body>
 <div class="wrap">
-<header>
-<p class="kick">Zaytoun School · مدرسة الزيتون</p>
-<h1>Ask for academic support<span class="ar">اطلب دعمًا دراسيًا</span></h1>
+<header><button class="langbtn" id="lt" type="button" translate="no">العربية</button>
+<p class="kick" translate="no">Zaytoun School · <span lang="ar">مدرسة الزيتون</span></p>
+<h1>Ask for academic support<span class="ar" lang="ar" translate="no">اطلب دعمًا دراسيًا</span></h1>
 </header>
 
-<div class="ok" id="thanks" hidden><b>Thank you — your request has been sent.</b> Our team will reply by email or WhatsApp.<span class="ar">شكرًا لك، وصل طلبك. سيردّ فريقنا عبر البريد الإلكتروني أو واتساب.</span></div>
+<div class="ok" id="thanks" hidden><b>Thank you — your request has been sent.</b> Our team will reply by email or WhatsApp.<span class="ar" lang="ar" translate="no">شكرًا لك، وصل طلبك. سيردّ فريقنا عبر البريد الإلكتروني أو واتساب.</span></div>
 
 <div class="card">
-<h2>Who can ask<span class="ar">من يمكنه الطلب</span></h2>
+<h2>Who can ask<span class="ar" lang="ar" translate="no">من يمكنه الطلب</span></h2>
 <p style="margin:0">Parents, guardians, teachers and community workers can ask for free help with a child's studies: catching up on missed school, reading and writing, maths, English, exam preparation, or learning materials. Young people aged 16 and over can ask for themselves. Under 16? Please ask a grown-up to fill this in with you.</p>
-<p class="ar" style="margin:10px 0 0">يمكن للأهل وأولياء الأمور والمعلّمين والعاملين في المجتمع طلب مساعدة مجانية في دراسة طفل: تعويض ما فات من المدرسة، القراءة والكتابة، الحساب، الإنجليزية، التحضير للامتحانات، أو مواد تعليمية. ويمكن لمن عمره ١٦ سنة فأكثر أن يطلب لنفسه. إن كان عمرك أقل من ١٦، اطلب من أحد الكبار أن يملأ النموذج معك.</p>
+<p class="ar" lang="ar" translate="no" style="margin:10px 0 0">يمكن للأهل وأولياء الأمور والمعلّمين والعاملين في المجتمع طلب مساعدة مجانية في دراسة طفل: تعويض ما فات من المدرسة، القراءة والكتابة، الحساب، الإنجليزية، التحضير للامتحانات، أو مواد تعليمية. ويمكن لمن عمره ١٦ سنة فأكثر أن يطلب لنفسه. إن كان عمرك أقل من ١٦، اطلب من أحد الكبار أن يملأ النموذج معك.</p>
 </div>
 
 <div class="card">
-<h2>How we help<span class="ar">كيف نساعد</span></h2>
+<h2>How we help<span class="ar" lang="ar" translate="no">كيف نساعد</span></h2>
 <ul style="margin:0">
-<li>Group classes with checked volunteer teachers, by video call.<span class="ar">دروس جماعية بالفيديو مع معلّمين متطوّعين تحقّقنا منهم.</span></li>
-<li>Worksheets, reading and study plans sent to the parent or teacher.<span class="ar">أوراق عمل وقراءات وخطط دراسة تُرسل إلى وليّ الأمر أو المعلّم.</span></li>
-<li>We never contact a child privately, and we do not need a child's full name, photo or address.<span class="ar">لا نتواصل أبدًا مع طفل بشكل خاص، ولا نحتاج اسم الطفل الكامل ولا صورته ولا عنوانه.</span></li>
+<li>Group classes with checked volunteer teachers, by video call.<span class="ar" lang="ar" translate="no">دروس جماعية بالفيديو مع معلّمين متطوّعين تحقّقنا منهم.</span></li>
+<li>Worksheets, reading and study plans sent to the parent or teacher.<span class="ar" lang="ar" translate="no">أوراق عمل وقراءات وخطط دراسة تُرسل إلى وليّ الأمر أو المعلّم.</span></li>
+<li>We never contact a child privately, and we do not need a child's full name, photo or address.<span class="ar" lang="ar" translate="no">لا نتواصل أبدًا مع طفل بشكل خاص، ولا نحتاج اسم الطفل الكامل ولا صورته ولا عنوانه.</span></li>
 </ul>
 </div>
 
 <form class="card" id="req" action="https://formsubmit.co/veridian@sltnet.lk" method="POST">
-<h2>Request form<span class="ar">نموذج الطلب</span></h2>
+<h2>Request form<span class="ar" lang="ar" translate="no">نموذج الطلب</span></h2>
 <input type="hidden" name="_subject" value="Zaytoun School — request for academic support">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_next" id="next" value="https://veridian.lk/school/help?sent=1">
 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
 <div class="two">
-<div><label for="n">Your name <span class="ar">اسمك</span></label><input id="n" name="Name of person asking" required autocomplete="name"></div>
-<div><label for="r">You are <span class="ar">أنت</span></label>
+<div><label for="n">Your name <span class="ar" lang="ar" translate="no">اسمك</span></label><input id="n" name="Name of person asking" required autocomplete="name"></div>
+<div><label for="r">You are <span class="ar" lang="ar" translate="no">أنت</span></label>
 <select id="r" name="Relationship" required><option value="">Choose · اختر</option><option>Parent or guardian · وليّ أمر</option><option>Teacher · معلّم</option><option>Community or aid worker · عامل مجتمعي أو إغاثي</option><option>Student aged 16+ · طالب عمره ١٦ فأكثر</option></select></div>
-<div><label for="c">Contact: email or WhatsApp <span class="ar">للتواصل: بريد إلكتروني أو واتساب</span></label><input id="c" name="Contact" required></div>
-<div><label for="co">Country and area <span class="ar">البلد والمنطقة</span></label><input id="co" name="Country and area" required placeholder="e.g. Gaza, Khan Younis"></div>
+<div><label for="c">Contact: email or WhatsApp <span class="ar" lang="ar" translate="no">للتواصل: بريد إلكتروني أو واتساب</span></label><input id="c" name="Contact" required></div>
+<div><label for="co">Country and area <span class="ar" lang="ar" translate="no">البلد والمنطقة</span></label><input id="co" name="Country and area" required placeholder="e.g. Gaza, Khan Younis"></div>
 </div>
 
 <div class="two">
-<div><label for="a">Child's age <span class="ar">عمر الطفل</span></label><select id="a" name="Child age" required><option value="">Choose · اختر</option><option>4–6</option><option>7–9</option><option>10–12</option><option>13–15</option><option>16–18</option></select></div>
-<div><label for="g">School grade (last grade attended) <span class="ar">الصف الدراسي (آخر صف درسه)</span></label><input id="g" name="Grade"></div>
-<div><label for="k">Number of children <span class="ar">عدد الأطفال</span></label><input id="k" name="Number of children" type="number" min="1" max="200" value="1"></div>
-<div><label for="l">Language for learning <span class="ar">لغة التعلّم</span></label><select id="l" name="Language"><option>Arabic · العربية</option><option>English · الإنجليزية</option><option>Both · كلاهما</option><option>Other · أخرى</option></select></div>
+<div><label for="a">Child's age <span class="ar" lang="ar" translate="no">عمر الطفل</span></label><select id="a" name="Child age" required><option value="">Choose · اختر</option><option>4–6</option><option>7–9</option><option>10–12</option><option>13–15</option><option>16–18</option></select></div>
+<div><label for="g">School grade (last grade attended) <span class="ar" lang="ar" translate="no">الصف الدراسي (آخر صف درسه)</span></label><input id="g" name="Grade"></div>
+<div><label for="k">Number of children <span class="ar" lang="ar" translate="no">عدد الأطفال</span></label><input id="k" name="Number of children" type="number" min="1" max="200" value="1"></div>
+<div><label for="l">Language for learning <span class="ar" lang="ar" translate="no">لغة التعلّم</span></label><select id="l" name="Language"><option>Arabic · العربية</option><option>English · الإنجليزية</option><option>Both · كلاهما</option><option>Other · أخرى</option></select></div>
 </div>
 
-<label for="s">What help is needed? <span class="ar">ما نوع المساعدة المطلوبة؟</span></label>
+<label for="s">What help is needed? <span class="ar" lang="ar" translate="no">ما نوع المساعدة المطلوبة؟</span></label>
 <select id="s" name="Type of help" required><option value="">Choose · اختر</option>
 <option>Catching up on missed school · تعويض ما فات من المدرسة</option><option>Reading and writing · القراءة والكتابة</option><option>Maths · الحساب والرياضيات</option><option>English · الإنجليزية</option><option>Science · العلوم</option><option>Quran · القرآن الكريم</option><option>Exam preparation (Tawjihi etc.) · التحضير للامتحانات (التوجيهي وغيره)</option><option>Learning difficulties · صعوبات التعلّم</option><option>Worksheets and books · أوراق عمل وكتب</option><option>A sponsor for my child's education · كفيل لتعليم طفلي</option><option>Other · أخرى</option></select>
 
-<label for="d">Tell us more <span class="ar">أخبرنا أكثر</span></label>
+<label for="d">Tell us more <span class="ar" lang="ar" translate="no">أخبرنا أكثر</span></label>
 <textarea id="d" name="Details" required placeholder="What is the child finding hard? How long have they been out of school? Do they have a phone or internet?"></textarea>
-<p class="note" style="margin:4px 0 0">Please do not write the child's full name, address or medical details here.<span class="ar">من فضلك لا تكتب اسم الطفل الكامل أو عنوانه أو تفاصيله الطبية هنا.</span></p>
+<p class="note" style="margin:4px 0 0">Please do not write the child's full name, address or medical details here.<span class="ar" lang="ar" translate="no">من فضلك لا تكتب اسم الطفل الكامل أو عنوانه أو تفاصيله الطبية هنا.</span></p>
 
-<label for="t">Best days and times (with your time zone) <span class="ar">أفضل الأيام والأوقات (مع التوقيت)</span></label>
+<label for="t">Best days and times (with your time zone) <span class="ar" lang="ar" translate="no">أفضل الأيام والأوقات (مع التوقيت)</span></label>
 <input id="t" name="Availability">
 
-<label class="check"><input type="checkbox" name="Permission" value="Yes" required><span>I am the child's parent, guardian or teacher, or I am 16 or over and asking for myself. <span class="ar">أنا وليّ أمر الطفل أو معلّمه، أو عمري ١٦ فأكثر وأطلب لنفسي.</span></span></label>
-<label class="check"><input type="checkbox" name="Agrees to share with a sponsor" value="Yes"><span>If I am asking for a sponsor: I agree that Veridian may share my name and contact details with a sponsor, who will send support directly to me. <span class="ar">إن كنت أطلب كفيلًا: أوافق على أن تشارك فيريديان اسمي ووسيلة التواصل معي مع كفيل يرسل الدعم إليّ مباشرة.</span></span></label>
-<label class="check"><input type="checkbox" name="Agrees to contact" value="Yes" required><span>I agree that the Veridian team may contact me about this request. <span class="ar">أوافق على أن يتواصل معي فريق فيريديان بخصوص هذا الطلب.</span></span></label>
+<label class="check"><input type="checkbox" name="Permission" value="Yes" required><span>I am the child's parent, guardian or teacher, or I am 16 or over and asking for myself. <span class="ar" lang="ar" translate="no">أنا وليّ أمر الطفل أو معلّمه، أو عمري ١٦ فأكثر وأطلب لنفسي.</span></span></label>
+<label class="check"><input type="checkbox" name="Agrees to share with a sponsor" value="Yes"><span>If I am asking for a sponsor: I agree that Veridian may share my name and contact details with a sponsor, who will send support directly to me. <span class="ar" lang="ar" translate="no">إن كنت أطلب كفيلًا: أوافق على أن تشارك فيريديان اسمي ووسيلة التواصل معي مع كفيل يرسل الدعم إليّ مباشرة.</span></span></label>
+<label class="check"><input type="checkbox" name="Agrees to contact" value="Yes" required><span>I agree that the Veridian team may contact me about this request. <span class="ar" lang="ar" translate="no">أوافق على أن يتواصل معي فريق فيريديان بخصوص هذا الطلب.</span></span></label>
 
 <button class="btn" type="submit">Send request · أرسل الطلب</button>
-<p class="note">Your request goes by email to the Veridian Academy team (veridian@sltnet.lk) and is used only to arrange support.<span class="ar">يصل طلبك عبر البريد الإلكتروني إلى فريق أكاديمية فيريديان، ويُستخدم فقط لترتيب الدعم.</span></p>
+<p class="note">Your request goes by email to the Veridian Academy team (veridian@sltnet.lk) and is used only to arrange support.<span class="ar" lang="ar" translate="no">يصل طلبك عبر البريد الإلكتروني إلى فريق أكاديمية فيريديان، ويُستخدم فقط لترتيب الدعم.</span></p>
 </form>
 
 <footer><p>Zaytoun School is a charity project of Veridian Academy, dedicated by its founder to the most important people in her life. · <a href="/">veridian.lk</a></p></footer>
@@ -108,6 +110,11 @@ a{color:var(--navy)}
 ZNav.draw("help");
 if(/[?&]sent=1/.test(location.search)){document.getElementById("thanks").hidden=false;document.getElementById("req").hidden=true}
 document.getElementById("next").value=location.origin+"/school/help?sent=1";
+</script>
+<script>
+(function(){var b=document.getElementById("lt");function set(on){document.body.classList.toggle("show-ar",on);b.textContent=on?"English only":"العربية";b.setAttribute("aria-pressed",on)}
+var on=false;try{on=JSON.parse(localStorage.getItem("zs_lang"))==="ar"}catch(e){}set(on);
+b.addEventListener("click",function(){on=!document.body.classList.contains("show-ar");set(on);try{localStorage.setItem("zs_lang",JSON.stringify(on?"ar":"en"))}catch(e){}})})();
 </script>
 </body>
 </html>

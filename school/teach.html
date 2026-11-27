@@ -51,13 +51,15 @@ ol li,ul li{margin:4px 0}
 .ok{background:var(--olive-soft);border-radius:14px;padding:14px}
 footer{font-size:.85rem;color:var(--muted)}
 a{color:var(--olive)}
+.langbtn{float:right;font:600 15px var(--f-ar);min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+body:not(.show-ar) .ar{display:none!important}
 </style>
 </head>
 <body>
 <div class="wrap">
-<header><h1>Volunteer to teach at Zaytoun School</h1><p class="ar">كن معلّمًا متطوّعًا في مدرسة الزيتون</p></header>
+<header><button class="langbtn" id="lt" type="button" translate="no">العربية</button><h1>Volunteer to teach at Zaytoun School</h1><p class="ar" lang="ar" translate="no">كن معلّمًا متطوّعًا في مدرسة الزيتون</p></header>
 
-<div class="ok" id="thanks" hidden><b>Thank you — your application has been sent.</b><br>The Veridian team will check your qualifications and references and contact you by email. <span class="ar" style="display:block">شكرًا لك، وصل طلبك. سيتواصل معك فريق فيريديان عبر البريد الإلكتروني.</span></div>
+<div class="ok" id="thanks" hidden><b>Thank you — your application has been sent.</b><br>The Veridian team will check your qualifications and references and contact you by email. <span class="ar" lang="ar" translate="no" style="display:block">شكرًا لك، وصل طلبك. سيتواصل معك فريق فيريديان عبر البريد الإلكتروني.</span></div>
 
 <div class="card">
 <h2>How it works</h2>
@@ -153,6 +155,11 @@ ZNav.draw("teach");
 if(/[?&]sent=1/.test(location.search)){document.getElementById("thanks").hidden=false;document.getElementById("apply").hidden=true}
 document.getElementById("next").value=location.origin+"/school/teach?sent=1";
 document.getElementById("f").addEventListener("change",function(){if(this.files[0]&&this.files[0].size>5*1024*1024){alert("Please choose a file under 5 MB.");this.value=""}});
+</script>
+<script>
+(function(){var b=document.getElementById("lt");function set(on){document.body.classList.toggle("show-ar",on);b.textContent=on?"English only":"العربية";b.setAttribute("aria-pressed",on)}
+var on=false;try{on=JSON.parse(localStorage.getItem("zs_lang"))==="ar"}catch(e){}set(on);
+b.addEventListener("click",function(){on=!document.body.classList.contains("show-ar");set(on);try{localStorage.setItem("zs_lang",JSON.stringify(on?"ar":"en"))}catch(e){}})})();
 </script>
 </body>
 </html>
